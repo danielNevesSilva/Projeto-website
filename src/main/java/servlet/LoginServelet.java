@@ -23,17 +23,26 @@ public class LoginServelet extends HttpServlet {
         String email = req.getParameter("email");
         String password = req.getParameter("password");
 
-        // Verifique se o email e a senha correspondem usando a classe AuthenticationService
         AuthenticationService authService = new AuthenticationService();
         FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
-
         Funcionario user = funcionarioDAO.getFuncionarioByEmail(email);
 
-        if (user != null && authService.verificarSenha(password, user.getPassword())) {
-            req.getSession().setAttribute("username", user);
-            resp.sendRedirect("index.jps");
+        if (user != null && user.isAtivo() && authService.verificarSenha(password, user.getPassword())) {
+
+            String funcao = user.getFuncao(); // Recupere a função do usuário
+
+            if ("Admin".equals(funcao)) {
+                resp.sendRedirect("dashbord.jsp");
+
+            } else if ("Estoquista".equals(funcao)) {
+
+                resp.sendRedirect("produtos.jsp");
+
+            } else if("Cliente".equals(funcao)){
+                resp.sendRedirect("loginCliente.jsp");
+            }
         } else {
-            req.setAttribute("message", "Credenciais inválidas");
+            req.setAttribute("message", "Credenciais inválidas ou usuário inativo");
             req.getRequestDispatcher("login.jsp").forward(req, resp);
         }
     }

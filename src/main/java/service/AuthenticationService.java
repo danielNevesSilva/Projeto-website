@@ -3,15 +3,15 @@ package service;
 import org.mindrot.jbcrypt.BCrypt;
 public class AuthenticationService {
 
-    public String criptografarSenha(String senha) {
+    public String criptografarSenha(String password) {
         // Gere um salt
         String salt = BCrypt.gensalt();
 
         // Criptografe a senha com o salt
-        return BCrypt.hashpw(senha, salt);
+        return BCrypt.hashpw(password, salt);
     }
 
-    public boolean verificarSenha(String senha, String senhaCriptografada) {
-        return BCrypt.checkpw(senha, senhaCriptografada);
+    public boolean verificarSenha(String password, String passwordCriptografada) {
+        return BCrypt.checkpw(password, passwordCriptografada);
     }
 }
