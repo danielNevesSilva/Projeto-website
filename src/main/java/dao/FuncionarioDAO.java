@@ -3,17 +3,17 @@ package dao;
 import config.ConnectionPoolConfig;
 import model.Funcionario;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 
 public class FuncionarioDAO {
 
     public void createaccount(Funcionario funcionario) {
 
-        String SQL = "INSERT INTO FUNCIONARIO (USERNAME,EMAIL,CPF,PASSWORD) VALUES (?,?,?,?)";
+        String SQL = "INSERT INTO FUNCIONARIO (USERNAME,EMAIL,CPF,PASSWORD,FUNCAO) VALUES (?,?,?,?,?)";
 
         try {
             Connection connection = ConnectionPoolConfig.getConnection();
@@ -23,6 +23,7 @@ public class FuncionarioDAO {
             preparedStatement.setString(2, funcionario.getEmail());
             preparedStatement.setString(3, funcionario.getCpf());
             preparedStatement.setString(4, funcionario.getPassword());
+            preparedStatement.setString(5, funcionario.getFuncao());
 
             preparedStatement.execute();
             connection.close();
@@ -30,6 +31,45 @@ public class FuncionarioDAO {
             System.out.println("fail in connection create" + e);
         }
     }
+
+    public List<Funcionario> findAllCadastro() {
+
+        String sql = "SELECT * FROM FUNCIONARIO";
+
+        try ( Connection connection = ConnectionPoolConfig.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql);
+             ResultSet resultSet = preparedStatement.executeQuery()
+
+        ) {
+            List<Funcionario> cadastros = new ArrayList<>();
+
+            while (resultSet.next()) {
+                String id = resultSet.getString("ID");
+                String username = resultSet.getString("USERNAME");
+                String email = resultSet.getString("EMAIL");
+                String cpf = resultSet.getString("CPF");
+                String password = resultSet.getString("PASSWORD");
+                String funcao = resultSet.getString("funcao");
+
+                Funcionario funcionario = new Funcionario(id, username, email, cpf, password, funcao);
+
+                cadastros.add(funcionario);
+            }
+            System.out.println("Sucesso in select * adminitralção");
+            connection.close();
+
+            return cadastros;
+
+        } catch (Exception e) {
+
+            System.out.println("Falha na connection");
+            return Collections.emptyList();
+        }
+
+    }
+
+
+
 
     public boolean Verificredentials(Funcionario funcionario) {
 
@@ -86,13 +126,11 @@ public class FuncionarioDAO {
                     funcionario.setEmail(rs.getString("email"));
                     funcionario.setCpf(rs.getString("cpf"));
                     funcionario.setPassword(rs.getString("password"));
+                    funcionario.setFuncao(rs.getString("funcao"));
                 }
             } catch (SQLException e) {
-                // Trate exceções de banco de dados
                 e.printStackTrace();
             } finally {
-                // Feche todas as conexões, stmts e rs
-                // ...
             }
 
             return funcionario;

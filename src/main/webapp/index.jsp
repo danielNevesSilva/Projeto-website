@@ -58,6 +58,12 @@
             }
         </script>
 
+             <select id="funcao" name="funcao" required="required">
+                 <option value="Estoquista">Estoquista</option>
+                 <option value="Admin">Admin</option>
+             </select>
+
+
         <input type="hidden" id="id" name="id" value="${param.id}">
         <button class="botao-cadastro" type="submit" value="Cadastrar">Cadastrar</button>
     </form>

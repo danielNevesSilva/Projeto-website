@@ -8,17 +8,17 @@ public class Funcionario {
     private String email;
     private String cpf;
     private String password;
+    private String funcao ;
 
-    public Funcionario(String email, String password){
 
-    }
 
-    public Funcionario(String id, String username, String email, String cpf, String password) {
+    public Funcionario(String id, String username, String email, String cpf, String password, String funcao ) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.cpf = cpf;
         this.password = password;
+        this.funcao  = funcao ;
     }
 
     public Funcionario() {
@@ -63,5 +63,13 @@ public class Funcionario {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getFuncao() {
+        return funcao ;
+    }
+
+    public void setFuncao(String funcao) {
+        this.funcao = funcao;
     }
 }

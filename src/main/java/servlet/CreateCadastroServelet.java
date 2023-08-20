@@ -20,12 +20,14 @@ public class CreateCadastroServelet extends HttpServlet {
         String email = request.getParameter("email");
         String cpf = request.getParameter("cpf");
         String password = request.getParameter("password");
+        String funcao = request.getParameter("funcao");
+
 
         AuthenticationService authService = new AuthenticationService();
         String senhaCriptografada = authService.criptografarSenha(password);
 
         FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
-        Funcionario funcionario = new Funcionario(null, nome, email, cpf, senhaCriptografada);
+        Funcionario funcionario = new Funcionario(null, nome, email, cpf, senhaCriptografada,funcao);
 
         funcionarioDAO.createaccount(funcionario);
 
