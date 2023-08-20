@@ -9,7 +9,7 @@ public class Funcionario {
     private String cpf;
     private String password;
 
-    public Funcionario(){
+    public Funcionario(String email, String password){
 
     }
 
@@ -19,6 +19,10 @@ public class Funcionario {
         this.email = email;
         this.cpf = cpf;
         this.password = password;
+    }
+
+    public Funcionario() {
+
     }
 
     public String getId() {
