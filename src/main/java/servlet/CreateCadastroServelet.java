@@ -2,6 +2,7 @@ package servlet;
 
 import dao.FuncionarioDAO;
 import model.Funcionario;
+import service.AuthenticationService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,17 +15,20 @@ import java.io.IOException;
 public class CreateCadastroServelet extends HttpServlet {
     @Override
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        String id = request.getParameter("id");
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String nome = request.getParameter("username");
         String email = request.getParameter("email");
         String cpf = request.getParameter("cpf");
         String password = request.getParameter("password");
 
+        AuthenticationService authService = new AuthenticationService();
+        String senhaCriptografada = authService.criptografarSenha(password);
+
         FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
-        Funcionario funcionario= new Funcionario(id,nome,email,cpf,password);
+        Funcionario funcionario = new Funcionario(null, nome, email, cpf, senhaCriptografada);
 
         funcionarioDAO.createaccount(funcionario);
-    }
 
+        response.sendRedirect("login.jsp");
+    }
 }
