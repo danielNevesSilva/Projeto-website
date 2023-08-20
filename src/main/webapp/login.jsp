@@ -75,8 +75,8 @@
 
 
                       <p>
-                          <label for="Password">Senha</label>
-                          <input id="Password" name="Password" required="required" type="password" placeholder="********" />
+                          <label for="password">Senha</label>
+                          <input id="password" name="password" required="required" type="password" placeholder="********" />
                       </p>
 
                             <button class="botao-login" input type="submit" value="Login">Login</button>
