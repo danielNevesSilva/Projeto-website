@@ -34,31 +34,27 @@ public class FuncionarioDAO {
 
     public List<Funcionario> findAllCadastro() {
 
-        String sql = "SELECT * FROM FUNCIONARIO";
+        String sql = "SELECT USERNAME, EMAIL, FUNCAO FROM FUNCIONARIO";
 
         try ( Connection connection = ConnectionPoolConfig.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-             ResultSet resultSet = preparedStatement.executeQuery()
+              PreparedStatement preparedStatement = connection.prepareStatement(sql);
+              ResultSet resultSet = preparedStatement.executeQuery()) {
 
-        ) {
-            List<Funcionario> cadastros = new ArrayList<>();
+            List<Funcionario> funcionarios = new ArrayList<>();
 
             while (resultSet.next()) {
-                String id = resultSet.getString("ID");
                 String username = resultSet.getString("USERNAME");
                 String email = resultSet.getString("EMAIL");
-                String cpf = resultSet.getString("CPF");
-                String password = resultSet.getString("PASSWORD");
-                String funcao = resultSet.getString("funcao");
+                String funcao = resultSet.getString("FUNCAO");
 
-                Funcionario funcionario = new Funcionario(id, username, email, cpf, password, funcao);
+                Funcionario funcionario = new Funcionario(username,email,funcao);
 
-                cadastros.add(funcionario);
+                funcionarios.add(funcionario);
             }
-            System.out.println("Sucesso in select * adminitralção");
+            System.out.println("Sucesso in select * FUNCIONARIO");
             connection.close();
 
-            return cadastros;
+            return funcionarios;
 
         } catch (Exception e) {
 
@@ -67,8 +63,6 @@ public class FuncionarioDAO {
         }
 
     }
-
-
 
 
     public boolean Verificredentials(Funcionario funcionario) {
@@ -127,6 +121,7 @@ public class FuncionarioDAO {
                     funcionario.setCpf(rs.getString("cpf"));
                     funcionario.setPassword(rs.getString("password"));
                     funcionario.setFuncao(rs.getString("funcao"));
+                    funcionario.setAtivo(rs.getBoolean("Ativo"));
                 }
             } catch (SQLException e) {
                 e.printStackTrace();

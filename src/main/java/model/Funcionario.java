@@ -9,10 +9,15 @@ public class Funcionario {
     private String cpf;
     private String password;
     private String funcao ;
+    private boolean ativo;
 
 
 
-    public Funcionario(String id, String username, String email, String cpf, String password, String funcao ) {
+    public Funcionario() {
+
+    }
+
+    public Funcionario(String id, String username, String email, String cpf, String password, String funcao) {
         this.id = id;
         this.username = username;
         this.email = email;
@@ -21,8 +26,10 @@ public class Funcionario {
         this.funcao  = funcao ;
     }
 
-    public Funcionario() {
-
+    public Funcionario(String username, String email, String funcao) {
+        this.username = username;
+        this.email = email;
+        this.funcao  = funcao ;
     }
 
     public String getId() {
@@ -71,5 +78,13 @@ public class Funcionario {
 
     public void setFuncao(String funcao) {
         this.funcao = funcao;
+    }
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
     }
 }
