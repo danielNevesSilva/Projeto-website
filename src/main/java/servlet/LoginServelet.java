@@ -27,14 +27,15 @@ public class LoginServelet extends HttpServlet {
         FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
         Funcionario user = funcionarioDAO.getFuncionarioByEmail(email);
 
-        if (user != null && user.isAtivo() && authService.verificarSenha(password, user.getPassword())) {
+        if (user != null && authService.verificarSenha(password, user.getPassword())) {
 
             String funcao = user.getFuncao(); // Recupere a função do usuário
+            String status  = user.getStatus();
 
-            if ("Admin".equals(funcao)) {
+            if ("Admin".equals(funcao) && "Ativo".equals(status)) {
                 resp.sendRedirect("dashbord.jsp");
 
-            } else if ("Estoquista".equals(funcao)) {
+            } else if ("Estoquista".equals(funcao) && "Ativo".equals(status)  ) {
 
                 resp.sendRedirect("produtos.jsp");
 

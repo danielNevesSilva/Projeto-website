@@ -13,8 +13,8 @@
  <p>  <a href="index.html">INICIO</a></p>
  <p>  <a href="produto.jsp">Adicione Produto</a></p>
  <p> <a href="cadastro.jsp"> Adicione usuario</a></p>
-    <p><a href="/Cadastros">Lista de Usuarios</a></p>
-    <p><a href="/Lista-de-camisas">Lista de produtos</a></p>
+    <p><a href="/funcionarios">Lista de Funcionarios</a></p>
+    <p><a href="/produtos">Lista de produtos</a></p>
          <p><a href="/logout">Logout</a></p>
 
 </div>
@@ -28,19 +28,21 @@
             <th>Grupo</th>
 
         </tr>
-      <c:forEach var="Funcionario" items="${Funcionarios}">
+      <c:forEach var="funcionario" items="${funcionarios}">
                       <tr>
                           <td></td>
-                          <td>${Funcionario.username}</td>
-                          <td>${Funcionario.email}</td>
-                          <td>${Funcionario.funcao}</td>
+                          <td>${funcionario.username}</td>
+                          <td>${funcionario.email}</td>
+                          <td>${funcionario.funcao}</td>
+                          <td>${funcionario.status}</td>
+
                          <td>
                                              </a>
                                              <form action="/Alterar" method="post">
-             <input type="hidden" id="id" name="id" value="${Funcionario.id}">
+             <input type="hidden" id="id" name="id" value="${funcionario.id}">
                    <button type="submit">Delete</button>
                     <span> | </span>
-              <button style="background-color: orange;"><a href="produto.jsp?id=${Produto.id}&ano_camisa=${Produto.anoCamisa}&nome_camisa=${Produto.nomeCamisa}&tamanho=${Produto.tamanho}&valor_produto=${Produto.valorProduto}&quantidade=${Produto.quantidade}&image=${Produto.image}">Alterar</a>   </button>                                                                                                        </form>
+              <button style="background-color: orange;"><a href="index.jsp?id=${funcionario.id}&username=${funcionario.username}&email=${funcionario.email}">Alterar</a>   </button>                                                                                                        </form>
                          </td>
                       </tr>
                    </c:forEach>

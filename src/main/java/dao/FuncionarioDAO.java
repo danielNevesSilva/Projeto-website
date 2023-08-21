@@ -34,7 +34,7 @@ public class FuncionarioDAO {
 
     public List<Funcionario> findAllCadastro() {
 
-        String sql = "SELECT USERNAME, EMAIL, FUNCAO FROM FUNCIONARIO";
+        String sql = "SELECT USERNAME, EMAIL, FUNCAO, STATUS FROM FUNCIONARIO";
 
         try ( Connection connection = ConnectionPoolConfig.getConnection();
               PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -46,8 +46,9 @@ public class FuncionarioDAO {
                 String username = resultSet.getString("USERNAME");
                 String email = resultSet.getString("EMAIL");
                 String funcao = resultSet.getString("FUNCAO");
+                String status = resultSet.getString("STATUS");
 
-                Funcionario funcionario = new Funcionario(username,email,funcao);
+                Funcionario funcionario = new Funcionario(username,email,funcao, status);
 
                 funcionarios.add(funcionario);
             }
@@ -121,7 +122,7 @@ public class FuncionarioDAO {
                     funcionario.setCpf(rs.getString("cpf"));
                     funcionario.setPassword(rs.getString("password"));
                     funcionario.setFuncao(rs.getString("funcao"));
-                    funcionario.setAtivo(rs.getBoolean("Ativo"));
+                    funcionario.setStatus(rs.getString("status"));
                 }
             } catch (SQLException e) {
                 e.printStackTrace();

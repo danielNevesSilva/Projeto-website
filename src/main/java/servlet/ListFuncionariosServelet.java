@@ -18,11 +18,11 @@ public class ListFuncionariosServelet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 
-            List<Funcionario> Funcionarios = new FuncionarioDAO().findAllCadastro();
+            List<Funcionario> funcionarios = new FuncionarioDAO().findAllCadastro();
 
-            req.setAttribute("Funcionarios", Funcionarios);
+            req.setAttribute("funcionarios", funcionarios);
 
-            req.getRequestDispatcher("Funcionarios.jsp").forward(req, resp);
+            req.getRequestDispatcher("funcionarios.jsp").forward(req, resp);
 
     }
 
