@@ -34,7 +34,7 @@ public class FuncionarioDAO {
 
     public List<Funcionario> findAllCadastro() {
 
-        String sql = "SELECT USERNAME, EMAIL, FUNCAO, STATUS FROM FUNCIONARIO";
+        String sql = "SELECT ID, USERNAME, EMAIL, FUNCAO, STATUS FROM FUNCIONARIO";
 
         try ( Connection connection = ConnectionPoolConfig.getConnection();
               PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -43,12 +43,13 @@ public class FuncionarioDAO {
             List<Funcionario> funcionarios = new ArrayList<>();
 
             while (resultSet.next()) {
+                String id = resultSet.getString("ID");
                 String username = resultSet.getString("USERNAME");
                 String email = resultSet.getString("EMAIL");
                 String funcao = resultSet.getString("FUNCAO");
                 String status = resultSet.getString("STATUS");
 
-                Funcionario funcionario = new Funcionario(username,email,funcao, status);
+                Funcionario funcionario = new Funcionario(id, username,email,funcao, status);
 
                 funcionarios.add(funcionario);
             }
@@ -132,4 +133,23 @@ public class FuncionarioDAO {
             return funcionario;
         }
 
+    public static boolean alterarStatusFuncionario(int id, String novoStatus) {
+        String sql = "UPDATE FUNCIONARIO SET STATUS = ? WHERE ID = ?";
+
+        try (Connection connection = ConnectionPoolConfig.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+            preparedStatement.setString(1, novoStatus);
+            preparedStatement.setInt(2, id);
+
+            int rowsAfetadas = preparedStatement.executeUpdate();
+
+            return rowsAfetadas > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
+

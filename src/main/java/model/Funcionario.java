@@ -26,7 +26,8 @@ public class Funcionario {
         this.funcao  = funcao ;
     }
 
-    public Funcionario(String username, String email, String funcao, String status) {
+    public Funcionario(String id, String username, String email, String funcao, String status) {
+        this.id = id;
         this.username = username;
         this.email = email;
         this.funcao  = funcao ;

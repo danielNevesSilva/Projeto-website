@@ -34,7 +34,11 @@
                           <td>${funcionario.username}</td>
                           <td>${funcionario.email}</td>
                           <td>${funcionario.funcao}</td>
-                          <td>${funcionario.status}</td>
+                          <TD>${funcionario.status}</td>
+                          <td>
+                              <button type="button" onclick="alterarStatus(${funcionario.id}, '${funcionario.status}')">${funcionario.status}</button>
+                          </td>
+
 
                          <td>
                                              </a>
@@ -46,6 +50,13 @@
                          </td>
                       </tr>
                    </c:forEach>
+
+                   <script>
+                       function alterarStatus(id, statusAtual) {
+
+                           var url = "/alterarStatusFuncionario?id=" + id;
+                   </script>
+
     </table>
   </div>
 </body>
