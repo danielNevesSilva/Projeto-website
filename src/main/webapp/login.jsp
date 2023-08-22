@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./common/fonts.css">
-    <link rel="stylesheet" href="./common/login1.css">
-    <link rel="stylesheet" href="./common/menu.css">
+    <link rel="stylesheet" href="./styles/login.css">
 
     <title>Login</title>
 </head>
@@ -27,23 +25,6 @@
                 <a href="/Lista-de-camisas">ADMIN</a>
 
 
-            </nav>
-        </div>
-
-        <button onclick="animarMenu()" id="btn-menu">
-            <span class="linha"></span>
-            <span class="linha"></span>
-            <span class="linha"></span>
-        </button>
-
-        <!-- Menu Responsivo -->
-
-        <div class="menu-mobile">
-            <nav>
-                <a href="index.html">INICIO</a>
-                <a href="https://web.whatsapp.com/send?phone=5599111112222">CONTATO</a>
-                <a href="/find-all-produtos">CAMISAS</a>
-                <a href="/find-all-produtosADM">ADMIN</a>
             </nav>
         </div>
 

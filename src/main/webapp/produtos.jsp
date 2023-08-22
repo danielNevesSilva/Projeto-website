@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="./styles/produto.css">
+
     <title>Exemplo Hello</title>
 </head>
 <body>

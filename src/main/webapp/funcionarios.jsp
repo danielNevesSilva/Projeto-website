@@ -2,7 +2,7 @@
 <html>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <head>
-<link rel="stylesheet" href="Dashbord.css">
+<link rel="stylesheet" href="./styles/funcionario.css">
     <meta charset="UTF-8">
     <title>Dashboard</title>
 </head>
