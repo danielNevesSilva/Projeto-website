@@ -106,18 +106,7 @@
                         <input id="confirmPassword" name="confirmPassword" required onchange="validarSenhas()" type="password" placeholder="********" />
                     </p>
             
-                    <script>
-                        function validarSenhas() {
-                            const senha1 = document.getElementById('password');
-                            const senha2 = document.getElementById('confirmPassword');
-            
-                            if (senha1.value === senha2.value) {
-                                senha2.setCustomValidity(''); // Senhas conferem
-                            } else {
-                                senha2.setCustomValidity('As senhas não conferem');
-                            }
-                        }
-                    </script>
+           
             
                          <select id="funcao" name="funcao" required="required">
                              <option value="Estoquista">Estoquista</option>
@@ -139,6 +128,9 @@
     </div>
 
     <div class="footer"></div>
+    <script type="text/javascript" src="./javascript/index.js">
+
+    </script>
 
 </body>
 

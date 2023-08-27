@@ -16,6 +16,7 @@ public class CreateCadastroServelet extends HttpServlet {
     @Override
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String id = request.getParameter("id");
         String nome = request.getParameter("username");
         String email = request.getParameter("email");
         String cpf = request.getParameter("cpf");
@@ -26,16 +27,30 @@ public class CreateCadastroServelet extends HttpServlet {
         AuthenticationService authService = new AuthenticationService();
         String senhaCriptografada = authService.criptografarSenha(password);
 
-        FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
-        Funcionario funcionario = new Funcionario(null, nome, email, cpf, senhaCriptografada,funcao);
+        FuncionarioDAO funcionariosDAO = new FuncionarioDAO();
+        Funcionario funcionario = new Funcionario(id, nome, email, cpf, senhaCriptografada, funcao);
 
-        if(cpf.equals(cpf) && email.equals(email)) {
+        if (emailCadastrado(email)) {
             request.setAttribute("message", "Usuario já cadastrado");
             request.getRequestDispatcher("index.jsp").forward(request, response);
 
-        }else {
-            funcionarioDAO.createaccount(funcionario);
-            response.sendRedirect("login.jsp");
+        } else {
+            request.setAttribute("message", "Usuario cadastrado com sucesso");
+
+            funcionariosDAO.createaccount(funcionario);
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+        }
+    }
+
+    private boolean emailCadastrado(String email) {
+        FuncionarioDAO funcionariosDAO = new FuncionarioDAO();
+        Funcionario funcionario = funcionariosDAO.getFuncionarioByEmail(email);
+
+        if (funcionario != null) {
+            return true;
+            } else {
+
+            return false;
         }
     }
 }
