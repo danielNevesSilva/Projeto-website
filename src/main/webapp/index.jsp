@@ -59,12 +59,14 @@
     <div class="principal">
         <div class="cadastro">
 
+
+
             <form action="/create-account" method="post">
 
-                <!-- FORMULÁRIO DE CADASTRO -->
                 <form method="post" action="">
                     <h1>Cadastro</h1>
-            
+            <span>${requestScope.message}</span>
+
                     <p>
                         <label for="username">Nome</label>
                         <input id="username" name="username" required="required" type="text" placeholder="  nome" value="${param.username}" />
@@ -79,21 +81,7 @@
                         <label for="cpf">CPF</label>
                         <input id="cpf" name="cpf" required="required" type="text" placeholder="111.222.333-11" oninput="formatarCPF(this)" value="${param.cpf}" />
                     </p>
-            
-                    <script>
-                        function formatarCPF(campo) {
-                            var cpf = campo.value.replace(/\D/g, ''); // Remove todos os caracteres não numéricos
-            
-                            if (cpf.length > 11) {
-                                cpf = cpf.slice(0, 11);
-                            }
-            
-                            cpf = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
-            
-                            campo.value = cpf;
-                        }
-                    </script>
-            
+
                     <p>
                         <label for="password">Senha</label>
                         <input id="password" name="password" required onchange="validarSenhas()" type="password" placeholder="********" value="${param.password}" />
@@ -103,20 +91,9 @@
                         <label for="confirmPassword">Confirme a Senha</label>
                         <input id="confirmPassword" name="confirmPassword" required onchange="validarSenhas()" type="password" placeholder="********" />
                     </p>
-            
-                    <script>
-                        function validarSenhas() {
-                            const senha1 = document.getElementById('password');
-                            const senha2 = document.getElementById('confirmPassword');
-            
-                            if (senha1.value === senha2.value) {
-                                senha2.setCustomValidity(''); // Senhas conferem
-                            } else {
-                                senha2.setCustomValidity('As senhas não conferem');
-                            }
-                        }
-                    </script>
-            
+
+
+
                          <select id="funcao" name="funcao" required="required">
                              <option value="Estoquista">Estoquista</option>
                              <option value="Admin">Admin</option>
@@ -136,6 +113,9 @@
     </div>
 
     <div class="footer"></div>
+    <script type="text/javascript" src="./javascript/index.js">
+
+    </script>
 
 </body>
 
