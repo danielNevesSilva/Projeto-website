@@ -131,7 +131,6 @@
         </div>
         </form>
         <p class="link">
-             <label for="">Login</label>
             <a href="login.jsp"><button class="botao-login">Login</button>  </a>
         </p>
     </div>

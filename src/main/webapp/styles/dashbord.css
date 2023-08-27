@@ -1,0 +1,38 @@
+*{
+    margin: 0px;
+    font-family: sans-serif;
+    background-color:black;
+    color: orange;
+}
+
+.geral{
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    margin-top: 15%;
+    flex-direction: column;
+}
+
+.topo{
+    padding: 30px;
+}
+
+.btn{
+    background-color: white;
+    border-radius: 20px;
+    font-size: 20px;
+    color: black;
+    margin-bottom: 20px;
+    margin-left: 130px;
+    cursor: pointer;
+    transition: background .3s;
+}
+
+.btn:hover{
+    background-color: #808080;
+}
+.footer{
+    margin-left: 23%;
+}
+
+

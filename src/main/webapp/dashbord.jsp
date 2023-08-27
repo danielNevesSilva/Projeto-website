@@ -3,27 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/dashbord.css">
     <title>Backoffice</title>
 </head>
-<body>
-    <header>
-        <h1>Bem-vindo ao Backoffice</h1>
-    </header>
+  <body>
+    <div class="geral">
+         <header class="topo">
+            <h1>Bem-vindo ao Backoffice</h1>
+         </header>
 
-    <nav>
-        <ul>
-            <li><a href="/produtos">Lista de Produtos</a></li>
-            <li><a href="/funcionarios">Lista de Usuários</a></li>
-        </ul>
-    </nav>
+        <div class="principal">
+          <div class>
+            <nav>
+                 <a href="/produtos"><button class="btn">Produtos</button></a>
+                 <a href="/funcionarios"><button class="btn">Funcionarios</button></a>
+             </nav>
 
-    <section>
-        <!-- Conteúdo da página principal do backoffice vai aqui -->
-        <p>Seu conteúdo principal pode ser colocado aqui.</p>
-    </section>
+            <section>
+                 <!-- Conteúdo da página principal do backoffice vai aqui -->
+                 <p>Seu material principal pode ser colocado aqui.</p>
+            </section>
 
-    <footer>
-        <p>&copy; 2023 Sua Empresa</p>
-    </footer>
-</body>
+        </div>
+
+        <footer class="footer">
+            <p>&copy; 2023 Sua Empresa</p>
+        </footer>
+    </div>
+  </body>
 </html>
