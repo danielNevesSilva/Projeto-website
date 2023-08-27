@@ -132,6 +132,39 @@ public class FuncionarioDAO {
 
             return funcionario;
         }
+    public Funcionario getFuncionarioByCpf(String cpf) {
+
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        Funcionario funcionario = null;
+
+        try {
+            conn = ConnectionPoolConfig.getConnection();
+            String query = "SELECT * FROM funcionario WHERE cpf = ?";
+            stmt = conn.prepareStatement(query);
+            stmt.setString(1, cpf);
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                // Encontrou um funcionário com o email fornecido
+                // Crie um objeto Funcionario com os dados do resultado
+                funcionario = new Funcionario();
+                funcionario.setId(rs.getString("id"));
+                funcionario.setUsername(rs.getString("username"));
+                funcionario.setEmail(rs.getString("email"));
+                funcionario.setCpf(rs.getString("cpf"));
+                funcionario.setPassword(rs.getString("password"));
+                funcionario.setFuncao(rs.getString("funcao"));
+                funcionario.setStatus(rs.getString("status"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+        }
+
+        return funcionario;
+    }
 
     public static boolean alterarStatusFuncionario(int id, String novoStatus) {
         String sql = "UPDATE FUNCIONARIO SET STATUS = ? WHERE ID = ?";

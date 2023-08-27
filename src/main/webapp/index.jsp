@@ -81,21 +81,7 @@
                         <label for="cpf">CPF</label>
                         <input id="cpf" name="cpf" required="required" type="text" placeholder="111.222.333-11" oninput="formatarCPF(this)" value="${param.cpf}" />
                     </p>
-            
-                    <script>
-                        function formatarCPF(campo) {
-                            var cpf = campo.value.replace(/\D/g, ''); // Remove todos os caracteres não numéricos
-            
-                            if (cpf.length > 11) {
-                                cpf = cpf.slice(0, 11);
-                            }
-            
-                            cpf = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
-            
-                            campo.value = cpf;
-                        }
-                    </script>
-            
+
                     <p>
                         <label for="password">Senha</label>
                         <input id="password" name="password" required onchange="validarSenhas()" type="password" placeholder="********" value="${param.password}" />
@@ -105,9 +91,9 @@
                         <label for="confirmPassword">Confirme a Senha</label>
                         <input id="confirmPassword" name="confirmPassword" required onchange="validarSenhas()" type="password" placeholder="********" />
                     </p>
-            
-           
-            
+
+
+
                          <select id="funcao" name="funcao" required="required">
                              <option value="Estoquista">Estoquista</option>
                              <option value="Admin">Admin</option>

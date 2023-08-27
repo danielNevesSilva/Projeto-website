@@ -3,6 +3,7 @@ package servlet;
 import dao.FuncionarioDAO;
 import model.Funcionario;
 import service.AuthenticationService;
+import service.ValidacaoUsuarios;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,14 +24,15 @@ public class CreateCadastroServelet extends HttpServlet {
         String password = request.getParameter("password");
         String funcao = request.getParameter("funcao");
 
-
+        ValidacaoUsuarios validacaoUsuarios = new ValidacaoUsuarios();
         AuthenticationService authService = new AuthenticationService();
         String senhaCriptografada = authService.criptografarSenha(password);
+
 
         FuncionarioDAO funcionariosDAO = new FuncionarioDAO();
         Funcionario funcionario = new Funcionario(id, nome, email, cpf, senhaCriptografada, funcao);
 
-        if (emailCadastrado(email)) {
+        if (validacaoUsuarios.emailCadastrado(email) || validacaoUsuarios.cpfCadastrado(cpf)) {
             request.setAttribute("message", "Usuario já cadastrado");
             request.getRequestDispatcher("index.jsp").forward(request, response);
 
@@ -42,15 +44,4 @@ public class CreateCadastroServelet extends HttpServlet {
         }
     }
 
-    private boolean emailCadastrado(String email) {
-        FuncionarioDAO funcionariosDAO = new FuncionarioDAO();
-        Funcionario funcionario = funcionariosDAO.getFuncionarioByEmail(email);
-
-        if (funcionario != null) {
-            return true;
-            } else {
-
-            return false;
-        }
-    }
 }

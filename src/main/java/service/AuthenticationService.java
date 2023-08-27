@@ -1,5 +1,7 @@
 package service;
 
+import dao.FuncionarioDAO;
+import model.Funcionario;
 import org.mindrot.jbcrypt.BCrypt;
 public class AuthenticationService {
 
@@ -14,4 +16,6 @@ public class AuthenticationService {
     public boolean verificarSenha(String password, String passwordCriptografada) {
         return BCrypt.checkpw(password, passwordCriptografada);
     }
+
+
 }
