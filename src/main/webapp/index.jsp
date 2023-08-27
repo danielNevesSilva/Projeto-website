@@ -59,12 +59,14 @@
     <div class="principal">
         <div class="cadastro">
 
+
+
             <form action="/create-account" method="post">
 
-                <!-- FORMULÁRIO DE CADASTRO -->
                 <form method="post" action="">
                     <h1>Cadastro</h1>
-            
+            <span>${requestScope.message}</span>
+
                     <p>
                         <label for="username">Nome</label>
                         <input id="username" name="username" required="required" type="text" placeholder="  nome" value="${param.username}" />

@@ -29,8 +29,13 @@ public class CreateCadastroServelet extends HttpServlet {
         FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
         Funcionario funcionario = new Funcionario(null, nome, email, cpf, senhaCriptografada,funcao);
 
-        funcionarioDAO.createaccount(funcionario);
+        if(cpf.equals(cpf) && email.equals(email)) {
+            request.setAttribute("message", "Usuario já cadastrado");
+            request.getRequestDispatcher("index.jsp").forward(request, response);
 
-        response.sendRedirect("login.jsp");
+        }else {
+            funcionarioDAO.createaccount(funcionario);
+            response.sendRedirect("login.jsp");
+        }
     }
 }

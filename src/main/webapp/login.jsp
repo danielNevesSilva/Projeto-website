@@ -41,9 +41,6 @@
       <div class="principal">
           <div class="cadastro">
 
-
-                  <!--FORMULÁRIO DE CADASTRO-->
-
                       <span>${requestScope.message}</span>
 
                   <form action="/login" method="post">
