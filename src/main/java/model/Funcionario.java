@@ -34,6 +34,13 @@ public class Funcionario {
         this.status = status;
     }
 
+    public Funcionario(String id, String username, String funcao, String status) {
+        this.id = id;
+        this.username = username;
+        this.funcao  = funcao ;
+        this.status = status;
+    }
+
     public String getId() {
         return id;
     }

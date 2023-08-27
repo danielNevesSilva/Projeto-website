@@ -24,8 +24,9 @@
         <th> </th>
             <th>Nome</th>
             <th>Email</th>
-            <th>status</th>
             <th>Grupo</th>
+            <th>Status</th>
+
 
         </tr>
       <c:forEach var="funcionario" items="${funcionarios}">
@@ -34,19 +35,13 @@
                           <td>${funcionario.username}</td>
                           <td>${funcionario.email}</td>
                           <td>${funcionario.funcao}</td>
-                          <TD>${funcionario.status}</td>
-                          <td>
-                              <button type="button" onclick="alterarStatus(${funcionario.id}, '${funcionario.status}')">${funcionario.status}</button>
-                          </td>
-
+                          <Td>${funcionario.status}</td>
 
                          <td>
                                              </a>
                                              <form action="/Alterar" method="post">
              <input type="hidden" id="id" name="id" value="${funcionario.id}">
-                   <button type="submit">Delete</button>
-                    <span> | </span>
-              <button style="background-color: orange;"><a href="index.jsp?id=${funcionario.id}&username=${funcionario.username}&email=${funcionario.email}">Alterar</a>   </button>                                                                                                        </form>
+              <button style="background-color: orange;"><a href="alterar.jsp?id=${funcionario.id}&username=${funcionario.username}&funcao=${funcionario.funcao}&status=${funcionario.status}">Alterar</a></button>                                                                                                        </form>
                          </td>
                       </tr>
                    </c:forEach>
