@@ -166,6 +166,34 @@ public class FuncionarioDAO {
         return funcionario;
     }
 
+    public void update(Funcionario funcionario){
+
+        String sql = "UPDATE FUNCIONARIO SET USERNAME=?,  FUNCAO=?, STATUS=? WHERE ID=?";
+
+        try {
+            Connection connection = ConnectionPoolConfig.getConnection();
+
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setString(1, funcionario.getUsername());
+            preparedStatement.setString(2, funcionario.getFuncao());
+            preparedStatement.setString(3, funcionario.getStatus());
+            preparedStatement.setString(4, funcionario.getId());
+
+            preparedStatement.execute();
+
+            System.out.println("Sucesso no update");
+
+            connection.close();
+
+        }catch (Exception e){
+
+            System.out.println("Falha conexão banco");
+            System.out.println("Error: " + e.getMessage());
+
+        }
+    }
+
     public static boolean alterarStatusFuncionario(int id, String novoStatus) {
         String sql = "UPDATE FUNCIONARIO SET STATUS = ? WHERE ID = ?";
 
