@@ -32,6 +32,46 @@ public class FuncionarioDAO {
         }
     }
 
+    public List<Funcionario> pesquisa(){
+
+        String sql = "SELECT * FROM FUNCIONARIO WHERE USERNAME = '?'";
+
+        try (
+
+            Connection connection = ConnectionPoolConfig.getConnection();
+
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            ResultSet resultSet = preparedStatement.executeQuery()) {
+
+            List<Funcionario> funcionarios = new ArrayList<>();
+
+            while (resultSet.next()) {
+                String id = resultSet.getString("ID");
+                String username = resultSet.getString("USERNAME");
+                String email = resultSet.getString("EMAIL");
+                String funcao = resultSet.getString("FUNCAO");
+                String status = resultSet.getString("STATUS");
+
+                Funcionario funcionario = new Funcionario(id, username,email,funcao, status);
+
+                funcionarios.add(funcionario);
+            }
+
+            System.out.println("Sucesso in select nome FUNCIONARIO");
+
+            connection.close();
+
+            return funcionarios;
+
+        } catch (Exception e) {
+
+            System.out.println("Falha na connection");
+            return Collections.emptyList();
+        }
+    }
+
+
     public List<Funcionario> findAllCadastro() {
 
         String sql = "SELECT ID, USERNAME, EMAIL, FUNCAO, STATUS FROM FUNCIONARIO";
