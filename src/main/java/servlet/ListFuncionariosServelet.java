@@ -17,7 +17,6 @@ public class ListFuncionariosServelet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-
             List<Funcionario> funcionarios = new FuncionarioDAO().findAllCadastro();
 
             req.setAttribute("funcionarios", funcionarios);
