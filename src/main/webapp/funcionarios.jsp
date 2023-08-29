@@ -34,6 +34,13 @@
                 <h3>Pesquisar Nome:</h3>
                 <input id="username" name="username" required="required" type="text" placeholder="  nome" value="${param.username}"/>
                  <button type="submit">Pesquisar</button>
+
+                <c:if test="${empty funcionarios}">
+                        <p>Nenhum funcionário encontrado.</p>
+                </c:if>
+
+                <c:if test="${not empty funcionarios}">
+
              </form>
 
       <c:forEach var="funcionario" items="${funcionarios}">
@@ -61,5 +68,6 @@
                </form>
     </table>
   </div>
+  </c:if>
 </body>
 </html>

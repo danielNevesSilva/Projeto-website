@@ -16,10 +16,12 @@ public class BuscaUserServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Funcionario> funcionarios = new FuncionarioDAO().pesquisa();
+
+        String username = request.getParameter("username");
+
+        List<Funcionario> funcionarios = new FuncionarioDAO().pesquisa(username);
 
         request.setAttribute("funcionarios", funcionarios);
-
         request.getRequestDispatcher("funcionarios.jsp").forward(request, response);
     }
 }

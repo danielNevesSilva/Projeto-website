@@ -32,41 +32,42 @@ public class FuncionarioDAO {
         }
     }
 
-    public List<Funcionario> pesquisa(){
+    public List<Funcionario> pesquisa(String nome){
 
-        String sql = "SELECT * FROM FUNCIONARIO WHERE USERNAME = '?'";
+        String sql = "SELECT * FROM FUNCIONARIO WHERE USERNAME = ?";
 
         try (
+                Connection connection = ConnectionPoolConfig.getConnection();
+                PreparedStatement preparedStatement = connection.prepareStatement(sql)
+        ) {
+            preparedStatement.setString(1, nome); // Define o valor do parâmetro para o nome
 
-            Connection connection = ConnectionPoolConfig.getConnection();
-
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-
-            ResultSet resultSet = preparedStatement.executeQuery()) {
+            ResultSet resultSet = preparedStatement.executeQuery();
 
             List<Funcionario> funcionarios = new ArrayList<>();
 
             while (resultSet.next()) {
                 String id = resultSet.getString("ID");
                 String username = resultSet.getString("USERNAME");
-                String email = resultSet.getString("EMAIL");
                 String funcao = resultSet.getString("FUNCAO");
                 String status = resultSet.getString("STATUS");
 
-                Funcionario funcionario = new Funcionario(id, username,email,funcao, status);
+                Funcionario funcionario = new Funcionario(id, username, funcao, status);
 
                 funcionarios.add(funcionario);
             }
 
-            System.out.println("Sucesso in select nome FUNCIONARIO");
+            System.out.println("Sucesso na consulta de nome FUNCIONARIO");
 
+            resultSet.close();
             connection.close();
 
             return funcionarios;
 
         } catch (Exception e) {
 
-            System.out.println("Falha na connection");
+            System.out.println("Falha na conexão ou na consulta");
+            e.printStackTrace(); // Imprima a exceção para depuração
             return Collections.emptyList();
         }
     }
