@@ -10,7 +10,7 @@
   <div>
   <div class = "navbar">
    <span>${sessionScope.nome}</span>
- <p>  <a href="index.html">INICIO</a></p>
+ <p>  <a href="index.jsp">INICIO</a></p>
  <p>  <a href="produto.jsp">Adicione Produto</a></p>
  <p> <a href="cadastro.jsp"> Adicione usuario</a></p>
     <p><a href="/funcionarios">Lista de Funcionarios</a></p>

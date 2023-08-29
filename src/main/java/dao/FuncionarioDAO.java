@@ -40,7 +40,7 @@ public class FuncionarioDAO {
                 Connection connection = ConnectionPoolConfig.getConnection();
                 PreparedStatement preparedStatement = connection.prepareStatement(sql)
         ) {
-            preparedStatement.setString(1, nome); // Define o valor do parâmetro para o nome
+            preparedStatement.setString(1, nome);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -49,10 +49,11 @@ public class FuncionarioDAO {
             while (resultSet.next()) {
                 String id = resultSet.getString("ID");
                 String username = resultSet.getString("USERNAME");
+                String email = resultSet.getString("EMAIL");
                 String funcao = resultSet.getString("FUNCAO");
                 String status = resultSet.getString("STATUS");
 
-                Funcionario funcionario = new Funcionario(id, username, funcao, status);
+                Funcionario funcionario = new Funcionario(id, username,email, funcao, status);
 
                 funcionarios.add(funcionario);
             }
@@ -125,8 +126,8 @@ public class FuncionarioDAO {
             System.out.println("Success in select Username");
 
             while (resultSet.next()){
-                String Senha = resultSet.getString("PASSWORD");
-                if (Senha.equals(funcionario.getPassword())){
+                String password = resultSet.getString("PASSWORD");
+                if (password.equals(funcionario.getPassword())){
                     return true;
                 }
             }

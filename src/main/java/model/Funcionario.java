@@ -17,6 +17,11 @@ public class Funcionario {
 
     }
 
+    public Funcionario(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+
     public Funcionario(String id, String username, String email, String cpf, String password, String funcao) {
         this.id = id;
         this.username = username;
