@@ -1,7 +1,7 @@
 /* Reset de estilos padrão */
 body, h1, h2, h3, p, ul, li {
     margin: 0;
-    padding: 0;
+    padding: 0px;
 }
 
 /* Definindo a paleta de cores */
@@ -19,54 +19,22 @@ body {
     color: var(--cor-cinza-escuro);
 }
 
-/* Estilos para o menu */
-.container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px;
-    background-color: var(--cor-preta);
-    color: var(--cor-branca);
-}
-
-.logo img {
-    max-width: 100px;
-}
-
-.menu a {
-    text-decoration: none;
-    color: var(--cor-branca);
-    margin-right: 20px;
-    transition: color 0.3s ease-in-out;
-}
-
-.menu a:hover {
-    color: var(--cor-cinza-claro);
-}
-
-.login img {
-    max-width: 30px;
-}
-
-/* Estilos para o formulário de login */
 .principal {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: calc(100vh - 100px);
-}
-
-.cadastro {
+    max-width: 600px;
+    margin: 100px auto;
+    padding: 40px;
     background-color: var(--cor-branca);
-    padding: 60px;
-    border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
+.alterar {
     color: var(--cor-preta);
-    font-size: 24px;
+    text-align: center;
     margin-bottom: 20px;
+}
+
+.secao1 {
+    margin-top: 20px;
 }
 
 label {
@@ -76,7 +44,7 @@ label {
 }
 
 input[type="text"],
-input[type="password"] {
+select {
     width: 100%;
     padding: 10px;
     border: 1px solid var(--cor-cinza-claro);
@@ -84,7 +52,7 @@ input[type="password"] {
     margin-bottom: 10px;
 }
 
-.botao-login {
+button {
     background-color: var(--cor-preta);
     color: var(--cor-branca);
     padding: 10px 20px;
@@ -93,14 +61,19 @@ input[type="password"] {
     cursor: pointer;
 }
 
+/* Estilização adicional */
+.name {
+    margin-bottom: 20px;
+}
+
+.btn {
+    text-align: center;
+}
+
 /* Responsividade */
 @media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .menu {
-        margin-top: 10px;
+    .principal {
+        max-width: 90%;
     }
 }
+

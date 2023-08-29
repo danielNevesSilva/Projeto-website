@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/login.css">
+    <link rel="stylesheet" href="./styles/index.css">
     <title>Cadrastro</title>
 </head>
 
@@ -56,66 +56,66 @@
 
 <!--Final Menu-->
 
-    <div class="principal">
-        <div class="cadastro">
+<div class="principal">
+    <div class="cadastro">
 
 
 
-            <form action="/create-account" method="post">
+        <form action="/create-account" method="post">
 
-                <form method="post" action="">
-                    <h1>Cadastro</h1>
-            <span>${requestScope.message}</span>
+            <form method="post" action="">
+                <h1>Cadastro</h1>
+                <span>${requestScope.message}</span>
 
-                    <p>
-                        <label for="username">Nome</label>
-                        <input id="username" name="username" required="required" type="text" placeholder="  nome" value="${param.username}" />
-                    </p>
-            
-                    <p>
-                        <label for="email">E-mail</label>
-                        <input id="email" name="email" required="required" type="email" placeholder="  contato@htmlecsspro.com" value="${param.email}" />
-                    </p>
-            
-                    <p>
-                        <label for="cpf">CPF</label>
-                        <input id="cpf" name="cpf" required="required" type="text" placeholder="111.222.333-11" oninput="formatarCPF(this)" value="${param.cpf}" />
-                    </p>
+                <p>
+                    <label for="username">Nome</label>
+                    <input id="username" name="username" required="required" type="text" placeholder="  nome" value="${param.username}" />
+                </p>
 
-                    <p>
-                        <label for="password">Senha</label>
-                        <input id="password" name="password" required onchange="validarSenhas()" type="password" placeholder="********" value="${param.password}" />
-                    </p>
-            
-                    <p>
-                        <label for="confirmPassword">Confirme a Senha</label>
-                        <input id="confirmPassword" name="confirmPassword" required onchange="validarSenhas()" type="password" placeholder="********" />
-                    </p>
+                <p>
+                    <label for="email">E-mail</label>
+                    <input id="email" name="email" required="required" type="email" placeholder="  contato@htmlecsspro.com" value="${param.email}" />
+                </p>
 
+                <p>
+                    <label for="cpf">CPF</label>
+                    <input id="cpf" name="cpf" required="required" type="text" placeholder="111.222.333-11" oninput="formatarCPF(this)" value="${param.cpf}" />
+                </p>
 
+                <p>
+                    <label for="password">Senha</label>
+                    <input id="password" name="password" required onchange="validarSenhas()" type="password" placeholder="********" value="${param.password}" />
+                </p>
 
-                         <select id="funcao" name="funcao" required="required">
-                             <option value="Estoquista">Estoquista</option>
-                             <option value="Admin">Admin</option>
-                         </select>
-            
-            
-                    <input type="hidden" id="id" name="id" value="${param.id}">
-                    <button class="botao-cadastro" type="submit" value="Cadastrar">Cadastrar</button>
-                </form>
+                <p>
+                    <label for="confirmPassword">Confirme a Senha</label>
+                    <input id="confirmPassword" name="confirmPassword" required onchange="validarSenhas()" type="password" placeholder="********" />
+                </p>
 
 
-        </div>
-        </form>
-        <p class="link">
-            <a href="login.jsp"><button class="botao-login">Login</button>  </a>
-        </p>
+
+                <select id="funcao" name="funcao" required="required">
+                    <option value="Estoquista">Estoquista</option>
+                    <option value="Admin">Admin</option>
+                </select>
+
+
+                <input type="hidden" id="id" name="id" value="${param.id}">
+                <button class="botao-cadastro" type="submit" value="Cadastrar">Cadastrar</button>
+            </form>
+
+
     </div>
+    </form>
+    <p class="link">
+        <a href="login.jsp"><button class="botao-login">Login</button>  </a>
+    </p>
+</div>
 
-    <div class="footer"></div>
-    <script type="text/javascript" src="./javascript/index.js">
+<div class="footer"></div>
+<script type="text/javascript" src="./javascript/index.js">
 
-    </script>
+</script>
 
 </body>
 

@@ -20,15 +20,13 @@
              </nav>
 
             <section>
-                 <!-- Conteúdo da página principal do backoffice vai aqui -->
-                 <p>Seu material principal pode ser colocado aqui.</p>
+                <figure>
+                    <img src="img/logo_PT4.png" alt="logo">
+                </figure>
+            </section>
             </section>
 
         </div>
-
-        <footer class="footer">
-            <p>&copy; 2023 Sua Empresa</p>
-        </footer>
     </div>
   </body>
 </html>
