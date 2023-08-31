@@ -63,7 +63,8 @@
 
                 <p>
                     <label for="cpf">CPF</label>
-                    <input id="cpf" name="cpf" required="required" type="text" placeholder="111.222.333-11" oninput="formatarCPF(this)" value="${param.cpf}" />
+                    <input id="cpf" name="cpf" required="required" type="text" placeholder="111.222.333-11" oninput="formatarCPF(this)" onblur="validarCPF(this.value)" value="${param.cpf}" />
+                    <span class="error-message"></span>
                 </p>
 
                 <p>

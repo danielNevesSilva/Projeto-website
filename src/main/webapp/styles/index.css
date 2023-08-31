@@ -146,4 +146,11 @@ select {
         display: none;
     }
 }
+
+.error-message{
+    color: red;
+    font-size: 12px;
+    display: none;
+    margin-left: 10px;
+}
   
