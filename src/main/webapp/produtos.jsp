@@ -3,10 +3,10 @@
 <head>
     <link rel="stylesheet" href="./styles/produto.css">
 
-    <title>Exemplo Hello</title>
+    <title>Cadastro de produtos</title>
 </head>
 <body>
-    <h1>Hello, Mundo!</h1>
-    <p>Este é um exemplo simples de uma página HTML.</p>
+    <h1>Futura dela de cadastro de produtos!</h1>
+    <p></p>
 </body>
 </html>

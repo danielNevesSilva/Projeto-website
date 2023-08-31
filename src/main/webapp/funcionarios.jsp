@@ -4,7 +4,7 @@
 <head>
 <link rel="stylesheet" href="./styles/funcionario.css">
     <meta charset="UTF-8">
-    <title>Dashboard</title>
+    <title>Funcionarios</title>
 </head>
 <body>
   <div>
