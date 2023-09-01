@@ -19,10 +19,10 @@
 
         <div class="menu">
             <nav>
-                <a href="index.jsp">INICIO</a>
+          <!-- <a href="index.jsp">INICIO</a>
                 <a href="https://web.whatsapp.com/send?phone=5599111112222" target="_blank">CONTATO</a>
                 <a href="/Oferta-de-camisas">CAMISAS</a>
-                <a href="/Lista-de-camisas">ADMIN</a>
+                <a href="/Lista-de-camisas">ADMIN</a> -->
 
 
             </nav>

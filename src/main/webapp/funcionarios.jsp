@@ -10,11 +10,10 @@
   <div>
   <div class = "navbar">
    <span>${sessionScope.nome}</span>
- <p>  <a href="index.jsp">INICIO</a></p>
- <p>  <a href="produto.jsp">Adicione Produto</a></p>
+ <p>  <a href="index.jsp">Inicio</a></p>
+ <p>  <a href="dashboard.jsp">Backoffice</a></p>
  <p> <a href="cadastro.jsp"> Adicione usuario</a></p>
     <p><a href="/funcionarios">Lista de Funcionarios</a></p>
-    <p><a href="/produtos">Lista de produtos</a></p>
          <p><a href="/logout">Logout</a></p>
 
 </div>
