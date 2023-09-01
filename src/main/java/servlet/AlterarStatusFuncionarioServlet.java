@@ -11,19 +11,19 @@ import dao.FuncionarioDAO;
 @WebServlet("/alterarStatusFuncionario")
 public class AlterarStatusFuncionarioServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         String idParam = request.getParameter("id");
         String statusParam = request.getParameter("status");
 
-        if (idParam != null) {
+        if (idParam != null && statusParam != null) {
             try {
                 int id = Integer.parseInt(idParam);
                 String novoStatus = statusParam;
 
-                boolean sucesso = FuncionarioDAO.alterarStatusFuncionario(id,novoStatus);
+                // Atualize o status do funcionário no banco de dados usando FuncionarioDAO
+                boolean sucesso = FuncionarioDAO.alterarStatusFuncionario(id, novoStatus);
 
                 if (sucesso) {
-                    response.getWriter().write("Inativo");
+                    response.setStatus(HttpServletResponse.SC_OK);
                 } else {
                     response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
                 }
@@ -35,4 +35,3 @@ public class AlterarStatusFuncionarioServlet extends HttpServlet {
         }
     }
 }
-

@@ -55,19 +55,19 @@
                                              </a>
               <form action="/Alterar" method="post">
              <input type="hidden" id="id" name="id" value="${funcionario.id}">
+            <button onclick="alterarStatus(${funcionario.id}, '${funcionario.status}')">Alterar Status</button>
               <button style="background-color: orange;"><a href="alterar.jsp?id=${funcionario.id}&username=${funcionario.username}&funcao=${funcionario.funcao}&status=${funcionario.status}">Alterar</a></button>                                                                                                        </form>
                          </td>
                       </tr>
                    </c:forEach>
 
-                   <script>
-                       function alterarStatus(id, statusAtual) {
 
-                       var url = "/alterarStatusFuncionario?id=" + id;
-                   </script>
                </form>
     </table>
   </div>
   </c:if>
+<script type="text/javascript" src="./javascript/index.js">
+
+</script>
 </body>
 </html>

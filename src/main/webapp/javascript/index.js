@@ -84,4 +84,26 @@ function validarCPF(cpfValue) {
     }
 }
 
+function alterarStatus(id, statusAtual) {
+    var novoStatus = statusAtual === 'Ativo' ? 'Inativo' : 'Ativo';
+    var url = `/alterarStatusFuncionario?id=${id}&status=${novoStatus}`;
+
+    // Fazer uma solicitação AJAX
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                // A solicitação foi bem-sucedida, atualize a página
+                window.location.reload();
+            } else {
+                // Trate o erro, se necessário
+                console.error('Erro ao alterar o status do funcionário');
+            }
+        }
+    };
+    xhr.open('POST', url, true);
+    xhr.send();
+}
+
+
 

@@ -34,16 +34,16 @@ public class CreateCadastroServelet extends HttpServlet {
 
         if (validacaoUsuarios.emailCadastrado(email)) {
             request.setAttribute("message", "Email já cadastrado");
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+            request.getRequestDispatcher("cadastro.jsp").forward(request, response);
 
         } else if (validacaoUsuarios.cpfCadastrado(cpf)){
             request.setAttribute("message", "CPF já cadastrado");
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+            request.getRequestDispatcher("cadastro.jsp").forward(request, response);
         }else {
             request.setAttribute("message", "Usuario cadastrado com sucesso");
 
             funcionariosDAO.createaccount(funcionario);
-            request.getRequestDispatcher("login.jsp").forward(request, response);
+            response.sendRedirect("/funcionarios");
         }
     }
 
