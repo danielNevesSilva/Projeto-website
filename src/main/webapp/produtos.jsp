@@ -6,7 +6,7 @@
     <title>Cadastro de produtos</title>
 </head>
 <body>
-    <h1>Futura dela de cadastro de produtos!</h1>
+    <h1>Futura Tela de cadastro de produtos!</h1>
     <p></p>
 </body>
 </html>

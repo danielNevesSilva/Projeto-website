@@ -42,9 +42,13 @@ public class LoginServlet extends HttpServlet {
                 String status = user.getStatus();
 
                 if ("Admin".equals(funcao) && "Ativo".equals(status)) {
+                    String tipoUsuario = "Admin";
+                    req.getSession().setAttribute("tipoUsuario", tipoUsuario);
                     resp.sendRedirect(DASHBOARD_PAGE);
                 } else if ("Estoquista".equals(funcao) && "Ativo".equals(status)) {
-                    resp.sendRedirect(PRODUCTS_PAGE);
+                    String tipoUsuario = "Estoquista";
+                    req.getSession().setAttribute("tipoUsuario", tipoUsuario);
+                    resp.sendRedirect(DASHBOARD_PAGE);
                 } else if ("Cliente".equals(funcao)) {
                     resp.sendRedirect(CLIENT_LOGIN_PAGE);
                 }
