@@ -51,10 +51,14 @@ public class LoginServlet extends HttpServlet {
                     resp.sendRedirect(DASHBOARD_PAGE);
                 } else if ("Cliente".equals(funcao)) {
                     resp.sendRedirect(CLIENT_LOGIN_PAGE);
+                } else if ("Inativo".equals(status)){
+                    req.setAttribute("message", "usuário inativo");
+                    req.getRequestDispatcher(LOGIN_PAGE).forward(req, resp);
                 }
+
             } else {
 
-                req.setAttribute("message", "Credenciais inválidas ou usuário inativo");
+                req.setAttribute("message", "Credenciais inválidas");
                 req.getRequestDispatcher(LOGIN_PAGE).forward(req, resp);
 
             }
