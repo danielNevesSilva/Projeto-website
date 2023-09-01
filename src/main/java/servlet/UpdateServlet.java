@@ -25,7 +25,7 @@ public class UpdateServlet extends HttpServlet {
 
         FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
 
-        funcionarioDAO.update(funcionario);
+        // funcionarioDAO.update(funcionario);
 
         response.sendRedirect("/funcionarios");
 

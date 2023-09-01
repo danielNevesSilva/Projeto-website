@@ -32,19 +32,26 @@ public class CreateCadastroServelet extends HttpServlet {
         FuncionarioDAO funcionariosDAO = new FuncionarioDAO();
         Funcionario funcionario = new Funcionario(id, nome, email, cpf, senhaCriptografada, funcao);
 
-        if (validacaoUsuarios.emailCadastrado(email)) {
-            request.setAttribute("message", "Email já cadastrado");
-            request.getRequestDispatcher("cadastro.jsp").forward(request, response);
+        if (id.isBlank()) {
 
-        } else if (validacaoUsuarios.cpfCadastrado(cpf)){
-            request.setAttribute("message", "CPF já cadastrado");
-            request.getRequestDispatcher("cadastro.jsp").forward(request, response);
-        }else {
-            request.setAttribute("message", "Usuario cadastrado com sucesso");
+            if (validacaoUsuarios.emailCadastrado(email)) {
+                request.setAttribute("message", "Email já cadastrado");
+                request.getRequestDispatcher("cadastro.jsp").forward(request, response);
 
-            funcionariosDAO.createaccount(funcionario);
+            } else if (validacaoUsuarios.cpfCadastrado(cpf)) {
+                request.setAttribute("message", "CPF já cadastrado");
+                request.getRequestDispatcher("cadastro.jsp").forward(request, response);
+            } else {
+                request.setAttribute("message", "Usuario cadastrado com sucesso");
+
+                funcionariosDAO.createaccount(funcionario);
+                response.sendRedirect("/funcionarios");
+            }
+
+        } else {
+            funcionariosDAO.AlterarUsuario(funcionario);
             response.sendRedirect("/funcionarios");
         }
-    }
 
+    }
 }

@@ -46,6 +46,16 @@ public class Funcionario {
         this.status = status;
     }
 
+    public Funcionario(String id, String username, String email, String cpf, String password, String funcao, String status) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        this.cpf = cpf;
+        this.password = password;
+        this.funcao  = funcao ;
+        this.status = status;
+    }
+
     public String getId() {
         return id;
     }

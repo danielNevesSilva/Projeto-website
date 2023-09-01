@@ -76,7 +76,7 @@ public class FuncionarioDAO {
 
     public List<Funcionario> findAllCadastro() {
 
-        String sql = "SELECT ID, USERNAME, EMAIL, FUNCAO, STATUS FROM FUNCIONARIO";
+        String sql = "SELECT * FROM FUNCIONARIO";
 
         try ( Connection connection = ConnectionPoolConfig.getConnection();
               PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -88,10 +88,12 @@ public class FuncionarioDAO {
                 String id = resultSet.getString("ID");
                 String username = resultSet.getString("USERNAME");
                 String email = resultSet.getString("EMAIL");
+                String cpf = resultSet.getString("CPF");
+                String password = resultSet.getString("PASSWORD");
                 String funcao = resultSet.getString("FUNCAO");
                 String status = resultSet.getString("STATUS");
 
-                Funcionario funcionario = new Funcionario(id, username,email,funcao, status);
+                Funcionario funcionario = new Funcionario(id, username,email, cpf,password,funcao, status);
 
                 funcionarios.add(funcionario);
             }
@@ -208,9 +210,9 @@ public class FuncionarioDAO {
         return funcionario;
     }
 
-    public void update(Funcionario funcionario){
+    public void AlterarUsuario(Funcionario funcionario){
 
-        String sql = "UPDATE FUNCIONARIO SET USERNAME=?,  FUNCAO=?, STATUS=? WHERE ID=?";
+        String sql = "UPDATE FUNCIONARIO SET USERNAME=?,PASSWORD=?,FUNCAO=? WHERE ID=?";
 
         try {
             Connection connection = ConnectionPoolConfig.getConnection();
@@ -218,8 +220,8 @@ public class FuncionarioDAO {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
             preparedStatement.setString(1, funcionario.getUsername());
-            preparedStatement.setString(2, funcionario.getFuncao());
-            preparedStatement.setString(3, funcionario.getStatus());
+            preparedStatement.setString(2,funcionario.getPassword());
+            preparedStatement.setString(3, funcionario.getFuncao());
             preparedStatement.setString(4, funcionario.getId());
 
             preparedStatement.execute();

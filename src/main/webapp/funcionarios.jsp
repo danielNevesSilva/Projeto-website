@@ -56,7 +56,8 @@
               <form action="/Alterar" method="post">
              <input type="hidden" id="id" name="id" value="${funcionario.id}">
             <button onclick="alterarStatus(${funcionario.id}, '${funcionario.status}')">Alterar Status</button>
-              <button style="background-color: orange;"><a href="alterar.jsp?id=${funcionario.id}&username=${funcionario.username}&funcao=${funcionario.funcao}&status=${funcionario.status}">Alterar</a></button>                                                                                                        </form>
+              <button style="background-color: orange;"><a href="cadastro.jsp?id=${funcionario.id}&username=${funcionario.username}&email=${funcionario.email}&cpf=${funcionario.cpf}">Alterar</a></button>
+              </form>
                          </td>
                       </tr>
                    </c:forEach>
