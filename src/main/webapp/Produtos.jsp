@@ -22,19 +22,19 @@
         </thead>
         <tbody>
             <!-- Itere sobre a lista de produtos e exiba cada produto -->
-            <c:forEach var="Product" items="${Products}">
+            <c:forEach var="product" items="${Products}">
                 <tr>
-                    <td>${Product.id}</td>
-                    <td>${Product.name}</td>
-                    <td>${Product.amount}</td>
-                    <td>R$ ${Product.price}</td>
+                    <td>${product.id}</td>
+                    <td>${product.name}</td>
+                    <td>${product.amount}</td>
+                    <td>R$ ${product.price}</td>
                     <td>
-                           <img style="width: 100px" src="img/ ${Product.image}" alt="${Product.name}">
-            </a>
+                    <img src="${pageContext.request.contextPath}/img/20230904183216137.jpg" alt="${product.name}">
 
+                        <img src="img/ ${product.images[0]}" alt="${product.name}">
                     </td>
                     <td>
-                        <a href="product-details?id=${Product.id}">Detalhes</a>
+                        <a href="${pageContext.request.contextPath}/product-details?id=${product.id}">Detalhes</a>
                     </td>
                 </tr>
             </c:forEach>

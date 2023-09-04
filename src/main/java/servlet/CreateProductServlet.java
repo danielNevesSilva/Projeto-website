@@ -38,6 +38,7 @@ public class CreateProductServlet extends HttpServlet {
                 // Crie objetos para armazenar informações do produto e imagens
                 Product product = new Product();
                 List<String> imagePaths = new ArrayList<>();
+                String contextPath = req.getContextPath(); // Obtém o contexto do aplicativo web
 
                 for (FileItem item : items) {
                     if (item.isFormField()) {
@@ -64,13 +65,14 @@ public class CreateProductServlet extends HttpServlet {
                             // Salve a imagem no servidor
                             String imagePath = saveImageToFileSystem(item, uniqueFileName);
 
+                            // Adicione o contexto ao caminho da imagem
+                            String imagePathWithContext = contextPath + "/img/" + uniqueFileName;
+
                             // Adicione o caminho da imagem à lista
-                            product.getImages().add(imagePath);
+                            product.getImages().add(imagePathWithContext);
                         }
                     }
                 }
-
-                product.setImages(imagePaths);
 
                 ProductDAO productDAO = new ProductDAO();
                 productDAO.createProduct(product);
@@ -83,7 +85,8 @@ public class CreateProductServlet extends HttpServlet {
             }
         }
     }
-        // Método para gerar um nome de arquivo único
+
+    // Método para gerar um nome de arquivo único
         private String generateUniqueFileName (String originalFileName){
             String uniqueFileName = null;
             try {
@@ -104,27 +107,27 @@ public class CreateProductServlet extends HttpServlet {
         }
 
 // Método para salvar a imagem no sistema de arquivos do servidor
-        private String saveImageToFileSystem (FileItem item, String fileName) throws Exception {
-            String imagePath = null;
-            try {
-                // Defina o diretório onde deseja salvar as imagens
-                // Obtenha o caminho real para o diretório raiz da aplicação
-                String rootPath = getServletContext().getRealPath("/");
-                String uploadDirectory = rootPath + "img/";
+            private String saveImageToFileSystem (FileItem item, String fileName) throws Exception {
+                String imagePath = null;
+                try {
+                    // Defina o diretório onde deseja salvar as imagens
+                    // Obtenha o caminho real para o diretório raiz da aplicação
+                    String rootPath = getServletContext().getRealPath("/");
+                    String uploadDirectory = rootPath + "img/";
 
-                // Crie o caminho completo do arquivo
-                imagePath = uploadDirectory + fileName;
+                    // Crie o caminho completo do arquivo
+                    imagePath = uploadDirectory + fileName;
 
-                // Crie um objeto File para representar o arquivo no sistema de arquivos
-                File imageFile = new File(imagePath);
+                    // Crie um objeto File para representar o arquivo no sistema de arquivos
+                    File imageFile = new File(imagePath);
 
-                // Salve o arquivo
-                item.write(imageFile);
-            } catch (Exception e) {
-                e.printStackTrace();
-                throw e; // Relance a exceção para tratamento posterior
+                    // Salve o arquivo
+                    item.write(imageFile);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    throw e; // Relance a exceção para tratamento posterior
+                }
+
+                return imagePath;
             }
-
-            return imagePath;
-        }
     }
