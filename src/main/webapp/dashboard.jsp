@@ -18,18 +18,20 @@
             <nav>
 
             <c:if test="${sessionScope.tipoUsuario   eq 'Admin'}">
-                 <a href="/produtos"><button class="btn">Produtos</button></a>
+                 <a href="CadastroProduto.jsp"><button class="btn">Produtos</button></a>
         <a href="/funcionarios"><button class="btn">Funcionarios</button></a>
+        <a href="Produtos.jsp"><button class="btn">Lista de produtos</button></a>
+
             </c:if>
             <c:if test="${sessionScope.tipoUsuario   eq 'Estoquista'}">
-        <a href="/produtos"><button class="btn">Produtos</button></a>
+        <a href="CadastroProduto.jsp"><button class="btn">Produtos</button></a>
             </c:if>
 
              </nav>
 
             <section>
                 <figure>
-                    <img src="img/logo_PT4.png" alt="logo">
+                    <img src="img-logo/logo_PT4.png" alt="logo">
                 </figure>
             </section>
             </section>

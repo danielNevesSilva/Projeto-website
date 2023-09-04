@@ -16,7 +16,7 @@ import java.io.IOException;
 public class LoginServlet extends HttpServlet {
     private static final String LOGIN_PAGE = "index.jsp";
     private static final String DASHBOARD_PAGE = "dashboard.jsp";
-    private static final String PRODUCTS_PAGE = "produtos.jsp";
+    private static final String PRODUCTS_PAGE = "CadastroProduto.jsp";
     private static final String CLIENT_LOGIN_PAGE = "loginCliente.jsp";
 
     private static final String ERROR = "error.html";
