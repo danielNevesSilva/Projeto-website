@@ -17,6 +17,10 @@ public class ListProductsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         List<Product> Products = new ProductDAO().selectProducts();
+        for (Product product : Products) {
+            System.out.println("Produto ID: " + product.getId());
+            System.out.println("Imagens: " + product.getImages());
+        }
 
         req.setAttribute("Products", Products);
 

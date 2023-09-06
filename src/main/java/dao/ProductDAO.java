@@ -107,18 +107,18 @@ public class ProductDAO {
                 String price = resultSet.getString("price");
                 String amount = resultSet.getString("amount");
                 String imagePaths = resultSet.getString("image_paths");
+                System.out.println("imagePaths antes da divisão: " + imagePaths);
 
                 // Converta a lista de caminhos de imagens em uma lista de strings
                 List<String> images = Arrays.asList(imagePaths.split(","));
+                System.out.println("Lista de imagens: " + images);
 
-                // Crie o objeto Product com os dados
-                Product product = new Product(id, name, price, amount, images.toString());
+                // Crie o objeto Product com os dados e a lista de caminhos de imagens
+                Product product = new Product(id, name, price, amount, images);
 
                 // Adicione o produto à lista
                 products.add(product);
             }
-            System.out.println("Sucesso in select * FUNCIONARIO");
-            connection.close();
 
             return products;
         } catch (Exception e) {
@@ -126,5 +126,4 @@ public class ProductDAO {
             return Collections.emptyList();
         }
     }
-
 }

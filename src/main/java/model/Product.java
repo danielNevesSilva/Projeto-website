@@ -16,6 +16,7 @@ public class Product {
     private String avaliacao;
     private List<String> images;
     private Timestamp inclusionDate;
+    private List<String> imagePaths;
 
     public Product(){
         this.images = new ArrayList<>();
@@ -34,12 +35,12 @@ public class Product {
 
 
 
-  public Product(String id, String name, String price, String amount, String description) {
+  public Product(String id, String name, String price, String amount, List<String> images) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.amount = amount;
-        this.description = description;
+        this.images = images;
     }
 
 
@@ -127,6 +128,14 @@ public class Product {
 
     public void setImages(List<String> images) {
         this.images = images;
+    }
+
+    public List<String> getImagePaths() {
+        return imagePaths;
+    }
+
+    public void setImagePaths(List<String> imagePaths) {
+        this.imagePaths = imagePaths;
     }
 }
 
