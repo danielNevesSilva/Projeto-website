@@ -25,8 +25,9 @@
                     <th>Nome</th>
                     <th>Quantidade</th>
                     <th>Preço</th>
+                    <th>descrição</th>
+                    <th>Avaliacao</th>
                     <th>Status</th>
-                    <th>Imagem Principal</th>
                     <th>Detalhes</th>
                 </tr>
             </thead>
@@ -38,17 +39,15 @@
         <td>${product.name}</td>
         <td>${product.amount}</td>
         <td class="price">R$ ${product.price}</td>
+        <td>${product.description}</td>
+        <td>${product.avaliacao}</td>
         <td>${product.status}</td>
         <td class="product-image">
-<c:forEach var="image" items="${product.images}">
 
-    <img src="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}${image}"
-         alt="${product.name}">
-</c:forEach>
-        </td>
         <td>
-            <a class="details-link"
-                href="${pageContext.request.contextPath}/product-details?id=${product.id}">Detalhes</a>
+
+            <a href="/product-details?id=${product.id}">Detalhes</a>
+
         </td>
     </tr>
 </c:forEach>
@@ -62,6 +61,7 @@
         </div>
         <script src="javascript/paginacao.js"></script>
         <script src="javascript/voltar.js"></script>
+        <script type="text/javascript" src="./javascript/index.js"></script>
     </body>
 
 </html>

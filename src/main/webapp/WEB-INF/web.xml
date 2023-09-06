@@ -13,6 +13,15 @@
       <param-name>webAllowOthers</param-name>
       <param-value>true</param-value>
     </init-param>
+    <servlet>
+      <servlet-name>DetalhesServlet</servlet-name>
+      <servlet-class>com.seupacote.DetalhesServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+      <servlet-name>DetalhesServlet</servlet-name>
+      <url-pattern>/detalhes</url-pattern>
+    </servlet-mapping>
+
   </servlet>
   <servlet-mapping>
     <servlet-name>H2Console</servlet-name>

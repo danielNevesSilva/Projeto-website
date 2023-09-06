@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.sql.Timestamp;
@@ -46,6 +47,7 @@ public class CreateProductServlet extends HttpServlet {
                         String fieldName = item.getFieldName();
                         String fieldValue = item.getString("UTF-8"); // Certifique-se de ajustar a codificação corretamente
 
+
                         if ("name".equals(fieldName)) {
                             product.setName(fieldValue);
                         } else if ("description".equals(fieldName)) {
@@ -54,6 +56,10 @@ public class CreateProductServlet extends HttpServlet {
                             product.setAmount(fieldValue);
                         } else if ("price".equals(fieldName)) {
                             product.setPrice(fieldValue);
+                        } else if ("rating".equals(fieldName)) {
+                            BigDecimal rating = new BigDecimal(fieldValue);
+                            product.setAvaliacao(rating);
+
                         }
                     } else {
                         // Processar campos de arquivo (imagens)

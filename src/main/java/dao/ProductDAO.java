@@ -3,13 +3,14 @@ package dao;
 import config.ConnectionPoolConfig;
 import model.Product;
 
+import java.math.BigDecimal;
 import java.sql.*;
 import java.util.*;
 
 public class ProductDAO {
 
     public void createProduct(Product product) {
-        String insertProductSQL = "INSERT INTO produtos (name, price, amount, description) VALUES (?, ?, ?, ?)";
+        String insertProductSQL = "INSERT INTO produtos (name, price, amount,description, avaliacao ) VALUES (?, ?, ?, ?, ?)";
 
         try (Connection connection = ConnectionPoolConfig.getConnection();
              PreparedStatement productStatement = connection.prepareStatement(insertProductSQL, Statement.RETURN_GENERATED_KEYS)) {
@@ -18,7 +19,8 @@ public class ProductDAO {
             productStatement.setString(1, product.getName());
             productStatement.setString(2, product.getPrice());
             productStatement.setString(3, product.getAmount());
-            productStatement.setString(4, product.getDescription());
+            productStatement.setString(4,product.getDescription());
+            productStatement.setBigDecimal(5, product.getAvaliacao());
 
             // Executar a inserção do produto
             int affectedRows = productStatement.executeUpdate();
@@ -91,10 +93,10 @@ public class ProductDAO {
 
 
     public List<Product> selectProducts() {
-        String SQL = "SELECT p.id, p.name, p.price, p.amount, GROUP_CONCAT(COALESCE(i.image_path, '')) AS image_paths " +
+        String SQL = "SELECT p.id, p.name, p.price, p.amount,p.description ,p.avaliacao ,p.status,GROUP_CONCAT(COALESCE(i.image_path, '')) AS image_paths " +
                 "FROM produtos p " +
                 "LEFT JOIN imagens_produto i ON p.id = i.produto_id " +
-                "GROUP BY p.id, p.name, p.price, p.amount";
+                "GROUP BY p.id, p.name, p.price, p.amount,p.description,p.avaliacao ,p.status";
 
         try (Connection connection = ConnectionPoolConfig.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(SQL);
@@ -106,15 +108,17 @@ public class ProductDAO {
                 String name = resultSet.getString("name");
                 String price = resultSet.getString("price");
                 String amount = resultSet.getString("amount");
+                String description = resultSet.getString("description");
+                BigDecimal avaliacao = resultSet.getBigDecimal("avaliacao");
+                String status = resultSet.getString("status");
                 String imagePaths = resultSet.getString("image_paths");
-                System.out.println("imagePaths antes da divisão: " + imagePaths);
 
+                System.out.println();
                 // Converta a lista de caminhos de imagens em uma lista de strings
                 List<String> images = Arrays.asList(imagePaths.split(","));
-                System.out.println("Lista de imagens: " + images);
 
                 // Crie o objeto Product com os dados e a lista de caminhos de imagens
-                Product product = new Product(id, name, price, amount, images);
+                Product product = new Product(id, name, price, amount,description,avaliacao,status ,images);
 
                 // Adicione o produto à lista
                 products.add(product);
@@ -126,4 +130,48 @@ public class ProductDAO {
             return Collections.emptyList();
         }
     }
+    public Product getProductById(int productId) throws SQLException {
+        String productSql = "SELECT * FROM produtos WHERE id = ?";
+        String imagesSql = "SELECT image_path FROM imagens_produto WHERE produto_id = ?";
+
+        try (Connection connection = ConnectionPoolConfig.getConnection();
+             PreparedStatement productStatement = connection.prepareStatement(productSql);
+             PreparedStatement imagesStatement = connection.prepareStatement(imagesSql)) {
+            productStatement.setInt(1, productId);
+            imagesStatement.setInt(1, productId);
+
+            ResultSet productResultSet = productStatement.executeQuery();
+            ResultSet imagesResultSet = imagesStatement.executeQuery();
+
+            if (productResultSet.next()) {
+                // Recupere os campos do produto do ResultSet
+                String id = productResultSet.getString("id");
+                String name = productResultSet.getString("name");
+                String price = productResultSet.getString("price");
+                String amount = productResultSet.getString("amount");
+                String description = productResultSet.getString("description");
+                String status = productResultSet.getString("status");
+                BigDecimal avaliacao = productResultSet.getBigDecimal("avaliacao");
+
+                // Recupere os caminhos das imagens
+                List<String> imagePaths = new ArrayList<>();
+                while (imagesResultSet.next()) {
+                    String imagePath = imagesResultSet.getString("image_path");
+                    imagePaths.add(imagePath);
+                }
+
+                // Crie e retorne um objeto Product com base nos dados do ResultSet
+                Product product = new Product(id, name, price, amount, description, status, avaliacao);
+                product.setImagePaths(imagePaths);
+
+                return product;
+            }
+        }
+
+        return null; // Retorna null se nenhum produto for encontrado com o ID especificado
+    }
+
+
+
+
 }
