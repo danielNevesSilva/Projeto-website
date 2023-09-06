@@ -20,10 +20,10 @@
           <nav>
 
             <c:if test="${sessionScope.tipoUsuario   eq 'Admin'}">
-              <a href="CadastroProduto.jsp"><button class="btn">Produtos</button></a>
               <a href="/funcionarios"><button class="btn">Funcionarios</button></a>
-              <a href="Produtos.jsp"><button class="btn">Lista de produtos</button></a>
               <a href="cadastro.jsp"><button class="btn">Novo funcionario</button></a>
+              <a href="Produtos.jsp"><button class="btn">Lista de produtos</button></a>
+              <a href="CadastroProduto.jsp"><button class="btn">Novo produtos</button></a>
 
 
             </c:if>
