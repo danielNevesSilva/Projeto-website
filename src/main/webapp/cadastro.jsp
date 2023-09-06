@@ -38,6 +38,11 @@
 
 </header>
 
+      <!-- Botão Voltar -->
+      <div class="voltar">
+        <a href="#" class="btn-voltar" id="btn-voltar">Voltar</a>
+      </div>
+
 <!--Final Menu-->
 
 <div class="principal">
@@ -98,9 +103,8 @@
 </div>
 
 <div class="footer"></div>
-<script type="text/javascript" src="./javascript/index.js">
-
-</script>
+<script type="text/javascript" src="./javascript/index.js"></script>
+<script src="javascript/voltar.js"></script>
 
 </body>
 

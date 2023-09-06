@@ -34,10 +34,33 @@ public class ProductDAO {
 
                     // Inserir as imagens associadas ao produto
                     insertImagesForProduct(productId, product.getImages());
+
+                    // Atualizar o campo image_paths na tabela produtos com o caminho da imagem principal
+                    if (!product.getImages().isEmpty()) {
+                        String mainImagePath = product.getImages().get(0); // Assumindo que a primeira imagem é a principal
+                        updateProductImagePath(productId, mainImagePath);
+                    }
                 } else {
                     throw new SQLException("Falha ao obter o ID do produto após a inserção.");
                 }
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Lidar com exceções ou lançar exceções personalizadas, conforme necessário
+        }
+    }
+
+    private void updateProductImagePath(int productId, String imagePath) {
+        String updateImagePathsSQL = "UPDATE produtos SET image_paths = ? WHERE id = ?";
+
+        try (Connection connection = ConnectionPoolConfig.getConnection();
+             PreparedStatement updateStatement = connection.prepareStatement(updateImagePathsSQL)) {
+
+            updateStatement.setString(1, imagePath);
+            updateStatement.setInt(2, productId);
+
+            // Execute a atualização
+            updateStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
             // Lidar com exceções ou lançar exceções personalizadas, conforme necessário
