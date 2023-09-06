@@ -25,8 +25,6 @@
                     <th>Nome</th>
                     <th>Quantidade</th>
                     <th>Preço</th>
-                    <th>descrição</th>
-                    <th>Avaliacao</th>
                     <th>Status</th>
                     <th>Detalhes</th>
                 </tr>
@@ -39,8 +37,6 @@
         <td>${product.name}</td>
         <td>${product.amount}</td>
         <td class="price">R$ ${product.price}</td>
-        <td>${product.description}</td>
-        <td>${product.avaliacao}</td>
         <td>${product.status}</td>
         <td class="product-image">
 
