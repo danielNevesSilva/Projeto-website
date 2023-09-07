@@ -1,0 +1,72 @@
+/* Reset de estilos padrão do navegador */
+body, h1, h2, p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilo da página */
+body {
+    background-color: #f7f7f7; /* Fundo cinza claro */
+    color: #333; /* Texto cinza escuro */
+    font-family: Arial, sans-serif;
+}
+
+/* Estilo do título principal */
+h1 {
+    font-size: 28px;
+    text-align: center;
+    margin-top: 20px;
+    color: #333; /* Texto cinza escuro */
+}
+
+
+/* Botão Voltar */
+#btn-voltar {
+    background-color: var(--cor-cinza-escuro);
+    color: var(--cor-branca);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    transition: background-color 0.3s ease; /* Transição suave de cor ao passar o mouse */
+}
+
+#btn-voltar:hover {
+    background-color: var(--cor-cinza-escuro);
+
+}
+
+/* Estilo do container de detalhes do produto */
+.product-details {
+    background-color: #fff; /* Fundo branco */
+    border: 1px solid #ddd; /* Borda cinza claro */
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px; /* Aumentei a largura máxima */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo do título do produto */
+.product-details h2 {
+    font-size: 24px;
+    color: #333; /* Texto cinza escuro */
+    margin-bottom: 10px;
+}
+
+/* Estilo do texto de descrição do produto */
+.product-details p {
+    font-size: 18px;
+    color: #555; /* Texto cinza médio */
+    margin-top: 10px;
+}
+
+/* Estilo da imagem do produto */
+.product-details img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
