@@ -38,10 +38,10 @@
         </div>
 
         <div class="form-group">
-            <label for="rating">Avaliação:</label>
-            <input type="text" id="rating" name="rating" readonly>
-            <button type="button" id="decrease-rating">-</button>
-            <button type="button" id="increase-rating">+</button>
+        <label for="rating">Avaliação:</label>
+        <input type="number" id="rating" name="rating" step="1" readonly>
+        <button type="button" id="decrease-rating">-</button>
+        <button type="button" id="increase-rating">+</button>
         </div>
 
         <div class="form-group">

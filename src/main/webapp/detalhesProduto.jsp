@@ -1,34 +1,44 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Detalhes do Produto</title>
-        <link rel="stylesheet" href="styles/produto-detalhes.css">
-    </head>
-
-    <body>
-
-        <!-- Botão Voltar -->
-        <div class="voltar">
-            <a href="#" class="btn-voltar" id="btn-voltar">Voltar</a>
-        </div>
+<head>
+    <!-- Seu código para o cabeçalho da página -->
+    <link rel="stylesheet" href="styles/produto-detalhes.css">
+</head>
+<body>
+    <div class="container">
 
         <h1>Detalhes do Produto</h1>
 
-        <div class="product-details">
-            <!-- Aqui você pode exibir os detalhes do produto selecionado -->
-            <h2>Nome do Produto</h2>
-            <p>Detalhes do produto...</p>
-            <p>Valor: R$ 99.99</p>
-            <p>Quantidade em Estoque: 10</p>
-            <p>Avaliação:</p>
-            <img src="img/20230904175019785.jpg" alt="Imagem do Produto">
-        </div>
+        <c:if test="${not empty product}">
+            <h2>${product.name}</h2>
+            <!-- Adicione outros detalhes do produto conforme necessário -->
 
-        <script src="javascript/voltar.js"></script>
-    </body>
+            <!-- Exibição de Imagens com Carrossel -->
+            <h3>Imagens do Produto</h3>
+            <div class="carousel-container">
+                <div class="carousel-content">
+                    <c:forEach var="image" items="${product.imagePaths}">
+                        <div class="carousel-item">
+                            <img src="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}${image}"
+                                alt="${product.name}">
+                        </div>
+                    </c:forEach>
+                </div>
+            </div>
 
+            <!-- Botão de Compra -->
+            <form action="/comprar" method="post">
+                <input type="hidden" name="productId" value="${product.id}">
+                <button type="submit">Comprar</button>
+            </form>
+        </c:if>
+
+        <a href="/lista-de-produtos">Voltar para a lista de produtos</a>
+
+    </div>
+
+    <script src="javascript/carrossel.js"></script>
+
+</body>
 </html>

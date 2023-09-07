@@ -25,29 +25,29 @@
                     <th>Nome</th>
                     <th>Quantidade</th>
                     <th>Preço</th>
-                    <th>Imagem Principal</th>
+                    <th>Status</th>
                     <th>Detalhes</th>
                 </tr>
             </thead>
             <tbody>
                 <!-- Itere sobre a lista de produtos e exiba cada produto -->
-                <c:forEach var="product" items="${Products}">
-                    <tr>
-                        <td>${product.id}</td>
-                        <td>${product.name}</td>
-                        <td>${product.amount}</td>
-                        <td class="price">R$ ${product.price}</td>
-                        <td class="product-image">
-                            <img src="${pageContext.request.contextPath}/img/20230904183216137.jpg"
-                                alt="${product.name}">
-                            <img src="img/${product.images[0]}" alt="${product.name}">
-                        </td>
-                        <td>
-                            <a class="details-link"
-                                href="${pageContext.request.contextPath}/product-details?id=${product.id}">Detalhes</a>
-                        </td>
-                    </tr>
-                </c:forEach>
+<c:forEach var="product" items="${Products}">
+    <tr>
+        <td>${product.id}</td>
+        <td>${product.name}</td>
+        <td>${product.amount}</td>
+        <td class="price">R$ ${product.price}</td>
+        <td>${product.status}</td>
+        <td class="product-image">
+
+        <td>
+
+            <a href="/product-details?id=${product.id}">Detalhes</a>
+
+        </td>
+    </tr>
+</c:forEach>
+
             </tbody>
         </table>
 
@@ -55,10 +55,9 @@
             <button id="prev-page">Anterior</button>
             <button id="next-page">Próxima</button>
         </div>
-
-
         <script src="javascript/paginacao.js"></script>
         <script src="javascript/voltar.js"></script>
+        <script type="text/javascript" src="./javascript/index.js"></script>
     </body>
 
 </html>

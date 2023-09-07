@@ -1,5 +1,6 @@
 package model;
 
+import java.math.BigDecimal;
 import java.security.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,9 +14,10 @@ public class Product {
     private String description;
     private String image;
     private String status;
-    private String avaliacao;
+    private BigDecimal avaliacao;
     private List<String> images;
     private Timestamp inclusionDate;
+    private List<String> imagePaths;
 
     public Product(){
         this.images = new ArrayList<>();
@@ -34,15 +36,26 @@ public class Product {
 
 
 
-  public Product(String id, String name, String price, String amount, String description) {
+  public Product(String id, String name, String price, String amount,String description,BigDecimal avaliacao ,String status ,List<String> images) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.amount = amount;
         this.description = description;
+        this.avaliacao = avaliacao;
+        this.status = status;
+        this.images = images;
     }
 
-
+    public Product(String id, String name, String price, String amount, String description, String status, BigDecimal avaliacao) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.amount = amount;
+        this.description = description;
+        this.avaliacao = avaliacao;
+        this.status = status;
+    }
 
 
     public Timestamp getInclusionDate() {
@@ -110,11 +123,11 @@ public class Product {
         this.status = status;
     }
 
-    public String getAvaliacao() {
+    public BigDecimal getAvaliacao() {
         return avaliacao;
     }
 
-    public void setAvaliacao(String avaliacao) {
+    public void setAvaliacao(BigDecimal avaliacao) {
         this.avaliacao = avaliacao;
     }
 
@@ -128,5 +141,15 @@ public class Product {
     public void setImages(List<String> images) {
         this.images = images;
     }
+
+    public List<String> getImagePaths() {
+        return imagePaths;
+    }
+
+    public void setImagePaths(List<String> imagePaths) {
+        this.imagePaths = imagePaths;
+    }
+
+
 }
 
