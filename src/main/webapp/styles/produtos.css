@@ -81,7 +81,50 @@ h1 {
     background-color: var(--cor-cinza-escuro);
 }
 
-/* Estilos para a paginação */
+/*-------------------------------------------------------*/
+
+/* Paginação */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.pagination button {
+    background-color: var(--cor-preta);
+    color: var(--cor-branca);
+    border: none;
+    padding: 8px 16px;
+    margin: 0 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.pagination button:hover {
+    background-color: var(--cor-cinza-escuro);
+}
+
+.pagination button:disabled {
+    background-color: var(--cor-cinza-claro);
+    cursor: not-allowed;
+}
+
+.pagination .page-numbers {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.pagination .page-numbers button {
+    margin: 0 2px;
+}
+
+  
+
+/*-------------------------------------------------------*/
+
+
+/* Estilos para a paginação 
 .pagination {
     margin-top: 20px;
 }

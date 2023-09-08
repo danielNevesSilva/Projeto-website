@@ -24,7 +24,7 @@
               <a href="cadastro.jsp"><button class="btn">Novo funcionario</button></a>
               <a href="Produtos.jsp"><button class="btn">Lista de produtos</button></a>
               <a href="CadastroProduto.jsp"><button class="btn">Novo produtos</button></a>
-              <a href="detalhesProduto.jsp"><button class="btn">Novo</button></a>
+              <a href="teste.jsp"><button class="btn">Novo</button></a>
 
 
             </c:if>
