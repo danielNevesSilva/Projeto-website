@@ -171,6 +171,24 @@ public class ProductDAO {
         return null; // Retorna null se nenhum produto for encontrado com o ID especificado
     }
 
+    public static boolean alterarStatusProduct(int id, String novoStatus) {
+        String sql = "UPDATE PRODUTOS SET STATUS = ? WHERE ID = ?";
+
+        try (Connection connection = ConnectionPoolConfig.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+            preparedStatement.setString(1, novoStatus);
+            preparedStatement.setInt(2, id);
+
+            int rowsAfetadas = preparedStatement.executeUpdate();
+
+            return rowsAfetadas > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 
 
 

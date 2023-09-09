@@ -19,36 +19,37 @@
     <form action="create-product" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="name">Nome do Produto:</label>
-            <input type="text" id="name" name="name" required>
+            <input type="text" id="name" name="name"  value="${param.name}" required />
         </div>
 
         <div class="form-group">
             <label for="description">Detalhes do Produto:</label>
-            <textarea id="description" name="description" rows="4" required></textarea>
+            <textarea id="description" name="description" rows="4" value="${param.description}" required></textarea>
         </div>
 
         <div class="form-group">
             <label for="amount">Quantidade:</label>
-            <input type="number" id="amount" name="amount" step="1" required>
+            <input type="number" id="amount" name="amount" step="1" value="${param.amount}" required>
         </div>
 
         <div class="form-group">
             <label for="price">Valor:</label>
-            <input type="number" id="price" name="price" step="0.01" required>
+            <input type="number" id="price" name="price" step="0.01" value="${param.price}" required>
         </div>
 
         <div class="form-group">
         <label for="rating">Avaliação:</label>
-        <input type="number" id="rating" name="rating" step="1" readonly>
+        <input type="number" id="rating" name="rating" step="1" value="${param.avaliacao}" readonly>
         <button type="button" id="decrease-rating">-</button>
         <button type="button" id="increase-rating">+</button>
         </div>
 
         <div class="form-group">
             <label for="images">Imagens do Produto:</label>
-            <input type="file" id="images" name="images[]" accept="image/*" multiple required>
+            <input type="file" id="images" name="images[]" accept="image/*" value="${param.image}" multiple required>
             <small>Segure a tecla Ctrl (Windows) ou Command (Mac) para selecionar diversas imagens.</small>
         </div>
+
 
         <div class="form-group">
             <input type="submit" id="btn-cadastrar" value="Cadastrar">
