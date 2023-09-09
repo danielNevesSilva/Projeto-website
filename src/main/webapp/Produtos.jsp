@@ -16,6 +16,10 @@
         <a href="#" class="btn-voltar" id="btn-voltar">Voltar</a>
     </div>
 
+        <div class="voltar">
+            <a href="CadastroProduto.jsp" class="btn-novo-produto" id="btn-novo-produto">Adicionar Novo Produto</a>
+        </div>
+
     <h1>Listagem de Produtos (Admin)</h1>
 
     <table class="product-table">
@@ -26,6 +30,7 @@
                 <th>Quantidade</th>
                 <th>Preço</th>
                 <th>Status</th>
+                <th>Imagem</th>
                 <th>Detalhes</th>
             </tr>
         </thead>
@@ -38,12 +43,24 @@
                     <td>${product.amount}</td>
                     <td class="price">R$ ${product.price}</td>
                     <td>${product.status}</td>
-                    <td class="product-image">
+                    <td class="product-image">${product.image}</td>
                     <td>
                         <a href="/product-details?id=${product.id}">Detalhes</a>
                     </td>
-                </tr>
+
+
+             <td>
+               <form action="/Alterar" method="post">
+                <input type="hidden" id="id" name="id" value="${product.id}">
+                <button onclick="alterarStatus(${product.id}, '${product.status}')">Alterar Status</button>
+
+                <button style="background-color: orange;"><a
+                  href="CadastroProduto.jsp?id=${product.id}&name=${product.name}&amount=${product.amount}&price=${product.price}&status=${product.status}&image=${product.image}">Alterar</a></button>
+                  </form>
+                 </td>
+        </tr>
             </c:forEach>
+
         </tbody>
     </table>
 
