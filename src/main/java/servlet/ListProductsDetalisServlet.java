@@ -22,8 +22,7 @@ public class ListProductsDetalisServlet extends HttpServlet {
             Product product = null;
             try {
                 product = productDAO.getProductById(productId);
-                System.out.println("Product ID: " + product.getId());
-                System.out.println("Images: " + product.getImagePaths());
+
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
