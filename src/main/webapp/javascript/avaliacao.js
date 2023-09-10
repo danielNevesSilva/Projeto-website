@@ -4,7 +4,6 @@ const decreaseRatingBtn = document.getElementById('decrease-rating');
 
 let currentRating = 0;
 
-// Função de validação
 function validateRating(value) {
     const floatValue = parseFloat(value);
     if (!isNaN(floatValue) && floatValue >= 0 && floatValue <= 5) {
@@ -13,7 +12,6 @@ function validateRating(value) {
     return null;
 }
 
-// Atualizar o campo de avaliação com base no valor atual
 function updateRatingField() {
     ratingInput.value = currentRating.toFixed(1);
 }
@@ -32,7 +30,6 @@ decreaseRatingBtn.addEventListener('click', () => {
     }
 });
 
-// Validação no lado do cliente ao inserir o valor
 ratingInput.addEventListener('input', () => {
     const inputValue = ratingInput.value;
     const validatedValue = validateRating(inputValue);

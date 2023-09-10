@@ -10,7 +10,7 @@ import java.util.*;
 public class ProductDAO {
 
     public void createProduct(Product product) {
-        String insertProductSQL = "INSERT INTO produtos (name, price, amount,description, avaliacao ) VALUES (?, ?, ?, ?, ?)";
+        String insertProductSQL = "INSERT INTO produtos (name, price, amount,description, avaliacao) VALUES (?, ?, ?, ?, ?)";
 
         try (Connection connection = ConnectionPoolConfig.getConnection();
              PreparedStatement productStatement = connection.prepareStatement(insertProductSQL, Statement.RETURN_GENERATED_KEYS)) {
@@ -19,8 +19,10 @@ public class ProductDAO {
             productStatement.setString(1, product.getName());
             productStatement.setString(2, product.getPrice());
             productStatement.setString(3, product.getAmount());
-            productStatement.setString(4,product.getDescription());
+            productStatement.setString(4, product.getDescription());
             productStatement.setBigDecimal(5, product.getAvaliacao());
+
+            // Defina a imagem principal como a primeira imagem da lista (índice 0)
 
             // Executar a inserção do produto
             int affectedRows = productStatement.executeUpdate();
@@ -34,35 +36,12 @@ public class ProductDAO {
                 if (generatedKeys.next()) {
                     int productId = generatedKeys.getInt(1);
 
-                    // Inserir as imagens associadas ao produto
+                    // Inserir as imagens associadas ao produto na tabela imagens_produto
                     insertImagesForProduct(productId, product.getImages());
-
-                    // Atualizar o campo image_paths na tabela produtos com o caminho da imagem principal
-                    if (!product.getImages().isEmpty()) {
-                        String mainImagePath = product.getImages().get(0); // Assumindo que a primeira imagem é a principal
-                        updateProductImagePath(productId, mainImagePath);
-                    }
                 } else {
                     throw new SQLException("Falha ao obter o ID do produto após a inserção.");
                 }
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            // Lidar com exceções ou lançar exceções personalizadas, conforme necessário
-        }
-    }
-
-    private void updateProductImagePath(int productId, String imagePath) {
-        String updateImagePathsSQL = "UPDATE produtos SET image_paths = ? WHERE id = ?";
-
-        try (Connection connection = ConnectionPoolConfig.getConnection();
-             PreparedStatement updateStatement = connection.prepareStatement(updateImagePathsSQL)) {
-
-            updateStatement.setString(1, imagePath);
-            updateStatement.setInt(2, productId);
-
-            // Execute a atualização
-            updateStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
             // Lidar com exceções ou lançar exceções personalizadas, conforme necessário
@@ -75,13 +54,18 @@ public class ProductDAO {
         try (Connection connection = ConnectionPoolConfig.getConnection();
              PreparedStatement imageStatement = connection.prepareStatement(insertImageSQL)) {
 
-            for (String imagePath : images) {
-                // Configurar os parâmetros para inserção da imagem
+            if (!images.isEmpty()) {
+                // Insira a imagem principal (primeiro elemento da lista)
                 imageStatement.setInt(1, productId);
-                imageStatement.setString(2, imagePath);
-
-                // Executar a inserção da imagem
+                imageStatement.setString(2, images.get(0));
                 imageStatement.executeUpdate();
+
+                // Insira as imagens restantes (a partir do segundo elemento da lista)
+                for (int i = 1; i < images.size(); i++) {
+                    imageStatement.setInt(1, productId);
+                    imageStatement.setString(2, images.get(i));
+                    imageStatement.executeUpdate();
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -118,7 +102,7 @@ public class ProductDAO {
                 List<String> images = Arrays.asList(imagePaths.split(","));
 
                 // Crie o objeto Product com os dados e a lista de caminhos de imagens
-                Product product = new Product(id, name, price, amount,description,avaliacao,status ,images);
+                Product product = new Product(id, name, price, amount,description,avaliacao, status ,images);
 
                 // Adicione o produto à lista
                 products.add(product);
@@ -152,6 +136,7 @@ public class ProductDAO {
                 String description = productResultSet.getString("description");
                 String status = productResultSet.getString("status");
                 BigDecimal avaliacao = productResultSet.getBigDecimal("avaliacao");
+                String image = productResultSet.getString("image_paths");
 
                 // Recupere os caminhos das imagens
                 List<String> imagePaths = new ArrayList<>();
@@ -161,7 +146,7 @@ public class ProductDAO {
                 }
 
                 // Crie e retorne um objeto Product com base nos dados do ResultSet
-                Product product = new Product(id, name, price, amount, description, status, avaliacao);
+                Product product = new Product(id, name, price, amount, description, status, avaliacao, image);
                 product.setImagePaths(imagePaths);
 
                 return product;
