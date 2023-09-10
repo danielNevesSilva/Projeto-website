@@ -44,20 +44,32 @@
         <button type="button" id="increase-rating">+</button>
         </div>
 
-        <div class="form-group">
-            <label for="images">Imagens do Produto:</label>
-            <input type="file" id="images" name="images[]" accept="image/*" value="${param.image}" multiple required>
-            <small>Segure a tecla Ctrl (Windows) ou Command (Mac) para selecionar diversas imagens.</small>
-        </div>
+    <div class="form-group">
+        <label>Imagens do Produto:</label>
+        <input type="file" id="images" name="mainImage" accept="image/*" multiple required>
+        <small>Segure a tecla Ctrl (Windows) ou Command (Mac) para selecionar diversas imagens.</small>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="mainImages">Imagens Principais:</label>
+    <input type="hidden" id="mainImage" name="mainImage" value="0">
+    <div id="mainImages">
+             <c:forEach var="image" items="${images}">
+                            <option value="${image.index}">${image.fileName}</option>
+             </c:forEach>
+    </div>
 
 
-        <div class="form-group">
-            <input type="submit" id="btn-cadastrar" value="Cadastrar">
-        </div>
+    <div class="form-group">
+        <input type="submit" id="btn-cadastrar" value="Cadastrar">
+    </div>
+
     </form>
 
     <script src="javascript/avaliacao.js"></script>
     <script src="javascript/voltar.js"></script>
+    <script src="javascript/ImagemPrincipal.js" deref></script>
 </body>
 
 </html>

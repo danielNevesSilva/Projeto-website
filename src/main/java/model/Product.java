@@ -18,6 +18,7 @@ public class Product {
     private List<String> images;
     private Timestamp inclusionDate;
     private List<String> imagePaths;
+    private String mainImagePath;
 
     public Product(){
         this.images = new ArrayList<>();
@@ -36,13 +37,14 @@ public class Product {
 
 
 
-  public Product(String id, String name, String price, String amount,String description,BigDecimal avaliacao ,String status ,List<String> images) {
+  public Product(String id, String name, String price, String amount,String description, BigDecimal avaliacao, String image, String status,List<String> images) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.amount = amount;
         this.description = description;
         this.avaliacao = avaliacao;
+        this.image = image;
         this.status = status;
         this.images = images;
     }
@@ -55,6 +57,30 @@ public class Product {
         this.description = description;
         this.avaliacao = avaliacao;
         this.status = status;
+    }
+
+    public Product(String id, String name, String price, String amount, String description, String status, BigDecimal avaliacao, String image) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.amount = amount;
+        this.description = description;
+        this.avaliacao = avaliacao;
+        this.status = status;
+        this.image = image;
+
+
+    }
+
+    public Product(String id, String name, String price, String amount, String description, BigDecimal avaliacao, String status, List<String> images) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.amount = amount;
+        this.description = description;
+        this.avaliacao = avaliacao;
+        this.status = status;
+        this.images = images;
     }
 
 
@@ -150,6 +176,12 @@ public class Product {
         this.imagePaths = imagePaths;
     }
 
+    public String getMainImagePath() {
+        return mainImagePath;
+    }
 
+    public void setMainImagePath(String mainImagePath) {
+        this.mainImagePath = mainImagePath;
+    }
 }
 

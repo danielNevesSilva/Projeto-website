@@ -12,12 +12,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.sql.Timestamp;
+import java.util.List;
 
 
 import static org.apache.commons.fileupload.servlet.ServletFileUpload.isMultipartContent;
@@ -41,12 +43,14 @@ public class CreateProductServlet extends HttpServlet {
                 List<String> imagePaths = new ArrayList<>();
                 String contextPath = req.getContextPath(); // Obtém o contexto do aplicativo web
 
+                 // Variável para armazenar o caminho da imagem principal
+                String mainImagePath = null;
+
                 for (FileItem item : items) {
                     if (item.isFormField()) {
                         // Processar campos de texto (não imagens)
                         String fieldName = item.getFieldName();
-                        String fieldValue = item.getString("UTF-8"); // Certifique-se de ajustar a codificação corretamente
-
+                        String fieldValue = item.getString("UTF-8");
 
                         if ("name".equals(fieldName)) {
                             product.setName(fieldValue);
@@ -56,28 +60,47 @@ public class CreateProductServlet extends HttpServlet {
                             product.setAmount(fieldValue);
                         } else if ("price".equals(fieldName)) {
                             product.setPrice(fieldValue);
+                        } else if ("mainImages[]".equals(fieldName)) {
+
+                            mainImagePath = fieldValue; // Este valor deve ser o caminho da imagem principal
+                            // Processar o campo da imagem principal aqui
                         } else if ("rating".equals(fieldName)) {
                             BigDecimal rating = new BigDecimal(fieldValue);
                             product.setAvaliacao(rating);
-
-                        }
-                    } else {
-                        // Processar campos de arquivo (imagens)
-                        String fileName = item.getName();
-                        if (fileName != null && !fileName.isEmpty()) {
-                            // Gere um nome único para a imagem
-                            String uniqueFileName = generateUniqueFileName(fileName);
-
-                            // Salve a imagem no servidor
-                            String imagePath = saveImageToFileSystem(item, uniqueFileName);
-
-                            // Adicione o contexto ao caminho da imagem
-                            String imagePathWithContext = contextPath + "/img/" + uniqueFileName;
-
-                            // Adicione o caminho da imagem à lista
-                            product.getImages().add(imagePathWithContext);
                         }
                     }
+                }
+
+                product.setMainImagePath(mainImagePath); // Defina a imagem principal
+
+                for (FileItem item : items) {
+                    if (!item.isFormField() && !"mainImages[]".equals(item.getFieldName())) {
+                        String fileName = item.getName();
+                        if (fileName != null && !fileName.isEmpty()) {
+                            String uniqueFileName = generateUniqueFileName(fileName);
+                            String imagePath = saveImageToFileSystem(item, uniqueFileName);
+                            String imagePathWithContext = contextPath + "/img/" + uniqueFileName;
+                            System.out.println(imagePathWithContext);
+                            product.getImages().add(imagePathWithContext);
+
+                        }
+                    }
+                }
+
+
+
+// ...
+
+                if (mainImagePath != null) {
+                    // Agora que você tem o caminho completo da imagem principal, pode usá-lo como desejar
+                    product.setMainImagePath(mainImagePath);
+
+                    // Remova a imagem principal da lista, se necessário
+                    product.getImages().remove(mainImagePath);
+
+                    // Adicione a imagem principal de volta à posição 0 na lista
+                    product.getImages().add(0, mainImagePath);
+                    System.out.println( product.getImages());
                 }
 
                 ProductDAO productDAO = new ProductDAO();
