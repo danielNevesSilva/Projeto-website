@@ -4,6 +4,10 @@ body, h1, table, th, td {
     padding: 0;
 }
 
+.titulo{
+    background-color: black;
+    color: #fff;
+}
 /* Definindo a paleta de cores */
 :root {
     --cor-preta: #000;
@@ -22,7 +26,7 @@ body {
 }
 
 h1 {
-    color: var(--cor-preta);
+    color: var(--cor-white);
     margin-bottom: 20px;
 }
 
@@ -65,20 +69,36 @@ h1 {
 
 /* Botão Voltar */
 #btn-voltar {
-    background-color: var(--cor-cinza-escuro);
     color: var(--cor-branca);
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     position: absolute;
-    top: 10px;
+    top: 20px;
     left: 20px;
     transition: background-color 0.3s ease; /* Transição suave de cor ao passar o mouse */
 }
 
 #btn-voltar:hover {
-    background-color: var(--cor-cinza-escuro);
+    color: var(--cor-cinza-escuro);
+}
+
+/*Botão Cadastrar*/
+#btn-cadastrar {
+    color: var(--cor-branca);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    left: 90%;
+    transition: background-color 0.3s ease; /* Transição suave de cor ao passar o mouse */
+}
+
+#btn-cadastrar:hover {
+    color: var(--cor-cinza-escuro);
 }
 
 /* Estilos para a paginação */

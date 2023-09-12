@@ -13,11 +13,10 @@
     <body>
 
         <!-- Botão Voltar -->
-        <div class="voltar">
+        <div class="titulo">
+            <h1>Detalhes do Produto</h1>
             <a href="#" class="btn-voltar" id="btn-voltar">Voltar</a>
         </div>
-
-        <h1>Detalhes do Produto</h1>
 
         <c:if test="${not empty product}">
             <div class="product-details">
@@ -36,8 +35,8 @@
                     <h2>${product.name}</h2>
                     <p>ID: ${product.id}</p>
                     <p>Quantidade: ${product.amount}</p>
-                    <p>Preço: R$ ${product.price}</p>
-                    <p>Descrição: ${product.description}</p>
+                    <p>Valor: R$ ${product.price}</p>
+                    <p>Síntese: ${product.description}</p>
                     <p>Avaliação: ${product.avaliacao}</p>
                     <form action="/comprar" method="post">
                         <input type="hidden" name="productId" value="${product.id}">
@@ -46,8 +45,6 @@
                 </div>
             </div>
         </c:if>
-
-        <a href="/lista-de-produtos">Voltar para a lista de produtos</a>
 
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>

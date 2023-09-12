@@ -5,18 +5,18 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Listagem de Produtos (Admin)</title>
+        <title>Listagem de Produtos</title>
         <link rel="stylesheet" href="styles/produtos.css">
     </head>
 
     <body>
 
         <!-- Botão Voltar -->
-        <div class="voltar">
+        <div class="titulo">
+            <a href="/CadastroProduto.jsp" class="btn-cadastrar" id="btn-cadastrar">Cadastrar</a>
+            <h1>Listagem de Produtos</h1>
             <a href="#" class="btn-voltar" id="btn-voltar">Voltar</a>
         </div>
-
-        <h1>Listagem de Produtos (Admin)</h1>
 
         <table class="product-table">
             <thead>
@@ -24,7 +24,7 @@
                     <th>ID</th>
                     <th>Nome</th>
                     <th>Quantidade</th>
-                    <th>Preço</th>
+                    <th>Valor</th>
                     <th>Status</th>
                     <th>Detalhes</th>
                 </tr>
@@ -53,7 +53,7 @@
 
         <div class="pagination">
             <button id="prev-page">Anterior</button>
-            <button id="next-page">Próxima</button>
+            <button id="next-page">Seguinte</button>
         </div>
         <script src="javascript/paginacao.js"></script>
         <script src="javascript/voltar.js"></script>

@@ -34,7 +34,7 @@
             </form>
         </c:if>
 
-        <a href="/lista-de-produtos">Voltar para a lista de produtos</a>
+        <a href="/Produtos.jsp"><button class="btn">Voltar</button></a>
 
     </div>
 
