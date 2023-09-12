@@ -77,10 +77,20 @@ public class ProductDAO {
 
 
     public List<Product> selectProducts() {
-        String SQL = "SELECT p.id, p.name, p.price, p.amount,p.description ,p.avaliacao ,p.status,GROUP_CONCAT(COALESCE(i.image_path, '')) AS image_paths " +
+        String SQL = "SELECT " +
+                "    p.id, " +
+                "    p.name, " +
+                "    p.price, " +
+                "    p.amount, " +
+                "    p.description, " +
+                "    p.avaliacao, " +
+                "    p.status, " +
+                "    GROUP_CONCAT(COALESCE(i.image_path, '')) AS image_paths " +
                 "FROM produtos p " +
                 "LEFT JOIN imagens_produto i ON p.id = i.produto_id " +
-                "GROUP BY p.id, p.name, p.price, p.amount,p.description,p.avaliacao ,p.status";
+                "GROUP BY p.id, p.name, p.price, p.amount, p.description, p.avaliacao, p.status " + // Adicione um espaço aqui
+                "ORDER BY p.data_inclusao DESC";
+
 
         try (Connection connection = ConnectionPoolConfig.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(SQL);

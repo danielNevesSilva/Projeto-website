@@ -44,7 +44,6 @@
         <button type="button" id="increase-rating">+</button>
         </div>
 
-<<<<<<<<< Temporary merge branch 1
     <div class="form-group">
         <label>Imagens do Produto:</label>
         <input type="file" id="images" name="mainImage" accept="image/*" multiple required>
@@ -65,18 +64,7 @@
     <div class="form-group">
         <input type="submit" id="btn-cadastrar" value="Cadastrar">
     </div>
-=========
-        <div class="form-group">
-            <label for="images">Imagens do Produto:</label>
-            <input type="file" id="images" name="images[]" accept="image/*" value="${param.image}" multiple required>
-            <small>Segure a tecla Ctrl (Windows) ou Command (Mac) para selecionar diversas imagens.</small>
-        </div>
 
-
-        <div class="form-group">
-            <input type="submit" id="btn-cadastrar" value="Cadastrar">
-        </div>
->>>>>>>>> Temporary merge branch 2
     </form>
 
     <script src="javascript/avaliacao.js"></script>
