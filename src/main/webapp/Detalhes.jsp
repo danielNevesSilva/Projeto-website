@@ -13,11 +13,10 @@
     <body>
 
         <!-- Botão Voltar -->
-        <div class="voltar">
-            <a href="#" class="btn-voltar" id="btn-voltar">Voltar</a>
-        </div>
-
-        <h1>Detalhes do Produto</h1>
+       <div class="titulo">
+                   <h1>Detalhes do Produto</h1>
+                   <a href="#" class="btn-voltar" id="btn-voltar">Voltar</a>
+               </div>
 
         <c:if test="${not empty product}">
             <div class="product-details">
@@ -46,8 +45,6 @@
                 </div>
             </div>
         </c:if>
-
-        <a href="/lista-de-produtos">Voltar para a lista de produtos</a>
 
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>

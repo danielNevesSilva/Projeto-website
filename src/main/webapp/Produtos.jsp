@@ -12,15 +12,11 @@
 <body>
 
     <!-- Botão Voltar -->
-    <div class="voltar">
-        <a href="#" class="btn-voltar" id="btn-voltar">Voltar</a>
-    </div>
-
-        <div class="voltar">
-            <a href="CadastroProduto.jsp" class="btn-novo-produto" id="btn-novo-produto">Adicionar Novo Produto</a>
-        </div>
-
-    <h1>Listagem de Produtos (Admin)</h1>
+      <div class="titulo">
+                <a href="/CadastroProduto.jsp" class="btn-cadastrar" id="btn-cadastrar">Cadastrar</a>
+                <h1>Listagem de Produtos</h1>
+                <a href="#" class="btn-voltar" id="btn-voltar">Voltar</a>
+            </div>
 
     <table class="product-table">
         <thead>
