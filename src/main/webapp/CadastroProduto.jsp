@@ -62,8 +62,11 @@
 
 
     <div class="form-group">
+    <input type="hidden" id="id" name="id" value="${param.id}">
         <input type="submit" id="btn-cadastrar" value="Cadastrar">
     </div>
+
+    <a href="/products"><button type="button" style="background-color: red;" >Cancelar cadastro</button>  </a>
 
     </form>
 

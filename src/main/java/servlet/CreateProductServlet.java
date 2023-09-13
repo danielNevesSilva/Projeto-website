@@ -60,10 +60,12 @@ public class CreateProductServlet extends HttpServlet {
                             product.setAmount(fieldValue);
                         } else if ("price".equals(fieldName)) {
                             product.setPrice(fieldValue);
-                        } else if ("mainImages[]".equals(fieldName)) {
+                        /* } else if ("mainImages[]".equals(fieldName)) {
+                            mainImagePath = fieldValue;*/
+                        }else if("id".equals(fieldName)){
+                            product.setId(fieldValue);
 
-                            mainImagePath = fieldValue; // Este valor deve ser o caminho da imagem principal
-                            // Processar o campo da imagem principal aqui
+                            System.out.println(product.getId());
                         } else if ("rating".equals(fieldName)) {
                             BigDecimal rating = new BigDecimal(fieldValue);
                             product.setAvaliacao(rating);
@@ -80,18 +82,13 @@ public class CreateProductServlet extends HttpServlet {
                             String uniqueFileName = generateUniqueFileName(fileName);
                             String imagePath = saveImageToFileSystem(item, uniqueFileName);
                             String imagePathWithContext = contextPath + "/img/" + uniqueFileName;
-                            System.out.println(imagePathWithContext);
                             product.getImages().add(imagePathWithContext);
 
                         }
                     }
                 }
 
-
-
-// ...
-
-                if (mainImagePath != null) {
+        /*        if (mainImagePath != null) {
                     // Agora que você tem o caminho completo da imagem principal, pode usá-lo como desejar
                     product.setMainImagePath(mainImagePath);
 
@@ -100,14 +97,20 @@ public class CreateProductServlet extends HttpServlet {
 
                     // Adicione a imagem principal de volta à posição 0 na lista
                     product.getImages().add(0, mainImagePath);
-                    System.out.println( product.getImages());
                 }
+*/
+                    ProductDAO productDAO = new ProductDAO();
 
-                ProductDAO productDAO = new ProductDAO();
-                productDAO.createProduct(product);
+                if (product.getId().isBlank()) {
 
-                // Redirecione para a página de listagem de produtos ou outra página relevante
-                resp.sendRedirect("/products");
+                    productDAO.createProduct(product);
+
+                    // Redirecione para a página de listagem de produtos ou outra página relevante
+                    resp.sendRedirect("/products");
+                }else {
+                    productDAO.updateProduct(product);
+                    resp.sendRedirect("/products");
+                }
             } catch (Exception e) {
                 e.printStackTrace();
                 resp.sendRedirect("error.html"); // Trate erros adequadamente

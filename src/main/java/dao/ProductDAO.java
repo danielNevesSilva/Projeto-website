@@ -48,6 +48,35 @@ public class ProductDAO {
         }
     }
 
+    public void updateProduct(Product product) {
+        String updateProductSQL = "UPDATE produtos SET name=?, price=?, amount=?, description=?, avaliacao=? WHERE id=?";
+
+        try (Connection connection = ConnectionPoolConfig.getConnection();
+             PreparedStatement productStatement = connection.prepareStatement(updateProductSQL)) {
+
+            // Configurar os parâmetros para a atualização dos dados do produto
+            productStatement.setString(1, product.getName());
+            productStatement.setString(2, product.getPrice());
+            productStatement.setString(3, product.getAmount());
+            productStatement.setString(4, product.getDescription());
+            productStatement.setBigDecimal(5, product.getAvaliacao());
+            productStatement.setString(6, product.getId());
+
+            // Executar a atualização do produto
+            int affectedRows = productStatement.executeUpdate();
+
+            if (affectedRows == 0) {
+                throw new SQLException("Falha ao atualizar o produto, nenhuma linha afetada.");
+            }
+
+            // Agora você pode lidar com a atualização das imagens relacionadas ao produto, se necessário.
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Lidar com exceções ou lançar exceções personalizadas, conforme necessário
+        }
+    }
+
+
     private void insertImagesForProduct(int productId, List<String> images) {
         String insertImageSQL = "INSERT INTO imagens_produto (produto_id, image_path) VALUES (?, ?)";
 
