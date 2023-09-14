@@ -20,12 +20,12 @@
 <form action="create-product" method="post" enctype="multipart/form-data">
 <div class="form-group">
     <label for="name">Nome do Produto:</label>
-    <input type="text" id="name" name="name" value="${param.name}"  required>
+    <input type="text" id="name" name="name" value="${param.name}" readonly required>
 </div>
 
 <div class="form-group">
     <label for="description">Detalhes do Produto:</label>
-    <textarea id="description" name="description" rows="4" cols="50"  required>${param.description}</textarea>
+    <textarea id="description" name="description" rows="4" cols="50" readonly required>${param.description}</textarea>
 </div>
 
 <div class="form-group">
@@ -35,19 +35,19 @@
 
 <div class="form-group">
     <label for="price">Valor:</label>
-    <input type="number" id="price" name="price" step="0.01" value="${param.price}"  required>
+    <input type="number" id="price" name="price" step="0.01" value="${param.price}" readonly required>
 </div>
 
 <div class="form-group">
     <label for="rating">Avaliação:</label>
-    <input type="number" id="rating" name="rating" step="1" value="${param.avaliacao}" required>
+    <input type="number" id="rating" name="rating" step="1" value="${param.avaliacao}" readonly required>
     <button type="button" id="decrease-rating">-</button>
     <button type="button" id="increase-rating">+</button>
 </div>
 
 <div class="form-group">
     <label>Imagens do Produto:</label>
-    <input type="file" id="images" name="mainImage" accept="image/*" multiple  required>
+    <input type="file" id="images" name="mainImage" accept="image/*" multiple readonly required>
     <small>Segure a tecla Ctrl (Windows) ou Command (Mac) para selecionar diversas imagens.</small>
 </div>
 

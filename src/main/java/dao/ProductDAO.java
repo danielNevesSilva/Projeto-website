@@ -1,6 +1,7 @@
 package dao;
 
 import config.ConnectionPoolConfig;
+import model.Funcionario;
 import model.Product;
 
 import java.math.BigDecimal;
@@ -102,9 +103,6 @@ public class ProductDAO {
         }
     }
 
-
-
-
     public List<Product> selectProducts() {
         String SQL = "SELECT " +
                 "    p.id, " +
@@ -153,6 +151,7 @@ public class ProductDAO {
             return Collections.emptyList();
         }
     }
+
     public Product getProductById(int productId) throws SQLException {
         String productSql = "SELECT * FROM produtos WHERE id = ?";
         String imagesSql = "SELECT image_path FROM imagens_produto WHERE produto_id = ?";
@@ -235,4 +234,47 @@ public class ProductDAO {
         }
     }
 
+    public List<Product> pesquisa(String nome) {
+        String sql;
+        List<Product> Products = new ArrayList<>();
+
+        if (nome == null || nome.isEmpty()) {
+            // Se o nome for nulo ou vazio, retorne todos os produtos
+            sql = "SELECT * FROM PRODUTOS";
+        } else {
+            // Se um nome for fornecido, faça a pesquisa com base no nome
+            sql = "SELECT * FROM PRODUTOS WHERE NAME = ?";
+        }
+
+        try (Connection connection = ConnectionPoolConfig.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+            if (nome != null && !nome.isEmpty()) {
+                preparedStatement.setString(1, nome);
+            }
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                String id = resultSet.getString("ID");
+                String username = resultSet.getString("NAME");
+                String email = resultSet.getString("AMOUNT");
+                String funcao = resultSet.getString("PRICE");
+                String status = resultSet.getString("STATUS");
+
+                Product product = new Product(id, username, email, funcao, status);
+
+                Products.add(product);
+            }
+
+            System.out.println("Sucesso na consulta de nome FUNCIONARIO");
+
+            resultSet.close();
+        } catch (Exception e) {
+            System.out.println("Falha na conexão ou na consulta");
+            e.printStackTrace(); // Imprima a exceção para depuração
+        }
+
+        return Products;
+    }
 }

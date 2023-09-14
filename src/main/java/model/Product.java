@@ -32,16 +32,12 @@ public class Product {
 
 
 
-  public Product(String id, String name, String price, String amount,String description, BigDecimal avaliacao, String image, String status,List<String> images) {
+  public Product(String id, String name, String price, String amount, String status) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.amount = amount;
-        this.description = description;
-        this.avaliacao = avaliacao;
-        this.image = image;
         this.status = status;
-        this.images = images;
     }
 
     public Product(String id, String name, String price, String amount, String description, String status, BigDecimal avaliacao) {
@@ -63,8 +59,6 @@ public class Product {
         this.avaliacao = avaliacao;
         this.status = status;
         this.image = image;
-
-
     }
 
     public Product(String id, String name, String price, String amount, String description, BigDecimal avaliacao, String status, List<String> images) {
@@ -77,7 +71,6 @@ public class Product {
         this.status = status;
         this.images = images;
     }
-
 
     public Timestamp getInclusionDate() {
         return inclusionDate;
