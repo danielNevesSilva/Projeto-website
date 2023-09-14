@@ -49,6 +49,7 @@ public class LoginServlet extends HttpServlet {
                     String tipoUsuario = "Estoquista";
                     req.getSession().setAttribute("tipoUsuario", tipoUsuario);
                     resp.sendRedirect(DASHBOARD_PAGE);
+                    String quantidade = req.getParameter("amount");
                 } else if ("Cliente".equals(funcao)) {
                     resp.sendRedirect(CLIENT_LOGIN_PAGE);
                 } else if ("Inativo".equals(status)){

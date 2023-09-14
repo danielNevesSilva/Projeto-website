@@ -28,6 +28,7 @@
             </c:if>
             <c:if test="${sessionScope.tipoUsuario   eq 'Estoquista'}">
               <a href="CadastroProduto.jsp"><button class="btn">Produtos</button></a>
+              <a href="/products"><button class="btn">Lista de produtos</button></a>
             </c:if>
 
           </nav>

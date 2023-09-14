@@ -214,6 +214,25 @@ public class ProductDAO {
         }
     }
 
+    public void alterarQuantidade(Product product) {
+        String sql = "UPDATE PRODUTOS SET AMOUNT = ? WHERE ID = ?";
 
+        try (Connection connection = ConnectionPoolConfig.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+            // Configure os parâmetros na ordem correta
+            preparedStatement.setInt(1, Integer.parseInt(product.getAmount()));
+            preparedStatement.setString(2, product.getId());
+
+            // Execute a atualização
+            int rowsAfetadas = preparedStatement.executeUpdate();
+            System.out.println("Linhas Afetadas: " + rowsAfetadas);
+
+            System.out.println("Sucesso em update Produtos");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

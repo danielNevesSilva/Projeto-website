@@ -24,16 +24,11 @@ public class Product {
         this.images = new ArrayList<>();
     }
 
-    public Product(String id, String name, String price, String amount, String description, String image, String status, java.sql.Timestamp avaliacao, List<String> images) {
+    public Product(String id, String amount) {
         this.id = id;
-        this.name = name;
-        this.price = price;
         this.amount = amount;
-        this.description = description;
-        this.image = image;
-        this.status = status;
-        this.images = images;
     }
+
 
 
 

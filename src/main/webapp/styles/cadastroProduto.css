@@ -134,4 +134,10 @@ input[type="file"] {
     cursor: pointer;
 }
 
+.disabled {
+    background-color: #f2f2f2; /* Cor de fundo cinza */
+    color: #999; /* Cor do texto cinza */
+    pointer-events: none; /* Impede interações do mouse, tornando-o inoperável */
+}
+
 
