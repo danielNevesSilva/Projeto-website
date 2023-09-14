@@ -20,11 +20,12 @@
         <div class="form-group">
             <label for="name">Nome do Produto:</label>
             <input type="text" id="name" name="name"  value="${param.name}" required />
+
         </div>
 
         <div class="form-group">
             <label for="description">Detalhes do Produto:</label>
-            <textarea id="description" name="description" rows="4" value="${param.description}" required></textarea>
+            <textarea id="description" name="description" rows="4" cols="50">${param.description}</textarea>
         </div>
 
         <div class="form-group">

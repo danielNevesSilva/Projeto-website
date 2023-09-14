@@ -35,6 +35,7 @@
                 <tr>
                     <td>${product.id}</td>
                     <td>${product.name}</td>
+                    <td>${product.description}</td>
                     <td>${product.amount}</td>
                     <td class="price">R$ ${product.price}</td>
                     <td>${product.status}</td>
@@ -42,9 +43,9 @@
                         <a href="/product-details?id=${product.id}">Detalhes</a>
                     </td>
              <td>
-               <form action="/Alterar" method="post">
+               <form action="alterarStatusProduct" method="post">
                 <input type="hidden" id="id" name="id" value="${product.id}">
-                <button onclick="alterarStatus(${product.id}, '${product.status}')">Alterar Status</button>
+                <button onclick="alterarStatusProduct(${product.id}, '${product.status}')">Alterar Status</button>
 
                 <button style="background-color: orange;"><a
                   href="CadastroProduto.jsp?id=${product.id}&name=${product.name}&description=${product.description}&amount=${product.amount}&price=${product.price}&avaliacao=${product.avaliacao}&image=${product.image}">Alterar</a></button>
