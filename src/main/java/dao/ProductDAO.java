@@ -10,11 +10,12 @@ import java.util.*;
 
 public class ProductDAO {
 
-    public void createProduct(Product product) {
-        String insertProductSQL = "INSERT INTO produtos (name, price, amount,description, avaliacao) VALUES (?, ?, ?, ?, ?)";
+    public String createProduct(Product product) {
+        String sql = "INSERT INTO produtos (name, price, amount,description, avaliacao) VALUES (?, ?, ?, ?, ?)";
 
+        String productId = null;
         try (Connection connection = ConnectionPoolConfig.getConnection();
-             PreparedStatement productStatement = connection.prepareStatement(insertProductSQL, Statement.RETURN_GENERATED_KEYS)) {
+             PreparedStatement productStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
             // Configurar os parâmetros para inserção dos dados do produto
             productStatement.setString(1, product.getName());
@@ -23,30 +24,23 @@ public class ProductDAO {
             productStatement.setString(4, product.getDescription());
             productStatement.setBigDecimal(5, product.getAvaliacao());
 
-            // Defina a imagem principal como a primeira imagem da lista (índice 0)
 
-            // Executar a inserção do produto
-            int affectedRows = productStatement.executeUpdate();
+            productStatement.executeUpdate();
 
-            if (affectedRows == 0) {
-                throw new SQLException("Falha ao inserir o produto, nenhuma linha afetada.");
+            ResultSet generatedKeys = productStatement.getGeneratedKeys();
+
+            if (generatedKeys.next()) {
+                productId = generatedKeys.getString(1);
             }
 
-            // Obter o ID do produto recém-inserido
-            try (ResultSet generatedKeys = productStatement.getGeneratedKeys()) {
-                if (generatedKeys.next()) {
-                    int productId = generatedKeys.getInt(1);
+            productStatement.close();
+            connection.close();
 
-                    // Inserir as imagens associadas ao produto na tabela imagens_produto
-                    insertImagesForProduct(productId, product.getImages());
-                } else {
-                    throw new SQLException("Falha ao obter o ID do produto após a inserção.");
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            // Lidar com exceções ou lançar exceções personalizadas, conforme necessário
+            System.out.println("Success in insertion");
+        } catch (Exception e) {
+            System.out.println("Sem sucesso para criar arquivo" + e);
         }
+        return productId;
     }
 
     public void updateProduct(Product product) {
@@ -78,30 +72,37 @@ public class ProductDAO {
     }
 
 
-    private void insertImagesForProduct(int productId, List<String> images) {
-        String insertImageSQL = "INSERT INTO imagens_produto (produto_id, image_path) VALUES (?, ?)";
+    public void insertImagesForProduct(String imgPath, String imgDefault, String id) {
+        String sql = "INSERT INTO imagens_produto (image_path, IMAGE_DEFAULT, produto_id) VALUES (?,?,?)";
 
-        try (Connection connection = ConnectionPoolConfig.getConnection();
-             PreparedStatement imageStatement = connection.prepareStatement(insertImageSQL)) {
+        try {
+            // Verifique se idProduct não está vazio e é um número válido
+            if (id != null && !id.isEmpty()) {
+                int productId = Integer.parseInt(id);
 
-            if (!images.isEmpty()) {
-                // Insira a imagem principal (primeiro elemento da lista)
-                imageStatement.setInt(1, productId);
-                imageStatement.setString(2, images.get(0));
-                imageStatement.executeUpdate();
+                Connection connection = ConnectionPoolConfig.getConnection();
+                PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
-                // Insira as imagens restantes (a partir do segundo elemento da lista)
-                for (int i = 1; i < images.size(); i++) {
-                    imageStatement.setInt(1, productId);
-                    imageStatement.setString(2, images.get(i));
-                    imageStatement.executeUpdate();
-                }
+                preparedStatement.setString(1, imgPath);
+                preparedStatement.setString(2, imgDefault);
+                preparedStatement.setInt(3, productId);
+
+                preparedStatement.executeUpdate();
+
+                preparedStatement.close();
+                connection.close();
+
+                System.out.println("Success in insertion");
+            } else {
+                System.out.println("idProduct está vazio ou nulo.");
             }
+        } catch (NumberFormatException e) {
+            System.out.println("idProduct não é um número válido: " + id);
         } catch (SQLException e) {
-            e.printStackTrace();
-            // Lidar com exceções ou lançar exceções personalizadas, conforme necessário
+            System.out.println("Sem sucesso no create: " + e);
         }
     }
+
 
     public List<Product> selectProducts() {
         String SQL = "SELECT " +

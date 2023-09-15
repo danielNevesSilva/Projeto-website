@@ -1,28 +1,32 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html lang="pt-br">
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/cadastroProduto.css">
-    <title>Cadastro de Produto</title>
-</head>
+  <meta charset="UTF-8">
+  <title>Cadastrar Produto</title>
+  <link rel="stylesheet" href="styles/cadastroProduto.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <style>
+    .destaque {
+      border: 2px solid red;
+    }
 
+    .imgthumbnail:hover {
+      cursor: pointer;
+      opacity: 0.7;
+    }
+  </style>
+</head>
 <body>
 
-
-    <!-- Botão Voltar -->
-    <div class="voltar">
-        <a href="#" class="btn-voltar" id="btn-voltar">Voltar</a>
-    </div>
-<c:set var="isAdmin" value="${sessionScope.tipoUsuario eq 'Admin'}" />
     <h1>Cadastro de Produto</h1>
+
 <form action="create-product" method="post" enctype="multipart/form-data">
 <div class="form-group">
     <label for="name">Nome do Produto:</label>
     <input type="text" id="name" name="name" value="${param.name}"  required>
 </div>
-
 <div class="form-group">
     <label for="description">Detalhes do Produto:</label>
     <textarea id="description" name="description" rows="4" cols="50"  required>${param.description}</textarea>
@@ -45,27 +49,54 @@
     <button type="button" id="increase-rating">+</button>
 </div>
 
-<div class="form-group">
-    <label>Imagens do Produto:</label>
-    <input type="file" id="images" name="mainImage" accept="image/*" multiple  required>
-    <small>Segure a tecla Ctrl (Windows) ou Command (Mac) para selecionar diversas imagens.</small>
 </div>
-
-
-    <div class="form-group">
-        <label for="mainImages">Imagens Principais:</label>
-        <input type="hidden" id="mainImage" name="mainImage" value="0">
-        <div id="mainImages">
-            <c:forEach var="image" items="${images}">
-                <option value="${image.index}">${image.fileName}</option>
-            </c:forEach>
-        </div>
+    <div class="mb-3">
+      <label for="images" class="form-label">Selecione imagens</label>
+      <input class="form-control" type="file" id="images" name="images[]" accept="image/*" multiple onchange="handleFiles(this.files)"/>
     </div>
 
+
+
+    <div class="row mt-3" id="thumbnails"></div>
+    <input type="hidden" id="selectedImage" name="selectedImage" value="${product.imageDefault}"/>
     <input type="hidden" id="id" name="id" value="${param.id}">
-    <input type="submit" id="btn-cadastrar" value="Cadastrar">
-    <a href="/products"><button type="button" style="background-color: red;">Cancelar cadastro</button></a>
-</form>
+       <input type="submit" id="btn-cadastrar" value="Cadastrar">
+    <a href="/products"" class="btn btn-secondary">Cancelar</a>
+  </form>
+</div>
+
+<script>
+  function handleFiles(files) {
+    const thumbnailsDiv = document.getElementById("thumbnails");
+
+    // Limpa a área de miniaturas
+    thumbnailsDiv.innerHTML = "";
+
+    // Loop através das imagens carregadas
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+
+      const thumbnail = document.createElement("div");
+      thumbnail.className = "col-3";
+
+      // Cria um elemento de imagem
+      const image = document.createElement("img");
+      image.className = "img-thumbnail imgthumbnail";
+      image.src = URL.createObjectURL(file);
+      console.log(image.className + file.name)
+
+      image.onclick = function () {
+        image.classList.add("destaque");
+        document.getElementById("selectedImage").value = file.name;
+      }
+
+      thumbnail.appendChild(image);
+
+      // Adiciona a miniatura à área de miniaturas
+      thumbnailsDiv.appendChild(thumbnail);
+    }
+  }
+</script>
 
 
 <script src="javascript/avaliacao.js"></script>

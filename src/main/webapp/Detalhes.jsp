@@ -22,10 +22,9 @@
             <div class="product-details">
                 <div class="images">
                     <div class="carousel-container">
-                        <c:forEach var="image" items="${product.imagePaths}">
+                        <c:forEach var="imagePath" items="${product.imagePaths}">
                             <div class="carousel-item">
-                                <img src="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}${image}"
-                                    alt="${product.name}">
+                               <img src="${pageContext.request.contextPath}/${imagePath}" alt="${product.name}">
                             </div>
                         </c:forEach>
                     </div>

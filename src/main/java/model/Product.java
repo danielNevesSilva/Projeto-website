@@ -40,14 +40,12 @@ public class Product {
         this.status = status;
     }
 
-    public Product(String id, String name, String price, String amount, String description, String status, BigDecimal avaliacao) {
-        this.id = id;
+    public Product(String name, String price, String amount, String description, BigDecimal avaliacao) {
         this.name = name;
         this.price = price;
         this.amount = amount;
         this.description = description;
         this.avaliacao = avaliacao;
-        this.status = status;
     }
 
     public Product(String id, String name, String price, String amount, String description, String status, BigDecimal avaliacao, String image) {
