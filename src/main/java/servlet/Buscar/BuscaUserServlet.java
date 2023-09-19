@@ -1,4 +1,4 @@
-package servlet;
+package servlet.Buscar;
 
 import dao.FuncionarioDAO;
 import model.Funcionario;

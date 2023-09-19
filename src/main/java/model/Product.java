@@ -40,7 +40,7 @@ public class Product {
         this.status = status;
     }
 
-    public Product(String name, String price, String amount, String description, BigDecimal avaliacao) {
+    public Product( String name, String price, String amount, String description, BigDecimal avaliacao) {
         this.name = name;
         this.price = price;
         this.amount = amount;

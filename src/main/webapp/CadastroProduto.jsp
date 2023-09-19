@@ -65,38 +65,7 @@
   </form>
 </div>
 
-<script>
-  function handleFiles(files) {
-    const thumbnailsDiv = document.getElementById("thumbnails");
 
-    // Limpa a área de miniaturas
-    thumbnailsDiv.innerHTML = "";
-
-    // Loop através das imagens carregadas
-    for (let i = 0; i < files.length; i++) {
-      const file = files[i];
-
-      const thumbnail = document.createElement("div");
-      thumbnail.className = "col-3";
-
-      // Cria um elemento de imagem
-      const image = document.createElement("img");
-      image.className = "img-thumbnail imgthumbnail";
-      image.src = URL.createObjectURL(file);
-      console.log(image.className + file.name)
-
-      image.onclick = function () {
-        image.classList.add("destaque");
-        document.getElementById("selectedImage").value = file.name;
-      }
-
-      thumbnail.appendChild(image);
-
-      // Adiciona a miniatura à área de miniaturas
-      thumbnailsDiv.appendChild(thumbnail);
-    }
-  }
-</script>
 
 
 <script src="javascript/avaliacao.js"></script>

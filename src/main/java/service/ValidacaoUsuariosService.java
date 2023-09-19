@@ -3,7 +3,7 @@ package service;
 import dao.FuncionarioDAO;
 import model.Funcionario;
 
-public class ValidacaoUsuarios {
+public class ValidacaoUsuariosService {
     public boolean emailCadastrado(String email) {
         FuncionarioDAO funcionariosDAO = new FuncionarioDAO();
         Funcionario funcionario = funcionariosDAO.getFuncionarioByEmail(email);

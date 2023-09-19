@@ -1,4 +1,4 @@
-package servlet;
+package servlet.Alterar;
 
 
 import dao.ProductDAO;

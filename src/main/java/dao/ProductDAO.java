@@ -1,7 +1,6 @@
 package dao;
 
 import config.ConnectionPoolConfig;
-import model.Funcionario;
 import model.Product;
 
 import java.math.BigDecimal;
@@ -140,7 +139,7 @@ public class ProductDAO {
                 List<String> images = Arrays.asList(imagePaths.split(","));
 
                 // Crie o objeto Product com os dados e a lista de caminhos de imagens
-                Product product = new Product(id, name, price, amount,description,avaliacao, status ,images);
+                Product product = new Product(id, name, price, amount, description, avaliacao, status, images);
 
                 // Adicione o produto à lista
                 products.add(product);
@@ -277,5 +276,43 @@ public class ProductDAO {
         }
 
         return Products;
+    }
+
+    public boolean isImageAssociatedWithProduct(String productId, String imagePath) {
+        String sql = "SELECT * FROM imagens_produto WHERE produto_id = ? AND image_path = ?";
+
+        boolean isAssociated = false;
+
+        try (Connection connection = ConnectionPoolConfig.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setString(1, productId);
+            preparedStatement.setString(2, imagePath);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                isAssociated = true; // A imagem já está associada ao produto.
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return isAssociated;
+    }
+
+    public void deleteImagesForProduct(String productId) {
+        String deleteImagesSQL = "DELETE FROM imagens_produto WHERE produto_id = ?";
+
+        try (Connection connection = ConnectionPoolConfig.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(deleteImagesSQL)) {
+
+            preparedStatement.setString(1, productId);
+
+            // Executar a exclusão das imagens associadas ao produto
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Lidar com exceções ou lançar exceções personalizadas, conforme necessário
+        }
     }
 }

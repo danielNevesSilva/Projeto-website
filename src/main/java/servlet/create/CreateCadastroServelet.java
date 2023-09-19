@@ -1,9 +1,9 @@
-package servlet;
+package servlet.create;
 
 import dao.FuncionarioDAO;
 import model.Funcionario;
 import service.AuthenticationService;
-import service.ValidacaoUsuarios;
+import service.ValidacaoUsuariosService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,7 +24,7 @@ public class CreateCadastroServelet extends HttpServlet {
         String password = request.getParameter("password");
         String funcao = request.getParameter("funcao");
 
-        ValidacaoUsuarios validacaoUsuarios = new ValidacaoUsuarios();
+        ValidacaoUsuariosService validacaoUsuarios = new ValidacaoUsuariosService();
         AuthenticationService authService = new AuthenticationService();
         String senhaCriptografada = authService.criptografarSenha(password);
 
