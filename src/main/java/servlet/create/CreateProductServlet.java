@@ -105,7 +105,7 @@ public class CreateProductServlet extends HttpServlet {
                         }
                     }
 
-                    Product product = new Product(name, description, amount, price, avaliacao);
+                    Product product = new Product(name,price , amount ,description ,avaliacao);
 
                     String idProduct = productDAO.createProduct(product);
 

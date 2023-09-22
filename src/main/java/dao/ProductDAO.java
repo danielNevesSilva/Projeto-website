@@ -152,6 +152,56 @@ public class ProductDAO {
         }
     }
 
+    public List<Product> selectPrincipaisProducts() {
+        String sql = "SELECT " +
+                "    p.id, " +
+                "    p.name, " +
+                "    p.price, " +
+                "    p.amount, " +
+                "    p.description, " +
+                "    p.avaliacao, " +
+                "    p.status, " +
+                "    GROUP_CONCAT(COALESCE(i.image_path, '')) AS image_paths " +
+                "FROM produtos p " +
+                "LEFT JOIN imagens_produto i ON p.id = i.produto_id AND i.image_default = 'yes' " +
+                "GROUP BY p.id, p.name, p.price, p.amount, p.description, p.avaliacao, p.status " +
+                "ORDER BY p.data_inclusao DESC " +
+                "LIMIT 6"; // Adicionando a cláusula LIMIT para limitar a 6 itens
+
+        try (Connection connection = ConnectionPoolConfig.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
+            List<Product> products = new ArrayList<>();
+
+            while (resultSet.next()) {
+                String id = resultSet.getString("id");
+                String name = resultSet.getString("name");
+                String price = resultSet.getString("price");
+                String amount = resultSet.getString("amount");
+                String description = resultSet.getString("description");
+                BigDecimal avaliacao = resultSet.getBigDecimal("avaliacao");
+                String status = resultSet.getString("status");
+                String imagePaths = resultSet.getString("image_paths");
+
+                // Converta a lista de caminhos de imagens em uma lista de strings
+                List<String> images = Arrays.asList(imagePaths.split(","));
+
+                // Crie o objeto Product com os dados e a lista de caminhos de imagens
+                Product product = new Product(id, name, price, amount, description, avaliacao, status, images);
+
+                // Adicione o produto à lista
+                products.add(product);
+            }
+
+            return products;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Collections.emptyList();
+        }
+    }
+
+
+
     public Product getProductById(int productId) throws SQLException {
         String productSql = "SELECT * FROM produtos WHERE id = ?";
         String imagesSql = "SELECT image_path FROM imagens_produto WHERE produto_id = ?";
@@ -277,6 +327,58 @@ public class ProductDAO {
 
         return Products;
     }
+
+    public List<Product> pesquisaPrincipal(String nome) {
+        String sql = "SELECT " +
+                "    p.id, " +
+                "    p.name, " +
+                "    p.price, " +
+                "    p.amount, " +
+                "    p.description, " +
+                "    p.avaliacao, " +
+                "    p.status, " +
+                "    GROUP_CONCAT(COALESCE(i.image_path, '')) AS image_paths " +
+                "FROM produtos p " +
+                "LEFT JOIN imagens_produto i ON p.id = i.produto_id AND i.image_default = 'yes' " +
+                "WHERE p.name LIKE ? " +
+                "GROUP BY p.id, p.name, p.price, p.amount, p.description, p.avaliacao, p.status " +
+                "ORDER BY p.data_inclusao DESC ";
+
+        try (Connection connection = ConnectionPoolConfig.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setString(1, "%" + nome + "%"); // Adicione o caractere curinga % antes e depois do nome
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            List<Product> products = new ArrayList<>();
+
+            while (resultSet.next()) {
+                String id = resultSet.getString("id");
+                String name = resultSet.getString("name");
+                String price = resultSet.getString("price");
+                String amount = resultSet.getString("amount");
+                String description = resultSet.getString("description");
+                BigDecimal avaliacao = resultSet.getBigDecimal("avaliacao");
+                String status = resultSet.getString("status");
+                String imagePaths = resultSet.getString("image_paths");
+
+                // Converta a lista de caminhos de imagens em uma lista de strings
+                List<String> images = Arrays.asList(imagePaths.split(","));
+
+                // Crie o objeto Product com os dados e a lista de caminhos de imagens
+                Product product = new Product(id, name, price, amount, description, avaliacao, status, images);
+
+                // Adicione o produto à lista
+                products.add(product);
+            }
+
+            return products;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Collections.emptyList();
+        }
+    }
+
+
 
     public boolean isImageAssociatedWithProduct(String productId, String imagePath) {
         String sql = "SELECT * FROM imagens_produto WHERE produto_id = ? AND image_path = ?";

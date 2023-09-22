@@ -20,7 +20,7 @@ public class Product {
     private List<String> imagePaths;
     private String mainImagePath;
 
-    public Product(){
+    public Product(String id, String name, String price, String amount, String description, BigDecimal avaliacao, String status){
         this.images = new ArrayList<>();
     }
 
