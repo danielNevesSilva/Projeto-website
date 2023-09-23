@@ -1,0 +1,116 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #fff; /* Fundo branco */
+    color: #333; /* Texto preto */
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000000; /* Fundo preto */
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.logo{
+    width: 20%;
+}
+
+.logo img {
+    width: 150px;
+    padding-right: 50px;
+    cursor: pointer;
+}
+
+.menu nav a {
+    text-decoration: none;
+    color: #fff; /* Texto branco */
+    margin: 0 10px;
+    font-size: 18px; /* Tamanho da fonte aumentado para mais evidência */
+}
+
+.menu nav a:hover {
+    color: #ccc; /* Texto cinza claro ao passar o mouse */
+}
+
+form {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+
+form .buscar_produtos {
+    margin-right: 10px;
+    color: #fff;
+}
+
+.buscar_produtos
+
+
+form input {
+    padding: 5px;
+    margin-right: 10px;
+    border: 1px solid #ccc; /* Adicionado borda cinza ao campo de pesquisa */
+}
+
+form button {
+    padding: 5px 10px;
+    background-color: #333; /* Fundo cinza escuro */
+    color: #fff; /* Texto branco */
+    border: none;
+    cursor: pointer;
+    font-size: 16px; /* Tamanho da fonte aumentado para mais evidência */
+}
+
+form button:hover {
+    background-color: #555; /* Fundo cinza mais escuro ao passar o mouse */
+}
+
+.price {
+    font-weight: bold;
+    color: #333;
+    font-size: 20px; /* Tamanho da fonte aumentado para mais evidência */
+}
+
+button#btn-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+button#btn-menu .linha {
+    width: 30px;
+    height: 4px;
+    background-color: #fff;
+    transition: 0.4s;
+}
+
+@media (max-width: 768px) {
+    .menu nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .menu.active nav {
+        display: flex;
+    }
+
+    .menu nav a {
+        margin: 10px 0;
+    }
+
+    button#btn-menu {
+        display: flex;
+    }
+}
+
