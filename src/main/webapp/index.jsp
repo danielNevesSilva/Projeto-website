@@ -29,45 +29,45 @@
             </div>
 
             <div>
-                <%--Pesquisa de Produtos se inicia a partir desse ponto--%>
-<div>
-                <form action="/produtos" method="get">
+<%--                &lt;%&ndash;Pesquisa de Produtos se inicia a partir desse ponto&ndash;%&gt;--%>
+<%--<div>--%>
+<%--                <form action="/produtos" method="get">--%>
 
-                    <div class="buscar_produtos">
-<%--                    <h3 class="">Buscar produtos:</h3>--%>
+<%--                    <div class="buscar_produtos">--%>
+<%--&lt;%&ndash;                    <h3 class="">Buscar produtos:</h3>&ndash;%&gt;--%>
 
-                    <input id="name" name="name" type="text" placeholder="  Nome do produto"
-                           value="${param.name}" />
+<%--                    <input id="name" name="name" type="text" placeholder="  Nome do produto"--%>
+<%--                           value="${param.name}" />--%>
 
-                    <button type="submit">Pesquisar</button>
-                    </div>
+<%--                    <button type="submit">Pesquisar</button>--%>
+<%--                    </div>--%>
 
-                    <c:if test="${empty Products}">
-                       <div class="status_busca">
-                        <p>Nenhum Produto encontrado.</p>
-                       </div>
-                    </c:if>
-                    <c:forEach var="product" items="${Products}">
-                    <tr>
-                        <td>${product.name}</td>
-                        <td>${product.amount}</td>
+<%--                    <c:if test="${empty Products}">--%>
+<%--                       <div class="status_busca">--%>
+<%--                        <p>Nenhum Produto encontrado.</p>--%>
+<%--                       </div>--%>
+<%--                    </c:if>--%>
+<%--                    <c:forEach var="product" items="${Products}">--%>
+<%--                    <tr>--%>
+<%--                        <td>${product.name}</td>--%>
+<%--                        <td>${product.amount}</td>--%>
 
-                        <td class="price">R$ ${product.price}</td>
-                        <td>
-                        </td>
-</div>
+<%--                        <td class="price">R$ ${product.price}</td>--%>
+<%--                        <td>--%>
+<%--                        </td>--%>
+<%--</div>--%>
 
-                        <c:forEach var="imagePath" items="${product.images}">
-                        <img style="width: 150px; height: 50px" src="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/${imagePath}" alt="${product.name}">
-                        </c:forEach>
-                        <input type="hidden" id="id" name="id" value="${product.id}">
-                        <a href="/product-detailsPrincipal?id=${product.id}">Detalhes</a>
-                </form>
-                </td>
-                </tr>
-                </c:forEach>
-                <%--    Pesquisa de Produto é finalizada nesse ponto.--%>
-            </div>
+<%--                        <c:forEach var="imagePath" items="${product.images}">--%>
+<%--                        <img style="width: 150px; height: 50px" src="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/${imagePath}" alt="${product.name}">--%>
+<%--                        </c:forEach>--%>
+<%--                        <input type="hidden" id="id" name="id" value="${product.id}">--%>
+<%--                        <a href="/product-detailsPrincipal?id=${product.id}">Detalhes</a>--%>
+<%--                </form>--%>
+<%--                </td>--%>
+<%--                </tr>--%>
+<%--                </c:forEach>--%>
+<%--                &lt;%&ndash;    Pesquisa de Produto é finalizada nesse ponto.&ndash;%&gt;--%>
+<%--            </div>--%>
 
             <div class="login">
                 <a href="./login.jsp"> <img src="./assets/images/login.svg" alt=""></a>
@@ -111,6 +111,23 @@
     </section>
 
     <h1> LEO, SEU CODIGO INICIA AQUI</h1>
+
+
+    <div class="card w-75 mb-3">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Button</a>
+        </div>
+    </div>
+
+    <div class="card w-50">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Button</a>
+        </div>
+    </div>
 
 
     <script src="javascript/carrosel.js"></script>
