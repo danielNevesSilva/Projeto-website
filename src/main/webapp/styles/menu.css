@@ -1,20 +1,14 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    background-color: #fff; /* Fundo branco */
-    color: #333; /* Texto preto */
-}
-
 .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #000000; /* Fundo preto */
+    background-color: #000000;
+    /* Fundo preto */
     padding: 10px;
     border-bottom: 1px solid #ccc;
 }
 
-.logo{
+.logo {
     width: 20%;
 }
 
@@ -24,15 +18,25 @@ body {
     cursor: pointer;
 }
 
+.login img,
+.carrinho img {
+    width: 50px;
+    height: 50px;
+}
+
+
 .menu nav a {
     text-decoration: none;
-    color: #fff; /* Texto branco */
+    color: #fff;
+    /* Texto branco */
     margin: 0 10px;
-    font-size: 18px; /* Tamanho da fonte aumentado para mais evidência */
+    font-size: 18px;
+    /* Tamanho da fonte aumentado para mais evidência */
 }
 
 .menu nav a:hover {
-    color: #ccc; /* Texto cinza claro ao passar o mouse */
+    color: #ccc;
+    /* Texto cinza claro ao passar o mouse */
 }
 
 form {
@@ -46,32 +50,35 @@ form .buscar_produtos {
     color: #fff;
 }
 
-.buscar_produtos
-
-
-form input {
+.buscar_produtos form input {
     padding: 5px;
     margin-right: 10px;
-    border: 1px solid #ccc; /* Adicionado borda cinza ao campo de pesquisa */
+    border: 1px solid #ccc;
+    /* Adicionado borda cinza ao campo de pesquisa */
 }
 
 form button {
     padding: 5px 10px;
-    background-color: #333; /* Fundo cinza escuro */
-    color: #fff; /* Texto branco */
+    background-color: #333;
+    /* Fundo cinza escuro */
+    color: #fff;
+    /* Texto branco */
     border: none;
     cursor: pointer;
-    font-size: 16px; /* Tamanho da fonte aumentado para mais evidência */
+    font-size: 16px;
+    /* Tamanho da fonte aumentado para mais evidência */
 }
 
 form button:hover {
-    background-color: #555; /* Fundo cinza mais escuro ao passar o mouse */
+    background-color: #555;
+    /* Fundo cinza mais escuro ao passar o mouse */
 }
 
 .price {
     font-weight: bold;
     color: #333;
-    font-size: 20px; /* Tamanho da fonte aumentado para mais evidência */
+    font-size: 20px;
+    /* Tamanho da fonte aumentado para mais evidência */
 }
 
 button#btn-menu {
@@ -90,6 +97,11 @@ button#btn-menu .linha {
     height: 4px;
     background-color: #fff;
     transition: 0.4s;
+}
+
+.login {
+    whidth: 10px;
+    height: 10px;
 }
 
 @media (max-width: 768px) {
@@ -113,4 +125,3 @@ button#btn-menu .linha {
         display: flex;
     }
 }
-

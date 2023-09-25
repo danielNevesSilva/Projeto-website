@@ -28,6 +28,13 @@
                 </nav>
             </div>
 
+            <div class="login">
+                <a href="#"><img src="img-logo/login-.png" alt=""></a>
+            </div>
+
+            <div class="carrinho">
+                <a href="#"><img src="img-logo/shopping-cart.png" alt=""></a>
+            </div>
             <div>
 <%--                &lt;%&ndash;Pesquisa de Produtos se inicia a partir desse ponto&ndash;%&gt;--%>
 <%--<div>--%>
@@ -69,9 +76,8 @@
 <%--                &lt;%&ndash;    Pesquisa de Produto é finalizada nesse ponto.&ndash;%&gt;--%>
 <%--            </div>--%>
 
-            <div class="login">
-                <a href="./login.jsp"> <img src="./assets/images/login.svg" alt=""></a>
-            </div>
+
+
 
         </div>
 

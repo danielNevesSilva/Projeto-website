@@ -51,15 +51,15 @@ section.slider {
 }
 
 .nav-manual .manual-btn:hover {
-    background-color: #415078;
+    background-color: #808080;
 }
 
 #radio1:checked~.nav-auto .auto-btn1 {
-    background-color: #415078;
+    background-color: #808080;
 }
 
 #radio2:checked~.nav-auto .auto-btn2 {
-    background-color: #415078;
+    background-color: #808080;
 }
 
 #radio3:checked~.nav-auto .auto-btn3 {
