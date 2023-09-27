@@ -1,0 +1,49 @@
+/* Definindo as cores */
+body {
+    background-color: #ffffff; /* Branco */
+    color: #000000; /* Preto */
+}
+
+/* Estilizando o container */
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000000; /* Fundo preto */
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+/* Estilizando o logo */
+.logo img {
+    width: 150px;
+    padding-right: 50px;
+    cursor: pointer;
+}
+
+/* Estilizando o menu de navegação */
+.menu nav a {
+    text-decoration: none;
+    color: #ffffff; /* Texto branco */
+    margin: 0 10px;
+    font-size: 18px;
+}
+
+.menu nav a:hover {
+    color: #ccc; /* Texto cinza claro ao passar o mouse */
+}
+
+/* Estilizando o ícone de login */
+.login img {
+    width: 50px;
+    padding-right: -100px;
+    margin-right: -300px;
+    cursor: pointer;
+}
+
+.car img {
+    width: 40px;
+    padding-right: -10px;
+    margin-left: 800px;
+    cursor: pointer;
+}

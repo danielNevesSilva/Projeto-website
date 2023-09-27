@@ -5,7 +5,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="styles/menu.css">
+        <link rel="stylesheet" href="styles/teste_1.css">
         <link rel="stylesheet" href="styles/carrossel.css">
         <link rel="stylesheet" href="styles/index.css">
         <title>Listagem de Produtos (Admin)</title>
@@ -17,25 +17,26 @@
         <div class="container">
 
             <div class="logo">
-                <a href="./index.html"><img src="./img-logo/Logo_1.jpg" alt=""></a>
+                <a href="#"><img src="./img-logo/Logo_1.jpg" alt=""></a>
             </div>
 
             <div class="menu">
                 <nav>
-                    <a href="/Oferta-de-camisas">CAMISAS</a>
-                    <a href="https://web.whatsapp.com/send?phone=5511996701549" target="_blank">CONTATO</a>
-                    <a href="/Avaliacoes">AVALIACOES</a>
-                    <a href="./time.html">QUEM SOMOS</a>
+                    <a href="/Oferta-de-camisas"></a>
+                    <a href="https://web.whatsapp.com/send?phone=5511996701549" target="_blank"></a>
+                    <a href="/Avaliacoes"></a>
+                    <a href="./time.html"></a>
                 </nav>
+            </div>
+
+            <div class="car">
+                <a href="#"><img src="img-logo/shopping-cart.png"></a>
             </div>
 
             <div class="login">
                 <a href="#"><img src="img-logo/login-.png" alt=""></a>
             </div>
 
-            <div class="carrinho">
-                <a href="#"><img src="img-logo/shopping-cart.png" alt=""></a>
-            </div>
             <div>
 <%--                &lt;%&ndash;Pesquisa de Produtos se inicia a partir desse ponto&ndash;%&gt;--%>
 <%--<div>--%>
