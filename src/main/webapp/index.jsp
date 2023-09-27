@@ -7,6 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="styles/menu.css">
         <link rel="stylesheet" href="styles/carrossel.css">
+        <link rel="stylesheet" href="styles/index.css">
         <title>Listagem de Produtos (Admin)</title>
     </head>
 
@@ -116,24 +117,39 @@
         </div>
     </section>
 
-    <h1> LEO, SEU CODIGO INICIA AQUI</h1>
+     <form action="/produtos" method="get">
 
 
-    <div class="card w-75 mb-3">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Button</a>
-        </div>
-    </div>
 
-    <div class="card w-50">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Button</a>
-        </div>
-    </div>
+                   <c:if test="${empty Products}">
+                      <div class="status_busca">
+                       <p>Nenhum Produto encontrado.</p>
+                      </div>
+                   </c:if>
+                   <c:forEach var="product" items="${Products}">
+                   <tr>
+                       <td>
+                       </td>
+</div>
+
+                 <c:forEach var="imagePath" items="${product.images}">
+                 <div class="card" >
+                   <img src="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/${imagePath}" class="card-img-top" alt="${product.name}">
+                   </c:forEach>
+                    <input type="hidden" id="id" name="id" value="${product.id}">
+                   <div class="card-body">
+                     <h3 class="card-title">${product.name}</h3>
+                     <h5 class="card-text">R$ ${product.price}</h5>
+                     <a href="/product-detailsPrincipal?id=${product.id}" class="btn btn-primary">Detalhes</a>
+                   </div>
+                 </div>
+
+
+        </form>
+        </td>
+        </tr>
+        </c:forEach>
+
 
 
     <script src="javascript/carrosel.js"></script>
