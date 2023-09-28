@@ -5,7 +5,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="styles/teste_1.css">
+        <link rel="stylesheet" href="styles/landing.css">
         <link rel="stylesheet" href="styles/carrossel.css">
         <link rel="stylesheet" href="styles/index.css">
         <link rel="stylesheet" href="styles/cards.css">
