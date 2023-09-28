@@ -26,14 +26,14 @@ body {
     color: #ccc; /* Texto cinza claro ao passar o mouse */
 }
 
-/*.login img {*/
-/*    width: 50px;*/
-/*    cursor: pointer;*/
-/*}*/
+.login img {
+   width: 50px;
+   cursor: pointer;
+}
 
-/*.car img {*/
-/*    width: 40px;*/
-/*    padding-right: -10px;*/
-/*    margin-left: 800px;*/
-/*    cursor: pointer;*/
-/*}*/
+.car img {
+   width: 40px;
+    padding-right: -10px;
+    margin-left: 800px;
+   cursor: pointer;
+}

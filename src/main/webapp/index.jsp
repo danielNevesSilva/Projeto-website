@@ -1,10 +1,9 @@
     <!DOCTYPE html>
     <html lang="pt-br">
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="styles/landing.css">
         <link rel="stylesheet" href="styles/carrossel.css">
         <link rel="stylesheet" href="styles/index.css">
@@ -122,7 +121,7 @@
     </section>
 
     <div>
-        <h1>Conheça nossos jogos.</h1>
+        <h1>Adquira nossos jogos!</h1>
     </div>
 
 

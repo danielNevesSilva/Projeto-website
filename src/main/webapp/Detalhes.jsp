@@ -34,9 +34,9 @@
                     <h2>${product.name}</h2>
                     <p>ID: ${product.id}</p>
                     <p>Quantidade: ${product.amount}</p>
-                    <p>Preço: R$ ${product.price}</p>
-                    <p>Descrição: ${product.description}</p>
-                    <p>Avaliação: ${product.avaliacao}</p>
+                    <p>Preco: R$ ${product.price}</p>
+                    <p>Descricao: ${product.description}</p>
+                    <p>Avaliacao: ${product.avaliacao}</p>
                     <form action="/comprar" method="post">
                         <input type="hidden" name="productId" value="${product.id}">
                         <button type="submit" disabled>Comprar</button>
