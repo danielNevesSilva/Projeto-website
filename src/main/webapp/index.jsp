@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="styles/teste_1.css">
         <link rel="stylesheet" href="styles/carrossel.css">
         <link rel="stylesheet" href="styles/index.css">
+        <link rel="stylesheet" href="styles/cards.css">
         <title>Listagem de Produtos (Admin)</title>
     </head>
 
@@ -118,38 +119,35 @@
         </div>
     </section>
 
-     <form action="/produtos" method="get">
+    <div>
+        <h1>Conheça nossos jogos.</h1>
+    </div>
+
+
+    <form action="/produtos" method="get">
+        <c:if test="${empty Products}">
+            <div class="status_busca">
+                <p>Nenhum Produto encontrado.</p>
+            </div>
+        </c:if>
+        <div class="row">
+            <c:forEach var="product" items="${Products}">
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/${product.images[0]}" class="card-img-top" alt="${product.name}">
+                        <div class="card-body">
+                            <h3 class="card-title">${product.name}</h3>
+                            <h5 class="card-text">R$ ${product.price}</h5>
+                            <a href="/product-detailsPrincipal?id=${product.id}" class="btn btn-primary">Detalhes</a>
+                        </div>
+                    </div>
+                </div>
+            </c:forEach>
+        </div>
+    </form>
 
 
 
-                   <c:if test="${empty Products}">
-                      <div class="status_busca">
-                       <p>Nenhum Produto encontrado.</p>
-                      </div>
-                   </c:if>
-                   <c:forEach var="product" items="${Products}">
-                   <tr>
-                       <td>
-                       </td>
-</div>
-
-                 <c:forEach var="imagePath" items="${product.images}">
-                 <div class="card" >
-                   <img src="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/${imagePath}" class="card-img-top" alt="${product.name}">
-                   </c:forEach>
-                    <input type="hidden" id="id" name="id" value="${product.id}">
-                   <div class="card-body">
-                     <h3 class="card-title">${product.name}</h3>
-                     <h5 class="card-text">R$ ${product.price}</h5>
-                     <a href="/product-detailsPrincipal?id=${product.id}" class="btn btn-primary">Detalhes</a>
-                   </div>
-                 </div>
-
-
-        </form>
-        </td>
-        </tr>
-        </c:forEach>
 
 
 

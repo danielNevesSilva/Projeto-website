@@ -36,7 +36,7 @@ body {
 }
 
 .logo img {
-    max-width: 100px;
+    max-width: 150px;
 }
 
 .menu {
@@ -52,10 +52,6 @@ body {
 
 .menu a:hover {
     color: var(--cor-cinza-claro);
-}
-
-.login img {
-    max-width: 30px;
 }
 
 /* Estilos para o formulário de cadastro */
