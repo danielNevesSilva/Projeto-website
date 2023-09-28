@@ -28,15 +28,17 @@
                     <a href="/Avaliacoes"></a>
                     <a href="./time.html"></a>
                 </nav>
+
+                <div class="car">
+                    <a href="#"><img src="img-logo/shopping-cart.png"></a>
+                </div>
+
+                <div class="login">
+                    <a href="#"><img src="img-logo/login-.png" alt=""></a>
+                </div>
+
             </div>
 
-            <div class="car">
-                <a href="#"><img src="img-logo/shopping-cart.png"></a>
-            </div>
-
-            <div class="login">
-                <a href="#"><img src="img-logo/login-.png" alt=""></a>
-            </div>
 
             <div>
 <%--                &lt;%&ndash;Pesquisa de Produtos se inicia a partir desse ponto&ndash;%&gt;--%>
