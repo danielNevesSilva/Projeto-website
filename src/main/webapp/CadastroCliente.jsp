@@ -38,7 +38,7 @@
     <div class="cadastro">
 
         <form action="/create-account" method="post">
-            <h1>Cadastro</h1>
+            <h1>Cadastro do Cliente</h1>
             <span>${requestScope.message}</span>
 
             <p>
