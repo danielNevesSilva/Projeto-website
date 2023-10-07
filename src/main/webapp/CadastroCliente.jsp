@@ -89,6 +89,9 @@
             <button class="botao-cadastro" type="submit" value="Cadastrar">Cadastrar</button>
 
         </form>
+        <p class="link">
+            <a href="#"><button class="botao-login">Login</button>  </a>
+        </p>
 
 
 <div class="footer"></div>
