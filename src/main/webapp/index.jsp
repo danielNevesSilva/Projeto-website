@@ -33,7 +33,7 @@
                 </div>
 
                 <div class="login">
-                    <a href="#"><img src="img-logo/login-.png" alt=""></a>
+                    <a href="./CadastroCliente.jsp"><img src="img-logo/login-.png" alt=""></a>
                 </div>
 
             </div>
@@ -146,11 +146,6 @@
             </c:forEach>
         </div>
     </form>
-
-
-
-
-
 
     <script src="javascript/carrosel.js"></script>
 
