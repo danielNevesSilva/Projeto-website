@@ -37,7 +37,7 @@
 <div class="principal">
     <div class="cadastro">
 
-        <form action="/create-account" method="post">
+        <form action="/create-accountcliente" method="post">
             <h1>Cadastro do Cliente</h1>
             <span>${requestScope.message}</span>
 
@@ -58,21 +58,12 @@
             </p>
 
             <p>
-                <label for="cep">CEP</label>
-                <input id="cep" name="cep" required="required" type="text" placeholder="Digite o CEP" maxlength="8" value="${param.cep}" />
-            </p>
+                <label for="gender">Gênero:</label>
+                <select id="gender" name="gender">
+                  <option value="M">M</option>
+                  <option value="F">F</option>
+                </select>
 
-            <p>
-                <label for="rua">Rua</label>
-                <input id="rua" name="rua" required="required" type="text" placeholder="Nome da Rua" value="${param.rua}" />
-            </p>
-            <p>
-                <label for="numero">Número</label>
-                <input id="numero" name="numero" required="required" type="text" placeholder="Número" value="${param.numero}" />
-            </p>
-            <p>
-                <label for="bairro">Bairro</label>
-                <input id="bairro" name="bairro" required="required" type="text" placeholder="Nome do Bairro" value="${param.bairro}" />
             </p>
 
             <p>

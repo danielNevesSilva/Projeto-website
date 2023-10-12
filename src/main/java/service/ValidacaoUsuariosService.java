@@ -1,6 +1,8 @@
 package service;
 
+import dao.ClienteDAO;
 import dao.FuncionarioDAO;
+import model.Cliente;
 import model.Funcionario;
 
 public class ValidacaoUsuariosService {
@@ -27,6 +29,8 @@ public class ValidacaoUsuariosService {
             return false;
         }
     }
+
+
 
 
 }
