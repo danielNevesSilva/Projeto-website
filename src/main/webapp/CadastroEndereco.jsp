@@ -14,18 +14,9 @@
 
 <header>
   <div class="container">
-    <div class="logo">
-      <a href="./index.html"><img src="./assets/images/urso_logo.png" alt="Urso Logo"></a>
-    </div>
-    <div class="login">
-      <a href="./login.jsp"><img src="./assets/images/login.svg" alt="Login Icon"></a>
-    </div>
+
   </div>
 </header>
-
-<div class="voltar">
-  <a href="#" class="btn-voltar" id="btn-voltar">Voltar</a>
-</div>
 
 <div class="principal">
 
