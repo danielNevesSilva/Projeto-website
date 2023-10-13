@@ -106,18 +106,15 @@ button:hover {
 }
 
 /* Botão Voltar */
-.btn-voltar {
-    background-color: var(--cor-cinza-escuro);
-    color: var(--cor-branca);
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    text-decoration: none;
-}
 
-.btn-voltar:hover {
-    background-color: var(--cor-cinza-claro);
+.btn-voltar {
+    display: inline-block;
+    padding: 10px 20px;
+    color: var(--cor-branca);
+    text-decoration: none;
+    position: absolute;
+    left: 10px;
+    top: 10px;
 }
 
 .footer {

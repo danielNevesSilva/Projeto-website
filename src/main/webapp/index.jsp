@@ -33,7 +33,7 @@
                 </div>
 
                 <div class="login">
-                    <a href="./CadastroCliente.jsp"><img src="img-logo/login-.png" alt=""></a>
+                    <a href="./LoginCliente.jsp"><img src="img-logo/login-.png" alt=""></a>
                 </div>
 
             </div>

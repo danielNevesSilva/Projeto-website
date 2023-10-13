@@ -67,6 +67,11 @@
             </p>
 
             <p>
+                <label for="date">Data de Nascimento</label>
+                <input id="date" name="date" required="required" type="date" value="${param.date}" />
+            </p>
+
+            <p>
                 <label for="password">Senha</label>
                 <input id="password" name="password" required onchange="validarSenhas()" type="password" placeholder="********" value="${param.password}" />
             </p>

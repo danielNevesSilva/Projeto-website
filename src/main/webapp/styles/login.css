@@ -111,6 +111,10 @@ h1 {
     margin-bottom: 20px;
 }
 
+.link{
+    padding: 15px 0px;
+}
+
 /* Responsividade */
 @media (max-width: 768px) {
     .container {

@@ -42,6 +42,11 @@
 
             <button class="botao-login" type="submit">Login</button>
         </form>
+
+        <p class="link">
+            <a href="CadastroCliente.jsp">Cadastre-se</a>
+        </p>
+
     </div>
 </div>
 
