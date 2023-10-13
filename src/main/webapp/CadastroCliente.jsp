@@ -48,12 +48,12 @@
 
             <p>
                 <label for="email">E-mail</label>
-                <input id="email" name="email" required="required" type="email" placeholder="contato@htmlecsspro.com" value="${param.email}" />
+                <input id="email" name="email" required="required" type="email" placeholder="Insira sei e-mail" value="${param.email}" />
             </p>
 
             <p>
                 <label for="cpf">CPF</label>
-                <input id="cpf" name="cpf" required="required" type="text" placeholder="111.222.333-11" oninput="formatarCPF(this)" onblur="validarCPF(this.value)" value="${param.cpf}" />
+                <input id="cpf" name="cpf" required="required" type="text" placeholder="Insira o CPF" oninput="formatarCPF(this)" onblur="validarCPF(this.value)" value="${param.cpf}" />
                 <span class="error-message"></span>
             </p>
 
@@ -76,12 +76,9 @@
                 <input id="confirmPassword" name="confirmPassword" required onchange="validarSenhas()" type="password" placeholder="********" />
             </p>
 
-            <input type="hidden" id="id" name="id" value="${param.id}">
-            <button class="botao-cadastro" type="submit" value="Cadastrar">Cadastrar</button>
-
         </form>
         <p class="link">
-            <a href="#"><button class="botao-login">Login</button>  </a>
+            <a href="CadastroEndereco.jsp"><button class="botao-login">Cadastre seu endereco</button>  </a>
         </p>
 
 

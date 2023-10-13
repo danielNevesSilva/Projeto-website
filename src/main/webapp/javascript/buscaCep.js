@@ -12,8 +12,9 @@ document.getElementById('cep').addEventListener('blur', function() {
             if (!data.erro) {
                 document.getElementById('rua').value = data.logradouro;
                 document.getElementById('bairro').value = data.bairro;
-                document.getElementById('cidade').value = data.localidade;
+                document.getElementById('localidade').value = data.localidade;
                 document.getElementById('estado').value = data.uf;
+                document.getElementById('cidade').value = data.cidade;
             } else {
                 alert('CEP não encontrado. Verifique se o CEP está correto.');
             }
