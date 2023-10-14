@@ -90,6 +90,30 @@ button {
     transition: background-color 0.3s ease-in-out;
 }
 
+.botao-mais{
+       width: 150%;
+        padding: 15px;
+        border: none;
+        border-radius: 5px;
+        margin-rigth: 100%;
+        margin-top: 30px;
+
+}
+
+.botao-remove{
+       width: 150%;
+        padding: 15px;
+        border: none;
+        border-radius: 5px;
+        margin-left: 20%;
+        margin-top: 30px;
+}
+
+.maisEremove{
+   margin-left: 87%;
+   display: flex;
+}
+
 .botao-login{
     margin-top: 12px;
 }

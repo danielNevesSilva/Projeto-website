@@ -36,6 +36,33 @@
                     <a href="./LoginCliente.jsp"><img src="img-logo/login-.png" alt=""></a>
                 </div>
 
+                   <c:forEach var="cliente" items="${clientes}">
+                                          <tr>
+                                            <td></td>
+                                            <td>${cliente.username}</td>
+                                            <td>${cliente.email}</td>
+                                            <td>${cliente.funcao}</td>
+                                            <td>${cliente.genero}</td>
+                                            <td>${cliente.dataNascimento}</td>
+                                            <td>${cliente.password}</td>
+</c:forEach>
+                               <form action="/cadastro-cliente" method="post">
+                                    <input type="hidden" id="id" name="id" value="${funcionario.id}">
+                                   <button onclick="alterarStatus(${funcionario.id}, '${funcionario.status}')">Alterar Status</button>
+
+                                     <button style="background-color: orange;"><a
+                                     href="CadastroCliente.jsp?id=${cliente.id}&username=${cliente.username}&email=${cliente.email}&cpf=${cliente.cpf}&genero=${cliente.genero}&dataNascimento=${cliente.dataNascimento}&password=${cliente.password}">Alterar</a></button>
+                               </form>
+
+
+               <form action="/cadastro-endereco" method="post">
+                    <input type="hidden" id="id" name="id" value="${funcionario.id}">
+                   <button onclick="alterarStatus(${funcionario.id}, '${funcionario.status}')">Alterar Status</button>
+
+                     <button style="background-color: orange;"><a
+                     href="CadastroCliente.jsp?id=${funcionario.id}&username=${funcionario.username}&email=${funcionario.email}&cpf=${funcionario.cpf}">Alterar</a></button>
+               </form>
+
             </div>
 
 
@@ -79,8 +106,6 @@
 <%--                </c:forEach>--%>
 <%--                &lt;%&ndash;    Pesquisa de Produto é finalizada nesse ponto.&ndash;%&gt;--%>
 <%--            </div>--%>
-
-
 
 
         </div>

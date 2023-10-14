@@ -22,11 +22,18 @@
 
   <div class="cadastro">
 
-    <form action="/cadastro-endereco" method="post">
+    <form action="/cadastro-endereco" method="post" id="addressForm">
       <h1>Cadastro do Endereco</h1>
       <span>${requestScope.message}</span>
 
-      <div>
+
+  <div id="addressInputs">
+
+      <div class="maisEremove">
+            <button class="botao-mais" type="button" onclick="duplicateAddress()">+</button>
+            <button class="botao-remove" type="button" onclick="removeAddress(this)">-</button>
+        </div>
+
         <p>
           <label for="cep">CEP</label>
           <input id="cep" name="cep" required="required" type="text" placeholder="Digite o CEP" maxlength="8" value="${param.cep}" />
@@ -59,12 +66,12 @@
           <label for="bairro">Logradouro</label>
           <input id="bairro" name="bairro" required="required" type="text" placeholder="Complemento" value="${param.bairro}" />
         </p>
-      </div>
+
 
       <input type="hidden" id="id" name="id" value="${param.id}">
       <button class="botao-cadastro" type="submit" value="Cadastrar">Cadastrar</button>
     </form>
-
+</div>
   </div>
 </div>
 
@@ -75,6 +82,7 @@
 <script src="javascript/buscaCep.js"></script>
 <script src="javascript/enderecoFat.js"></script>
 <script src="javascript/volarLogin.js"></script>
+<script src="javascript/novoEndereco.js"></script>
 
 </body>
 
