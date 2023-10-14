@@ -34,45 +34,64 @@
             <button class="botao-remove" type="button" onclick="removeAddress(this)">-</button>
         </div>
 
-        <p>
-          <label for="cep">CEP</label>
-          <input id="cep" name="cep" required="required" type="text" placeholder="Digite o CEP" maxlength="8" value="${param.cep}" />
-        </p>
+    <p>
+      <label for="cep">CEP</label>
+      <input id="cep" name="cep" required="required" type="text" placeholder="Digite o CEP" maxlength="8" value="${param.cep}" />
+    </p>
 
-        <p>
-          <label for="rua">Rua</label>
-          <input id="rua" name="rua" required="required" type="text" placeholder="Nome da Rua" value="${param.rua}" />
-        </p>
-        <p>
-          <label for="numero">Número</label>
-          <input id="numero" name="numero" required="required" type="text" placeholder="Número" value="${param.numero}" />
-        </p>
-        <p>
-          <label for="bairro">Bairro</label>
-          <input id="bairro" name="bairro" required="required" type="text" placeholder="Nome do Bairro" value="${param.bairro}" />
-        </p>
+    <p>
+      <label for="rua">Rua</label>
+      <input id="rua" name="rua" required="required" type="text" placeholder="Nome da Rua" value="${param.rua}" />
+    </p>
 
-        <p>
-          <label for="cidade">Cidade</label>
-          <input id="cidade" name="cidade" required="required" type="text" placeholder="Nome da Cidade" value="${param.cidade}" />
-        </p>
+    <p>
+      <label for="numero">Número</label>
+      <input id="numero" name="numero" required="required" type="text" placeholder="Número" value="${param.numero}" />
+    </p>
 
-        <p>
-          <label for="estado">UF</label>
-          <input id="estado" name="estado" required="required" type="text" placeholder="Estado" value="${param.uf}" />
-        </p>
+    <p>
+      <label for="bairro">Bairro</label>
+      <input id="bairro" name="bairro" required="required" type="text" placeholder="Nome do Bairro" value="${param.bairro}" />
+    </p>
 
-        <p>
-          <label for="bairro">Logradouro</label>
-          <input id="bairro" name="bairro" required="required" type="text" placeholder="Complemento" value="${param.bairro}" />
-        </p>
+    <p>
+      <label for="cidade">Cidade</label>
+      <input id="cidade" name="cidade" required="required" type="text" placeholder="Nome da Cidade" value="${param.cidade}" />
+    </p>
 
+    <p>
+      <label for="estado">UF</label>
+      <input id="estado" name="estado" required="required" type="text" placeholder="UF" value="${param.uf}" />
+    </p>
 
+    <p>
+      <label for="logradouro">Logradouro</label>
+      <input id="logradouro" name="logradouro" required="required" type="text" placeholder="Complemento" value="${param.bairro}" />
+    </p>
       <input type="hidden" id="id" name="id" value="${param.id}">
       <button class="botao-cadastro" type="submit" value="Cadastrar">Cadastrar</button>
     </form>
 </div>
+
+  <p>
+    <label>
+      <input type="radio" name="tipo_endereco" value="email_diferente" id="email_diferente" onclick="showPopup()"> E-mail Diferente
+    </label>
+  </p>
+
+
+  <div id="popup" class="popup">
+    <div class="popup-content">
+      <span class="close" onclick="closePopup()">&times;</span>
+      <h2>Insira um endereço diferente</h2>
+      <!-- Adicione aqui os campos para inserir o endereço diferente -->
+      <label for="endereco">Endereço:</label>
+      <input type="text" id="endereco" name="endereco">
+      <button onclick="salvarEndereco()">Salvar Endereço</button>
+    </div>
   </div>
+
+</div>
 </div>
 
 <div class="footer"></div>
@@ -83,6 +102,7 @@
 <script src="javascript/enderecoFat.js"></script>
 <script src="javascript/volarLogin.js"></script>
 <script src="javascript/novoEndereco.js"></script>
+<script src="javascript/escolhaEnd.js"></script>
 
 </body>
 

@@ -83,7 +83,7 @@
 
         </form>
         <p class="link">
-            <a href="CadastroEndereco.jsp"><button class="botao-login">Cadastre seu endereco</button>  </a>
+            <a href="teste.jsp"><button class="botao-login">Cadastre seu endereco</button>  </a>
         </p>
 
 
