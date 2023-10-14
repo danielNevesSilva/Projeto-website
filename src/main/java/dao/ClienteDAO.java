@@ -7,10 +7,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+
+
 public class ClienteDAO {
     public void createaccountCliente(Cliente cliente) {
 
-        String SQL = "INSERT INTO CLIENTE (USERNAME,EMAIL,CPF,GENDER,PASSWORD) VALUES (?,?,?,?,?)";
+        String SQL = "INSERT INTO CLIENTE (USERNAME,EMAIL,CPF,GENDER,BIRTHDATE,PASSWORD) VALUES (?,?,?,?,?,?)";
 
         try {
             Connection connection = ConnectionPoolConfig.getConnection();
@@ -20,7 +22,8 @@ public class ClienteDAO {
             preparedStatement.setString(2, cliente.getEmail());
             preparedStatement.setString(3, cliente.getCpf());
             preparedStatement.setString(4, cliente.getGender());
-            preparedStatement.setString(5, cliente.getPassword());
+            preparedStatement.setString(5, cliente.getBirthdate());
+            preparedStatement.setString(6, cliente.getPassword());
 
 
             preparedStatement.execute();
@@ -53,6 +56,7 @@ public class ClienteDAO {
                 cliente.setEmail(rs.getString("email"));
                 cliente.setCpf(rs.getString("cpf"));
                 cliente.setGender(rs.getString("gender"));
+                cliente.setBirthdate(rs.getString("birthdate"));
                 cliente.setPassword(rs.getString("password"));
 
             }
@@ -86,6 +90,7 @@ public class ClienteDAO {
                 cliente.setEmail(rs.getString("email"));
                 cliente.setCpf(rs.getString("cpf"));
                 cliente.setGender(rs.getString("gender"));
+                cliente.setBirthdate(rs.getString("birthdate"));
                 cliente.setPassword(rs.getString("password"));
 
 

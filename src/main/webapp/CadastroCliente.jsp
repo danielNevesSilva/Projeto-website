@@ -41,10 +41,10 @@
             <h1>Cadastro do Cliente</h1>
             <span>${requestScope.message}</span>
 
-            <p>
-                <label for="username">Nome</label>
-                <input id="username" name="username" required="required" type="text" placeholder="nome" value="${param.username}" />
-            </p>
+           <p>
+               <label for="username">Nome de Usuário</label>
+               <input id="username" name="username" required="required" type="text" placeholder="Nome de Usuário" value="${param.username}" />
+           </p>
 
             <p>
                 <label for="email">E-mail</label>
@@ -67,8 +67,8 @@
             </p>
 
             <p>
-                <label for="date">Data de Nascimento</label>
-                <input id="date" name="date" required="required" type="date" value="${param.date}" />
+                <label for="birthdate">Data de Nascimento</label>
+                <input id="birthdate" name="birthdate" required="required" type="date" value="${param.birthdate}" />
             </p>
 
             <p>
@@ -81,10 +81,11 @@
                 <input id="confirmPassword" name="confirmPassword" required onchange="validarSenhas()" type="password" placeholder="********" />
             </p>
 
+                    <input type="hidden" id="id" name="id" value="${param.id}">
+                   <button class="botao-cadastro" type="submit" value="Cadastrar">Cadastrar</button>
+
         </form>
-        <p class="link">
-            <a href="teste.jsp"><button class="botao-login">Cadastre seu endereco</button>  </a>
-        </p>
+
 
 
 <div class="footer"></div>

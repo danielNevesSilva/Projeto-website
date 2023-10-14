@@ -7,20 +7,22 @@ public class Cliente {
     private String email;
     private String cpf;
     private String gender;
+    private String birthdate;
     private String password;
 
 
-public Cliente(){
+    public Cliente(){
 
-}
+    }
 
-public Cliente(String id, String username, String email, String cpf,String gender, String password) {
-    this.id = id;
-    this.username = username;
-    this.email = email;
-    this.cpf = cpf;
-    this.gender = gender;
-    this.password = password;
+    public Cliente(String id, String username, String email, String cpf,String gender,String birthdate, String password) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        this.cpf = cpf;
+        this.gender = gender;
+        this.birthdate = birthdate;
+        this.password = password;
 
     }
 
@@ -62,6 +64,14 @@ public Cliente(String id, String username, String email, String cpf,String gende
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public String getBirthdate() {
+        return birthdate;
+    }
+
+    public void setBirthdate(String birthdate) {
+        this.birthdate = birthdate;
     }
 
     public String getPassword() {

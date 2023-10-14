@@ -21,6 +21,7 @@ public class createCadastroClienteServelet extends HttpServlet{
         String email = request.getParameter("email");
         String cpf = request.getParameter("cpf");
         String gender = request.getParameter("gender");
+        String birthdate = request.getParameter("birthdate");
         String password = request.getParameter("password");
 
         ValidacaoClienteService ValidacaoClientService = new ValidacaoClienteService();
@@ -29,7 +30,7 @@ public class createCadastroClienteServelet extends HttpServlet{
 
 
         ClienteDAO clienteDAO = new ClienteDAO();
-        Cliente cliente = new Cliente( id,nome, email, cpf,gender, senhaCriptografada);
+        Cliente cliente = new Cliente( id,nome, email, cpf,gender,birthdate, senhaCriptografada);
 
         if (id.isBlank()) {
 
@@ -44,7 +45,7 @@ public class createCadastroClienteServelet extends HttpServlet{
                 request.setAttribute("message", "Usuario cadastrado com sucesso");
 
                 clienteDAO.createaccountCliente(cliente);
-                response.sendRedirect("/novidades");
+                response.sendRedirect("/CadastroEndereco.jsp");
             }
 
         } else {
@@ -54,4 +55,3 @@ public class createCadastroClienteServelet extends HttpServlet{
 
     }
 }
-
