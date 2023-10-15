@@ -28,6 +28,7 @@ public class CreateEnderecoEntregaServlet extends HttpServlet {
 
 
 
+
         EnderecoEntrega enderecoEntrega = new EnderecoEntrega(id,cep, rua, numero, bairro, cidade, uf, logradouro);
         EnderecoEntregaDAO enderecoEntregaDAO = new EnderecoEntregaDAO();
         enderecoEntregaDAO.createEnderecoEntrega(enderecoEntrega);

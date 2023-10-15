@@ -7,7 +7,7 @@ import java.sql.PreparedStatement;
 
 public class EnderecoEntregaDAO {
     public void createEnderecoEntrega(EnderecoEntrega endereco) {
-        String SQL = "INSERT INTO ENDERECOENTREGA  (cep, rua, numero, bairro, cidade, uf, logradouro) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String SQL = "INSERT INTO ENDERECOENTREGA (cep, rua, numero, bairro, cidade, uf, logradouro) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         try {
             Connection connection = ConnectionPoolConfig.getConnection();
@@ -19,6 +19,8 @@ public class EnderecoEntregaDAO {
             preparedStatement.setString(5, endereco.getCidade());
             preparedStatement.setString(6, endereco.getUf());
             preparedStatement.setString(7, endereco.getLogradouro());
+
+
 
 
 

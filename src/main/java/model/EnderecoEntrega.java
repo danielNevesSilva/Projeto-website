@@ -12,6 +12,8 @@ public class EnderecoEntrega {
 
 
 
+
+
     public EnderecoEntrega() {
 
     }
@@ -26,6 +28,7 @@ public class EnderecoEntrega {
         this.cidade = cidade;
         this.uf = uf;
         this.logradouro = logradouro;
+
 
 
     }
