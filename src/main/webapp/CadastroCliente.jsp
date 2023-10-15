@@ -41,11 +41,11 @@
             <h1>Cadastro do Cliente</h1>
             <span>${requestScope.message}</span>
 
-           <p>
-               <label for="username">Nome de Usuário</label>
-               <input id="username" name="username" required="required" type="text" placeholder="Nome de Usuário" value="${param.username}" />
-           </p>
-
+            <p>
+                <label for="username">Nome</label>
+                <input id="username" name="username" required="required" type="text" placeholder="Nome de Usuário" minlength="3" value="${param.username}" />
+            </p>
+            
             <p>
                 <label for="email">E-mail</label>
                 <input id="email" name="email" required="required" type="email" placeholder="Insira sei e-mail" value="${param.email}" />

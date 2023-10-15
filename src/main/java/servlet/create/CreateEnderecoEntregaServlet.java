@@ -25,17 +25,10 @@ public class CreateEnderecoEntregaServlet extends HttpServlet {
         String uf = request.getParameter("uf");
         String logradouro = request.getParameter("logradouro");
 
-
-
-
-
         EnderecoEntrega enderecoEntrega = new EnderecoEntrega(id,cep, rua, numero, bairro, cidade, uf, logradouro);
         EnderecoEntregaDAO enderecoEntregaDAO = new EnderecoEntregaDAO();
         enderecoEntregaDAO.createEnderecoEntrega(enderecoEntrega);
 
-
-
-
-        response.sendRedirect("/LoginCliente.jsp");
+        response.sendRedirect("/CadastroEnderecoFaturamento.jsp");
     }
 }
