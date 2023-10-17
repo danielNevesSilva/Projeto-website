@@ -36,6 +36,12 @@
                     <a href="./LoginCliente.jsp"><img src="img-logo/login-.png" alt=""></a>
                 </div>
 
+            <c:if test="${sessionScope.tipoUsuario   eq 'Cliente'}">
+               <form action="/logout" method="get">
+                      <button type="submit">Logout</button>
+                  </form>
+
+            </c:if>
                    <c:forEach var="cliente" items="${clientes}">
                                           <tr>
                                             <td></td>
@@ -46,67 +52,9 @@
                                             <td>${cliente.dataNascimento}</td>
                                             <td>${cliente.password}</td>
 </c:forEach>
-                               <form action="/cadastro-cliente" method="post">
-                                    <input type="hidden" id="id" name="id" value="${funcionario.id}">
-                                   <button onclick="alterarStatus(${funcionario.id}, '${funcionario.status}')">Alterar Status</button>
-
                                      <button style="background-color: orange;"><a
                                      href="CadastroCliente.jsp?id=${cliente.id}&username=${cliente.username}&email=${cliente.email}&cpf=${cliente.cpf}&genero=${cliente.genero}&dataNascimento=${cliente.dataNascimento}&password=${cliente.password}">Alterar</a></button>
                                </form>
-
-
-               <form action="/cadastro-endereco" method="post">
-                    <input type="hidden" id="id" name="id" value="${funcionario.id}">
-                   <button onclick="alterarStatus(${funcionario.id}, '${funcionario.status}')">Alterar Status</button>
-
-                     <button style="background-color: orange;"><a
-                     href="CadastroCliente.jsp?id=${funcionario.id}&username=${funcionario.username}&email=${funcionario.email}&cpf=${funcionario.cpf}">Alterar</a></button>
-               </form>
-
-            </div>
-
-
-            <div>
-<%--                &lt;%&ndash;Pesquisa de Produtos se inicia a partir desse ponto&ndash;%&gt;--%>
-<%--<div>--%>
-<%--                <form action="/produtos" method="get">--%>
-
-<%--                    <div class="buscar_produtos">--%>
-<%--&lt;%&ndash;                    <h3 class="">Buscar produtos:</h3>&ndash;%&gt;--%>
-
-<%--                    <input id="name" name="name" type="text" placeholder="  Nome do produto"--%>
-<%--                           value="${param.name}" />--%>
-
-<%--                    <button type="submit">Pesquisar</button>--%>
-<%--                    </div>--%>
-
-<%--                    <c:if test="${empty Products}">--%>
-<%--                       <div class="status_busca">--%>
-<%--                        <p>Nenhum Produto encontrado.</p>--%>
-<%--                       </div>--%>
-<%--                    </c:if>--%>
-<%--                    <c:forEach var="product" items="${Products}">--%>
-<%--                    <tr>--%>
-<%--                        <td>${product.name}</td>--%>
-<%--                        <td>${product.amount}</td>--%>
-
-<%--                        <td class="price">R$ ${product.price}</td>--%>
-<%--                        <td>--%>
-<%--                        </td>--%>
-<%--</div>--%>
-
-<%--                        <c:forEach var="imagePath" items="${product.images}">--%>
-<%--                        <img style="width: 150px; height: 50px" src="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/${imagePath}" alt="${product.name}">--%>
-<%--                        </c:forEach>--%>
-<%--                        <input type="hidden" id="id" name="id" value="${product.id}">--%>
-<%--                        <a href="/product-detailsPrincipal?id=${product.id}">Detalhes</a>--%>
-<%--                </form>--%>
-<%--                </td>--%>
-<%--                </tr>--%>
-<%--                </c:forEach>--%>
-<%--                &lt;%&ndash;    Pesquisa de Produto é finalizada nesse ponto.&ndash;%&gt;--%>
-<%--            </div>--%>
-
 
         </div>
 
