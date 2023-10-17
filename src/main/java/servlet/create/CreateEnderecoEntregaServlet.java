@@ -29,6 +29,9 @@ public class CreateEnderecoEntregaServlet extends HttpServlet {
         EnderecoEntregaDAO enderecoEntregaDAO = new EnderecoEntregaDAO();
         enderecoEntregaDAO.createEnderecoEntrega(enderecoEntrega);
 
-        response.sendRedirect("/CadastroEnderecoFaturamento.jsp");
+
+
+        response.sendRedirect("/CadastroEnderecoEntrega.jsp");
+
     }
 }
