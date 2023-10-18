@@ -6,40 +6,33 @@
     <link rel="stylesheet" type="text/css" href="CadastroCliente.css">
     <link rel="stylesheet" href="styles/CadastroCliente.css">
     <title>Cadastro de Endereco</title>
-    <style>
-        /* Estilos para a caixa de diálogo modal */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-        }
 
-        .modal-content {
-            background-color: #fff;
-            text-align: center;
-            padding: 20px;
-            border-radius: 5px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
+     <style>
+            /* Estilos para o link "Cadastrar endereco para Faturamento" */
+            a.cadastrar-faturamento {
+                display: inline-block;
+                padding: 12px 20px;
+                background-color: var(--cor-preta);
+                color: var(--cor-branca);
+                font-size: 16px;
+                font-weight: bold;
+                text-decoration: none;
+                border-radius: 5px;
+                margin-top: 20px;
+                transition: background-color 0.3s ease-in-out;
+            }
 
-        .modal-buttons {
-            margin-top: 20px;
-        }
-    </style>
+            a.cadastrar-faturamento:hover {
+                background-color: var(--cor-cinza-escuro);
+            }
+        </style>
+
 </head>
 
 <body>
     <div class="principal">
         <div class="cadastro">
-            <h1>Endereço de entrega</h1>
+            <h1>Endereco de entrega</h1>
 
             <form action="/create-endereco-entrega" method="post">
                 <label for="cep">CEP:</label>
@@ -65,57 +58,24 @@
 
                 <input type="hidden" id="id" name="id" value="${param.id}">
                 <button class="botao-cadastro" type="submit" onclick="exibirMensagem()">Cadastrar</button>
+
+                 <!-- Link para cadastrar endereço de faturamento -->
+                 <a class="cadastrar-faturamento" href="CadastroEnderecoFaturamento.jsp">Cadastrar endereco para Faturamento</a>
+
             </form>
 
-            <!-- Div para exibir a mensagem após o cadastro -->
-            <div id="mensagemCadastro" style="display: none; color: green;">
-                Cadastro concluído. Deseja inserir um novo endereço?
-            </div>
-
-
-        </div>
-    </div>
-
-    <!-- Modal de confirmação -->
-    <div id="modalConfirmacao" class="modal">
-        <div class="modal-content">
-            <p>Cadastro concluído. Deseja inserir um novo endereco?</p>
-            <div class="modal-buttons">
-                <button type="button" onclick="redirecionarParaCadastroEnderecoFaturamento()">Não</button>
-                <button type="submit" onclick="redirecionar()">Sim</button>
-            </div>
-        </div>
+  </div>
     </div>
 
     <script src="javascript/buscaCep.js"></script>
-    <script>
-        function exibirMensagem() {
-            const modal = document.getElementById("modalConfirmacao");
-            modal.style.display = "block";
-        }
 
-        function fecharModal() {
-            const modal = document.getElementById("modalConfirmacao");
-            modal.style.display = "none";
-        }
-
-        function redirecionar() {
-            window.location.href = "/CadastroEnderecoEntrega.jsp";
-        }
-
-          function redirecionarParaCadastroEnderecoFaturamento() {
-                window.location.href = "/CadastroEnderecoFaturamento.jsp";
+         <script>
+            function exibirMensagem() {
+                alert("Endereco cadastrado!");
             }
-    </script>
-
-    function exibirMensagem() {
-        const modal = document.getElementById("modalConfirmacao");
+        </script>
 
 
-        setTimeout(function () {
-            modal.style.display = "block";
-        }, 1000000000);
-    }
 </body>
 
 </html>
