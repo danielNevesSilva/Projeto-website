@@ -36,25 +36,18 @@
                     <a href="./LoginCliente.jsp"><img src="img-logo/login-.png" alt=""></a>
                 </div>
 
-            <c:if test="${sessionScope.tipoUsuario   eq 'Cliente'}">
-               <form action="/logout" method="get">
-                      <button type="submit">Logout</button>
-                  </form>
 
-            </c:if>
-                   <c:forEach var="cliente" items="${clientes}">
-                                          <tr>
-                                            <td></td>
-                                            <td>${cliente.username}</td>
-                                            <td>${cliente.email}</td>
-                                            <td>${cliente.funcao}</td>
-                                            <td>${cliente.genero}</td>
-                                            <td>${cliente.dataNascimento}</td>
-                                            <td>${cliente.password}</td>
-</c:forEach>
-                                     <button style="background-color: orange;"><a
-                                     href="CadastroCliente.jsp?id=${cliente.id}&username=${cliente.username}&email=${cliente.email}&cpf=${cliente.cpf}&genero=${cliente.genero}&dataNascimento=${cliente.dataNascimento}&password=${cliente.password}">Alterar</a></button>
-                               </form>
+       <th>Nome</th>
+
+                  <c:set var="clienteLogado" value="${sessionScope.clienteLogado}" />
+
+                  <!-- Verificar se o clienteLogado não é nulo antes de usar -->
+                  <c:if test="${not empty clienteLogado}">
+                      <button style="background-color: orange;">
+                          <a href="CadastroCliente.jsp?id=${clienteLogado.id}&username=${clienteLogado.username}&email=${clienteLogado.email}&cpf=${clienteLogado.cpf}&gender=${clienteLogado.gender}&birthdate=${clienteLogado.birthdate}">Alterar</a>
+                      </button>
+                  </c:if>
+
 
         </div>
 

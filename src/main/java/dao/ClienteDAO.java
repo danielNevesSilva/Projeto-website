@@ -2,11 +2,15 @@ package dao;
 
 import config.ConnectionPoolConfig;
 import model.Cliente;
+import model.Product;
+
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class ClienteDAO {
@@ -97,10 +101,38 @@ public class ClienteDAO {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
         }
 
         return cliente;
+    }
+
+    public Cliente getClienteById(int clienteId) throws SQLException {
+        String productSql = "SELECT * FROM CLIENTE WHERE id = ?";
+
+        try (Connection connection = ConnectionPoolConfig.getConnection();
+             PreparedStatement productStatement = connection.prepareStatement(productSql)) {
+            productStatement.setInt(1, clienteId);
+
+
+            ResultSet productResultSet = productStatement.executeQuery();
+
+            if (productResultSet.next()) {
+                String id = productResultSet.getString("id");
+                String username = productResultSet.getString("username");
+                String email = productResultSet.getString("email");
+                String cpf = productResultSet.getString("cpf");
+                String gender = productResultSet.getString("gender");
+                String birthdate = productResultSet.getString("birthdate");
+
+
+                // Crie e retorne um objeto Product com base nos dados do ResultSet
+                Cliente cliente = new Cliente(id, username, email, cpf, gender, birthdate);
+
+                return cliente;
+            }
+        }
+
+        return null; // Retorna null se nenhum produto for encontrado com o ID especificado
     }
 
     public void AlterarCliente(Cliente cliente){

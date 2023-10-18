@@ -26,6 +26,15 @@ public class Cliente {
 
     }
 
+    public Cliente(String id, String username, String email, String cpf, String gender, String birthdate) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        this.cpf = cpf;
+        this.gender = gender;
+        this.birthdate = birthdate;
+    }
+
     public String getId() {
         return id;
     }
