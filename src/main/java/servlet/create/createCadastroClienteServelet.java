@@ -50,8 +50,7 @@ public class createCadastroClienteServelet extends HttpServlet{
 
         } else {
             clienteDAO.AlterarCliente(cliente);
-            response.sendRedirect("/CadastroCliente");
+            response.sendRedirect("/CadastroEnderecoEntrega.jsp");
         }
-
     }
 }
