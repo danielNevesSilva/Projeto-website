@@ -27,8 +27,8 @@
     <div class="cadastro">
         <form action="/loginCliente" method="post">
             <h1>Acesse a sua conta</h1>
-            <span>${requestScope.message}</span> <!-- Aqui será exibida a mensagem de erro -->
 
+            <span>${requestScope.message}</span>
 
             <p>
                 <label for="email">Email</label>

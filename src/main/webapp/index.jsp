@@ -37,14 +37,19 @@
                 </div>
 
 
-       <th>Nome</th>
+
+
 
                   <c:set var="clienteLogado" value="${sessionScope.clienteLogado}" />
 
                   <!-- Verificar se o clienteLogado não é nulo antes de usar -->
                   <c:if test="${not empty clienteLogado}">
+                  <form action="/logout" method="get">
+                                        <button type="submit">Logout</button>
+                                    </form>
+
                       <button style="background-color: orange;">
-                          <a href="CadastroCliente.jsp?id=${clienteLogado.id}&username=${clienteLogado.username}&email=${clienteLogado.email}&cpf=${clienteLogado.cpf}&gender=${clienteLogado.gender}&birthdate=${clienteLogado.birthdate}">Alterar</a>
+                          <a href="CadastroCliente.jsp?id=${clienteLogado.id}&username=${clienteLogado.username}&email=${clienteLogado.email}&cpf=${clienteLogado.cpf}&gender=${clienteLogado.gender}&birthdate=${clienteLogado.birthdate}">Perfil</a>
                       </button>
                   </c:if>
 
@@ -115,5 +120,11 @@
 
     <script src="javascript/carrosel.js"></script>
 
+<script>
+    var mensagem = "${requestScope.message}";
+    if (mensagem) {
+        alert(mensagem);
+    }
+</script>
     </body>
     </html>

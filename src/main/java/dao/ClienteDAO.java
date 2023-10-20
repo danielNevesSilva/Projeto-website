@@ -123,10 +123,11 @@ public class ClienteDAO {
                 String cpf = productResultSet.getString("cpf");
                 String gender = productResultSet.getString("gender");
                 String birthdate = productResultSet.getString("birthdate");
+                String password = productResultSet.getString("password");
 
 
                 // Crie e retorne um objeto Product com base nos dados do ResultSet
-                Cliente cliente = new Cliente(id, username, email, cpf, gender, birthdate);
+                Cliente cliente = new Cliente(id, username, email, cpf, gender, birthdate, password);
 
                 return cliente;
             }
@@ -137,7 +138,7 @@ public class ClienteDAO {
 
     public void AlterarCliente(Cliente cliente){
 
-        String sql = "UPDATE CLIENTE SET USERNAME=?,PASSWORD=? WHERE ID=?";
+        String sql = "UPDATE CLIENTE SET USERNAME=?,GENDER = ?,BIRTHDATE =?,PASSWORD=? WHERE ID=?";
 
         try {
             Connection connection = ConnectionPoolConfig.getConnection();
@@ -145,8 +146,10 @@ public class ClienteDAO {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
             preparedStatement.setString(1, cliente.getUsername());
-            preparedStatement.setString(2, cliente.getPassword());
-            preparedStatement.setString(4, cliente.getId());
+            preparedStatement.setString(2, cliente.getGender());
+            preparedStatement.setString(3, cliente.getBirthdate());
+            preparedStatement.setString(4, cliente.getPassword());
+            preparedStatement.setString(5, cliente.getId());
 
             preparedStatement.execute();
 
