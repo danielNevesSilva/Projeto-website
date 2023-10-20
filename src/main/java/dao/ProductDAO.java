@@ -103,6 +103,7 @@ public class ProductDAO {
     }
 
 
+
     public List<Product> selectProducts() {
         String SQL = "SELECT " +
                 "    p.id, " +
