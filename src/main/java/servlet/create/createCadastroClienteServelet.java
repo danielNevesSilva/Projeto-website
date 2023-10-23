@@ -44,9 +44,11 @@ public class createCadastroClienteServelet extends HttpServlet{
             } else {
                 request.setAttribute("message", "Usuario cadastrado com sucesso");
 
+
                 clienteDAO.createaccountCliente(cliente);
                 response.sendRedirect("/CadastroEnderecoEntrega.jsp");
             }
+
 
         } else {
             clienteDAO.AlterarCliente(cliente);
