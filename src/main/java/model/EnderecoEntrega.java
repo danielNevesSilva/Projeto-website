@@ -9,16 +9,21 @@ public class EnderecoEntrega {
     private String cidade;
     private String uf;
     private String logradouro;
+    private int cliente_id;
 
-
-
-
-
-    public EnderecoEntrega() {
-
+    public EnderecoEntrega(String id, String cep, String rua, String numero, String bairro, String cidade, String uf, String logradouro, int cliente_id) {
+        this.id = id;
+        this.cep = cep;
+        this.rua = rua;
+        this.numero = numero;
+        this.bairro = bairro;
+        this.cidade = cidade;
+        this.uf = uf;
+        this.logradouro = logradouro;
+        this.cliente_id = cliente_id;
     }
 
-    public EnderecoEntrega( String id,String cep, String rua, String numero, String bairro, String cidade, String uf, String logradouro) {
+    public EnderecoEntrega(String id, String cep, String rua, String numero, String bairro, String cidade, String uf, String logradouro, String cliente_id) {
 
         this.id = id;
         this.cep = cep;
@@ -28,8 +33,6 @@ public class EnderecoEntrega {
         this.cidade = cidade;
         this.uf = uf;
         this.logradouro = logradouro;
-
-
 
     }
 
@@ -97,5 +100,11 @@ public class EnderecoEntrega {
         this.logradouro = logradouro;
     }
 
+    public int getCliente_id() {
+        return cliente_id;
+    }
 
+    public void setCliente(int cliente_id) {
+        this.cliente_id = cliente_id;
+    }
 }

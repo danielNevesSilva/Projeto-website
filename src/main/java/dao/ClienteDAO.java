@@ -2,26 +2,22 @@ package dao;
 
 import config.ConnectionPoolConfig;
 import model.Cliente;
+import model.EnderecoEntrega;
 import model.Product;
 
 import java.math.BigDecimal;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class ClienteDAO {
     public void createaccountCliente(Cliente cliente) {
+        String SQL = "INSERT INTO CLIENTE (USERNAME, EMAIL, CPF, GENDER, BIRTHDATE, PASSWORD) VALUES (?, ?, ?, ?, ?, ?)";
 
-        String SQL = "INSERT INTO CLIENTE (USERNAME,EMAIL,CPF,GENDER,BIRTHDATE,PASSWORD) VALUES (?,?,?,?,?,?)";
+        try (Connection connection = ConnectionPoolConfig.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS)) {
 
-        try {
-            Connection connection = ConnectionPoolConfig.getConnection();
-
-            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
             preparedStatement.setString(1, cliente.getUsername());
             preparedStatement.setString(2, cliente.getEmail());
             preparedStatement.setString(3, cliente.getCpf());
@@ -29,13 +25,25 @@ public class ClienteDAO {
             preparedStatement.setString(5, cliente.getBirthdate());
             preparedStatement.setString(6, cliente.getPassword());
 
+            preparedStatement.executeUpdate();
 
-            preparedStatement.execute();
-            connection.close();
-        } catch (Exception e) {
-            System.out.println("fail in connection create" + e);
+            ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
+
+            if (generatedKeys.next()) {
+                int cliente_id = generatedKeys.getInt(1);
+                cliente.setId(String.valueOf(cliente_id)); // Certifique-se de que a classe Cliente tenha um método setId
+                System.out.println("Generated Cliente ID: " + cliente_id);
+            }
+
+            System.out.println("Success in insertion");
+
+        } catch (SQLException e) {
+            System.out.println("Falha na conexão ou execução do SQL: " + e.getMessage());
         }
     }
+
+
+
 
     public Cliente getClienteByEmail(String email) {
 
@@ -164,7 +172,6 @@ public class ClienteDAO {
 
         }
     }
-
 
 
 }
