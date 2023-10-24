@@ -1,4 +1,4 @@
-package dao;
+/*package dao;
 
 import config.ConnectionPoolConfig;
 import model.EnderecoEntrega;
@@ -14,6 +14,8 @@ public class EnderecoEntregaDAO {
 
         try (Connection connection = ConnectionPoolConfig.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(SQL)) {
+
+
 
             preparedStatement.setString(1, endereco.getCep());
             preparedStatement.setString(2, endereco.getRua());
@@ -31,4 +33,4 @@ public class EnderecoEntregaDAO {
             System.out.println("Error: " + e.getMessage());
         }
     }
-}
+}*/

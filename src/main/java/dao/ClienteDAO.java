@@ -12,8 +12,10 @@ import java.util.List;
 
 
 public class ClienteDAO {
-    public void createaccountCliente(Cliente cliente) {
+    public String createaccountCliente(Cliente cliente) {
         String SQL = "INSERT INTO CLIENTE (USERNAME, EMAIL, CPF, GENDER, BIRTHDATE, PASSWORD) VALUES (?, ?, ?, ?, ?, ?)";
+
+        String cliente_id = null;
 
         try (Connection connection = ConnectionPoolConfig.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS)) {
@@ -30,16 +32,56 @@ public class ClienteDAO {
             ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
 
             if (generatedKeys.next()) {
-                int cliente_id = generatedKeys.getInt(1);
-                cliente.setId(String.valueOf(cliente_id)); // Certifique-se de que a classe Cliente tenha um método setId
-                System.out.println("Generated Cliente ID: " + cliente_id);
+                cliente_id = generatedKeys.getString(1);
             }
+
+            preparedStatement.close();
+            connection.close();
 
             System.out.println("Success in insertion");
 
         } catch (SQLException e) {
             System.out.println("Falha na conexão ou execução do SQL: " + e.getMessage());
         }
+        return cliente_id;
+    }
+
+    public void EnderecoEntrega(EnderecoEntrega enderecoEntrega, String id){
+        String SQL = "INSERT INTO ENDERECOENTREGA (cep, rua, numero, bairro, cidade, uf, logradouro, cliente_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
+        try {
+            // Verifique se idProduct não está vazio e é um número válido
+            if (id != null && !id.isEmpty()) {
+                String cliente_id = id;
+
+
+                Connection connection = ConnectionPoolConfig.getConnection();
+                PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+
+                preparedStatement.setString(1, enderecoEntrega.getCep());
+                preparedStatement.setString(2, enderecoEntrega.getRua());
+                preparedStatement.setString(3, enderecoEntrega.getNumero());
+                preparedStatement.setString(4, enderecoEntrega.getBairro());
+                preparedStatement.setString(5, enderecoEntrega.getCidade());
+                preparedStatement.setString(6, enderecoEntrega.getUf());
+                preparedStatement.setString(7, enderecoEntrega.getLogradouro());
+                preparedStatement.setString(8, cliente_id);
+
+                preparedStatement.executeUpdate();
+
+                preparedStatement.close();
+                connection.close();
+
+                System.out.println("Success in insertion");
+            } else {
+                System.out.println("idProduct está vazio ou nulo.");
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("idProduct não é um número válido: " + id);
+        } catch (SQLException e) {
+            System.out.println("Sem sucesso no create: " + e);
+        }
+
     }
 
 

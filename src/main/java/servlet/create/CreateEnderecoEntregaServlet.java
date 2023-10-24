@@ -1,4 +1,4 @@
-package servlet.create;
+/*package servlet.create;
 
 import dao.EnderecoEntregaDAO;
 import model.EnderecoEntrega;
@@ -15,6 +15,7 @@ public class CreateEnderecoEntregaServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         String cep = request.getParameter("cep");
         String rua = request.getParameter("rua");
         String numero = request.getParameter("numero");
@@ -22,13 +23,13 @@ public class CreateEnderecoEntregaServlet extends HttpServlet {
         String cidade = request.getParameter("cidade");
         String uf = request.getParameter("uf");
         String logradouro = request.getParameter("logradouro");
-        int cliente_id = Integer.parseInt(request.getParameter("cliente_id"));
+        String cliente_id = request.getParameter("cliente_id"));
 
         // Obtém o ID do cliente a partir de algum lugar
         // Vamos supor que você tenha um método para obter o ID do cliente
         String clienteId = metodoParaObterIdDoCliente(request);
 
-        EnderecoEntrega enderecoEntrega = new EnderecoEntrega(null, cep, rua, numero, bairro, cidade, uf, logradouro, clienteId);
+        EnderecoEntrega enderecoEntrega = new EnderecoEntrega(cep, rua, numero, bairro, cidade, uf, logradouro);
 
         EnderecoEntregaDAO enderecoEntregaDAO = new EnderecoEntregaDAO();
         enderecoEntregaDAO.createEnderecoEntrega(enderecoEntrega);
@@ -39,8 +40,8 @@ public class CreateEnderecoEntregaServlet extends HttpServlet {
     // Adicione um método para obter o ID do cliente
     // Obtém o ID do cliente a partir de uma solicitação HTTP
     private String metodoParaObterIdDoCliente(HttpServletRequest request) {
-        String clienteId = request.getParameter("cliente_id");
-        return clienteId;
+        String cliente_id = request.getParameter("cliente_id");
+        return cliente_id;
     }
 
-}
+}*/
