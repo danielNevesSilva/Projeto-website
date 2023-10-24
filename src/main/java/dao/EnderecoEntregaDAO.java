@@ -16,6 +16,7 @@ public class EnderecoEntregaDAO {
              PreparedStatement preparedStatement = connection.prepareStatement(SQL)) {
 
 
+
             preparedStatement.setString(1, endereco.getCep());
             preparedStatement.setString(2, endereco.getRua());
             preparedStatement.setString(3, endereco.getNumero());
