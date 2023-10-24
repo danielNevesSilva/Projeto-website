@@ -17,7 +17,7 @@ import java.math.BigDecimal;
 import java.sql.SQLException;
 
 
-import static org.apache.commons.fileupload.servlet.ServletFileUpload.isMultipartContent;
+/*import static org.apache.commons.fileupload.servlet.ServletFileUpload.isMultipartContent;*/
 
 
 @WebServlet("/create-product")

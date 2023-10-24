@@ -35,6 +35,10 @@ public class Cliente {
         this.birthdate = birthdate;
     }
 
+    public Cliente(String cep, String rua, String numero, String cidade, String uf, String logradouro, int clienteId) {
+
+    }
+
     public String getId() {
         return id;
     }
