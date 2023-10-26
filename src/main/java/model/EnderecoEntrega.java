@@ -11,8 +11,7 @@ public class EnderecoEntrega {
     private String logradouro;
     private String cliente_id;
 
-    public EnderecoEntrega(String id, String cep, String rua, String numero, String bairro, String cidade, String uf) {
-        this.id = id;
+    public EnderecoEntrega(String cep, String rua, String numero, String bairro, String cidade, String uf, String logradouro) {
         this.cep = cep;
         this.rua = rua;
         this.numero = numero;
@@ -20,7 +19,6 @@ public class EnderecoEntrega {
         this.cidade = cidade;
         this.uf = uf;
         this.logradouro = logradouro;
-        this.cliente_id = cliente_id;
     }
 
     public EnderecoEntrega(String id, String cep, String rua, String numero, String bairro, String cidade, String uf, String logradouro, String cliente_id) {

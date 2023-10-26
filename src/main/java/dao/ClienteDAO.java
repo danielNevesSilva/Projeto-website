@@ -85,8 +85,6 @@ public class ClienteDAO {
     }
 
 
-
-
     public Cliente getClienteByEmail(String email) {
 
         Connection conn = null;

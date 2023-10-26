@@ -1,6 +1,5 @@
 package servlet.create;
 import dao.ClienteDAO;
-import dao.EnderecoEntregaDAO;
 import model.Cliente;
 import model.EnderecoEntrega;
 import service.AuthenticationService;
@@ -32,8 +31,8 @@ public class createCadastroClienteServelet extends HttpServlet{
 
 
         ClienteDAO clienteDAO = new ClienteDAO();
-        Cliente cliente = new Cliente( id,nome, email, cpf,gender,birthdate, senhaCriptografada);
-        String idcliente = null;
+        Cliente cliente = new Cliente(id, nome, email, cpf, gender, birthdate, senhaCriptografada);
+
         if (id.isBlank()) {
 
             if (ValidacaoClientService.emailCadastradoCliente(email)) {
@@ -44,35 +43,23 @@ public class createCadastroClienteServelet extends HttpServlet{
                 request.setAttribute("message", "CPF já cadastrado");
                 request.getRequestDispatcher("CadastroCliente.jsp").forward(request, response);
             }
-                request.setAttribute("message", "Usuario cadastrado com sucesso");
+            request.setAttribute("message", "Usuario cadastrado com sucesso");
 
 
-              idcliente = clienteDAO.createaccountCliente(cliente);
-                response.sendRedirect("/CadastroEnderecoEntrega.jsp");
+            String idcliente = clienteDAO.createaccountCliente(cliente);
 
+            String cep = request.getParameter("cep");
+            String rua = request.getParameter("rua");
+            String numero = request.getParameter("numero");
+            String bairro = request.getParameter("bairro");
+            String cidade = request.getParameter("cidade");
+            String uf = request.getParameter("uf");
+            String logradouro = request.getParameter("logradouro");
 
+            EnderecoEntrega enderecoEntrega = new EnderecoEntrega(cep, rua, numero, bairro, cidade, uf, logradouro);
+            clienteDAO.EnderecoEntrega(enderecoEntrega, idcliente);
 
-        } else {
-            clienteDAO.AlterarCliente(cliente);
-            request.setAttribute("message", "Dados alterado com sucesso");
-            response.sendRedirect("/novidades");
-
-        }
-        String cep = request.getParameter("cep");
-        String rua = request.getParameter("rua");
-        String numero = request.getParameter("numero");
-        String bairro = request.getParameter("bairro");
-        String cidade = request.getParameter("cidade");
-        String uf = request.getParameter("uf");
-        String logradouro = request.getParameter("logradouro");
-
-
-
-        EnderecoEntrega enderecoEntrega = new EnderecoEntrega(cep, rua, numero, bairro, cidade, uf, logradouro);
-
-
-        clienteDAO.EnderecoEntrega(enderecoEntrega, idcliente);
-
-        response.sendRedirect("/CadastroEnderecoEntrega.jsp");
+            response.sendRedirect("/loginCliente");
         }
     }
+}
