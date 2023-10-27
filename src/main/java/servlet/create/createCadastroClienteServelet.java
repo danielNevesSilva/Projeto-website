@@ -42,7 +42,8 @@ public class createCadastroClienteServelet extends HttpServlet{
             } else if (ValidacaoClientService.cpfCadastradoCliente(cpf)) {
                 request.setAttribute("message", "CPF já cadastrado");
                 request.getRequestDispatcher("CadastroCliente.jsp").forward(request, response);
-            }
+             }
+
             request.setAttribute("message", "Usuario cadastrado com sucesso");
 
 
@@ -60,6 +61,10 @@ public class createCadastroClienteServelet extends HttpServlet{
             clienteDAO.EnderecoEntrega(enderecoEntrega, idcliente);
 
             response.sendRedirect("/loginCliente");
+        }
+
+        else {
+            clienteDAO.AlterarCliente(cliente);
         }
     }
 }
