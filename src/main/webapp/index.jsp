@@ -37,9 +37,6 @@
                 </div>
 
 
-
-
-
                   <c:set var="clienteLogado" value="${sessionScope.clienteLogado}" />
 
                   <!-- Verificar se o clienteLogado não é nulo antes de usar -->

@@ -189,6 +189,7 @@ public class ClienteDAO {
         String sql = "UPDATE CLIENTE SET USERNAME=?,GENDER = ?,BIRTHDATE =?,PASSWORD=? WHERE ID=?";
 
         try {
+
             Connection connection = ConnectionPoolConfig.getConnection();
 
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
