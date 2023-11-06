@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("/create-accountcliente")
-public class createCadastroClienteServelet extends HttpServlet{
+public class createCadastroClienteServelet extends HttpServlet {
 
     @Override
 
@@ -42,12 +42,12 @@ public class createCadastroClienteServelet extends HttpServlet{
             } else if (ValidacaoClientService.cpfCadastradoCliente(cpf)) {
                 request.setAttribute("message", "CPF já cadastrado");
                 request.getRequestDispatcher("CadastroCliente.jsp").forward(request, response);
-             }
+            }
 
-            request.setAttribute("message", "Usuario cadastrado com sucesso");
+            /*  request.setAttribute("message", "Usuario cadastrado com sucesso");*/
 
 
-            String idcliente = clienteDAO.createaccountCliente(cliente);
+          /*  String idcliente = clienteDAO.createaccountCliente(cliente);
 
             String cep = request.getParameter("cep");
             String rua = request.getParameter("rua");
@@ -60,11 +60,17 @@ public class createCadastroClienteServelet extends HttpServlet{
             EnderecoEntrega enderecoEntrega = new EnderecoEntrega(cep, rua, numero, bairro, cidade, uf, logradouro);
             clienteDAO.EnderecoEntrega(enderecoEntrega, idcliente);
 
-            response.sendRedirect("/loginCliente");
-        }
+            response.sendRedirect("/create-endereco-entrega");*/
 
-        else {
-            clienteDAO.AlterarCliente(cliente);
+            else {
+                request.setAttribute("message", "Usuario cadastrado com sucesso");
+
+                clienteDAO.createaccountCliente(cliente);
+                response.sendRedirect("/CadastroEnderecoEntrega.jsp");
+             }
+            } else {
+                clienteDAO.AlterarCliente(cliente);
+                response.sendRedirect("/CadastroEnderecoEntrega.jsp");
+            }
         }
     }
-}
