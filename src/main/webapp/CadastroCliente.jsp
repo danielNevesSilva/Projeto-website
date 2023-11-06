@@ -82,7 +82,7 @@
             </p>
 
 
-                            <label for="cep">CEP:</label>
+                  <%--         <label for="cep">CEP:</label>
                             <input type="text" id="cep" name="cep" required maxlength="8" value="${param.cep}"><br>
 
                             <label for="rua">Rua:</label>
@@ -103,7 +103,7 @@
                             <label for="logradouro">Logradouro:</label>
                             <input type="text" id="logradouro" name="logradouro" value="${param.logradouro}"><br>
 
-
+                        --%>
                     <input type="hidden" id="id" name="id" value="${param.id}">
                    <button class="botao-cadastro" type="submit" value="Cadastrar">Cadastrar</button>
 

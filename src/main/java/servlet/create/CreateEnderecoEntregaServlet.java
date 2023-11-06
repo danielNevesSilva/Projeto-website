@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/create-endereco-faturamento")
-public class createEnderecoFaturamentoServlet extends HttpServlet {
+@WebServlet("/create-endereco-entrega")
+public class CreateEnderecoEntregaServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -33,3 +33,4 @@ public class createEnderecoFaturamentoServlet extends HttpServlet {
         response.sendRedirect("/LoginCliente.jsp");
     }
 }
+
